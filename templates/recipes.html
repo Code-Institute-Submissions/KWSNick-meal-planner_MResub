@@ -6,9 +6,32 @@
     <title>What's for Tea?</title>
 </head>
 <body>
-    <p>Hello World in a paragraph on a template</p>
     {% if recipes|length > 0 %}
-        {{ recipes }}
+        {% for recipe in recipes %}
+            <h3>{{ recipe.recipe_name }}</h3>
+            <p><strong><h4>Classification:</h4>{{ recipe.classification }}</strong></p>
+            <p><strong><h4>Region of Origin:</h4>{{ recipe.region_of_origin }}</strong></p>
+            <h4>Owner:</h4>{{ recipe.owner }}
+            <h4>Shared With:</h4>{{ recipe.shared_with }}
+            <h4>Ingredients</h4>
+            <ul>
+            {% for item in recipe.ingredients %}
+                <li>
+                    <span>{{ item.ingredient }}</span>
+                    <span>{{ item.quantity }}</span>
+                    <span>{{ item.unit }}</span>
+                </li>
+            {% endfor %}
+            </ul>
+            <h4>Method</h4>
+            <ol>
+            {% for step in recipe.method %}
+                <li>
+                    {{ step }}
+                </li>
+            {% endfor %}
+            </ol>
+        {% endfor %}
     {% endif %}
 </body>
 </html>
