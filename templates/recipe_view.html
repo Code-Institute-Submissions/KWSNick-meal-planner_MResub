@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+    <!--Checks there are recipes in the recipes collection-->
+    {% if recipes|length > 0 %}
+        <!--Iterates through all recipes-->
+        {% for recipe in recipes %}
+            <!--Gets various fields from each recipe-->
+            <h3>{{ recipe.recipe_name.capitalize() }}</h3>
+            <p><strong><h4>Classification:</h4>{{ recipe.classification.capitalize() }}</strong></p>
+            <p><strong><h4>Region of Origin:</h4>{{ recipe.region_of_origin.capitalize() }}</strong></p>
+            <h4>Owner:</h4>{{ recipe.owner.capitalize() }}
+            <h4>Shared With:</h4>
+            <!--Iterates through shared_with list-->
+            {% for shared in recipe.shared_with %}
+                <span>{{ shared }}, </span>
+            {% endfor %}
+            <h4>Ingredients</h4>
+            <ul>
+            <!--Iterates through the ingredients array and writes to unordered list-->
+            {% for item in recipe.ingredients %}
+                <li>
+                    <!--Targets specific fields within each ingredient-->
+                    <span>{{ item.ingredient }}</span>
+                    <span>{{ item.quantity }}</span>
+                    <span>{{ item.unit }}</span>
+                </li>
+            {% endfor %}
+            </ul>
+            <h4>Method</h4>
+            <ol>
+            <!--Iterates through each step in the method and writes to ordered list-->
+            {% for step in recipe.method %}
+                <li>
+                    {{ step }}
+                </li>
+            {% endfor %}
+            </ol>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

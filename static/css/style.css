@@ -15,8 +15,20 @@
 
 body {
     font-family: 'Indie Flower', cursive;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: #558b2f;
     background-color: #ffffcf;
+}
+nav, .page-footer {
+    background-color: #ffd54f;
+}
+nav ul a {
+    font-size: 1.75rem;
+    font-weight: 900;
+}
+.page-footer {
+    font-size: 1.2rem;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Permanent Marker', cursive;
