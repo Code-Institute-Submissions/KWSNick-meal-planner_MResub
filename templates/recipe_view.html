@@ -1,41 +1,87 @@
 {% extends "base.html" %}
 {% block content %}
-    <!--Checks there are recipes in the recipes collection-->
-    {% if recipes|length > 0 %}
-        <!--Iterates through all recipes-->
-        {% for recipe in recipes %}
-            <!--Gets various fields from each recipe-->
-            <h3>{{ recipe.recipe_name.capitalize() }}</h3>
-            <p><strong><h4>Classification:</h4>{{ recipe.classification.capitalize() }}</strong></p>
-            <p><strong><h4>Region of Origin:</h4>{{ recipe.region_of_origin.capitalize() }}</strong></p>
-            <h4>Owner:</h4>{{ recipe.owner.capitalize() }}
-            <h4>Shared With:</h4>
-            <!--Iterates through shared_with list-->
-            {% for shared in recipe.shared_with %}
-                <span>{{ shared }}, </span>
-            {% endfor %}
+    <!--Gets various fields for the selected recipe-->
+    <!--Recipe Name-->
+    <h1 class="center">{{ recipe.recipe_name.capitalize() }}</h1>
+    <!--Recipe Image-->
+    <div class="row">
+        <div class="col s6 center">
+            <img src="{{ recipe.image_url }}" alt="{{ recipe.image_description }}">
+        </div>
+        <!--Recipe Classification and Origin-->
+        <div class="col s6">
+            <div class="row">
+                <div class="col s4">
+                    <h5 class="right">Classification:</h5>
+                </div>
+                <div class="col s8">
+                    <p>{{ recipe.classification.capitalize() }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4">
+                    <h5 class="right">Region of Origin:</h5>
+                </div>
+                <div class="col s8">
+                    <p>{{ recipe.region_of_origin.capitalize() }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4">
+                    <h5 class="right">Owner:</h5>
+                </div>
+                <div class="col s8">
+                    <p>{{ recipe.owner.capitalize() }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4">
+                    <h5 class="right">Shared With:</h5>
+                </div>
+                <div class="col s8">
+                    <p>
+                    <!--Iterates through shared_with list-->
+                        {% for shared in recipe.shared_with %}
+                            <span>{{ shared }}, </span>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    <!--Recipe Description-->
+        <div class="col s12 center">
+            <h5>Description</h5>
             <p>{{ recipe.description.capitalize() }}</p>
-            <h4>Ingredients</h4>
-            <ul>
+        </div>
+    </div>
+    <!--Recipe Ingredients and Method-->
+    <div class="row">
+        <div class="col s12 l4">
+            <h5 class="center">Ingredients</h5>
+            <ul class="center">
             <!--Iterates through the ingredients array and writes to unordered list-->
-            {% for item in recipe.ingredients %}
-                <li>
-                    <!--Targets specific fields within each ingredient-->
-                    <span>{{ item.ingredient }}</span>
-                    <span>{{ item.quantity }}</span>
-                    <span>{{ item.unit }}</span>
-                </li>
-            {% endfor %}
+                {% for item in recipe.ingredients %}
+                    <li>
+                        <!--Targets specific fields within each ingredient-->
+                        <span>{{ item.ingredient }}</span>
+                        <span>{{ item.quantity }}</span>
+                        <span>{{ item.unit }}</span>
+                    </li>
+                {% endfor %}
             </ul>
-            <h4>Method</h4>
+        </div>
+        <div class="col s12 l8">
+            <h5 class="center">Method</h5>
             <ol>
             <!--Iterates through each step in the method and writes to ordered list-->
-            {% for step in recipe.method %}
-                <li>
-                    {{ step }}
-                </li>
-            {% endfor %}
+                {% for step in recipe.method %}
+                    <li>
+                        {{ step }}
+                    </li>
+                {% endfor %}
             </ol>
-        {% endfor %}
-    {% endif %}
+        </div>
+    </div>
 {% endblock %}
