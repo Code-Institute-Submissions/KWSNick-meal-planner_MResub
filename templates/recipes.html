@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What's for Tea?</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
     <!--Checks there are recipes in the recipes collection-->
     {% if recipes|length > 0 %}
         <!--Iterates through all recipes-->
@@ -43,5 +37,4 @@
             </ol>
         {% endfor %}
     {% endif %}
-</body>
-</html>
+{% endblock %}

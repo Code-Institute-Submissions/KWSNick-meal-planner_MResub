@@ -1,0 +1,24 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Permanent+Marker&display=swap');
+
+/* Color Pallette (For Reference Only) */
+.color-pallette {
+    color: #ffd54f; /* Primary */
+    color: #ffff81; /* Primary Light */
+    color: #c8a415; /* Primary Dark */
+    color: #fff59d; /* Secondary */
+    color: #ffffcf; /* Secondary Light */
+    color: #cbc26d; /* Secondary Dark */
+    color: #558b2f; /* Primary Text */
+    color: #00897b; /* Header Text */
+}
+
+body {
+    font-family: 'Indie Flower', cursive;
+    color: #558b2f;
+    background-color: #ffffcf;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Permanent Marker', cursive;
+    color: #00897b;
+}
