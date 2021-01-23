@@ -14,6 +14,7 @@
             {% for shared in recipe.shared_with %}
                 <span>{{ shared }}, </span>
             {% endfor %}
+            <p>{{ recipe.description.capitalize() }}</p>
             <h4>Ingredients</h4>
             <ul>
             <!--Iterates through the ingredients array and writes to unordered list-->
