@@ -21,6 +21,7 @@
                 if ($('#username').hasClass('valid')) {
                     if ($('#password').hasClass('valid')) {
                         if ($('#confirm_password').hasClass('valid')) {
+                            $('#register').remove();
                             $('#register_button').append('<button id="register"class="col s2 center offset-s5 waves-effect waves-light btn-large green lighten-1" type="submit">Register</button>');
                         } else {
                             $('#register').remove();
