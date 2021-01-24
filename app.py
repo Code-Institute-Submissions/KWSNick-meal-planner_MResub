@@ -30,7 +30,7 @@ def register():
     if request.method == "POST":
         # Check if the username is already taken
         user_exists = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"username": request.form.get("username")})
         # If it is taken create a flash message to inform the user
         if user_exists:
             flash("Username unavailable, enter another")
@@ -48,7 +48,7 @@ def register():
         mongo.db.users.insert_one(new_user)
 
         # Place username into a session cookie for access to data
-        session["wft_user"] = request.form.get("username").lower()
+        session["wft_user"] = request.form.get("username")
         # Inform the user they successfully created an account
         flash("Account Created! You are now Logged in.")
         # Redirect user to recipes page
