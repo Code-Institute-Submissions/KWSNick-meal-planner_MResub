@@ -39,6 +39,9 @@ def login():
                 flash("Incorrect credentials. Try again or create new account")
                 return redirect(url_for("login"))
 
+        else:
+            flash("Incorrect credentials. Try again or create new account")
+            return redirect(url_for("login"))
     return render_template("login.html")
 
 
