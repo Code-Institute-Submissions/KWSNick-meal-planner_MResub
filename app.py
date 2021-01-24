@@ -97,6 +97,31 @@ def recipe_view(recipe_id):
     return render_template("recipe_view.html", recipe=recipe)
 
 
+@app.route("/recipe_create", methods=["GET", "POST"])
+def recipe_create():
+    if request.method == "POST":
+        shared = []
+        recipe = {
+            "recipe_name": request.form.get("recipe_name"),
+            "region_of_origin": request.form.get("origin"),
+            "classification": request.form.get("classify"),
+            "image_url": request.form.get("image_url"),
+            "image_description": request.form.get("image_description"),
+            "description": request.form.get("description"),
+            "ingredients": "",
+            "method": "",
+            "owner": session["wft_user"][0],
+            "shared_with": shared
+        }
+        mongo.db.recipes.insert_one(recipe)
+        flash("Created New Recipe")
+        return redirect(url_for("recipes"))
+    classification = mongo.db.classification.find().sort("class_name", 1)
+    origin = mongo.db.origin.find().sort("origin", 1)
+    return render_template(
+        "recipe_create.html", classification=classification, origin=origin)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),

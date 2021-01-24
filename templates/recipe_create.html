@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+    <!--Sets various fields for the new recipe-->
+    <form method="POST" action="{{ url_for('recipe_create') }}"> 
+        <!--Recipe Name-->
+        <h1 class="input-field center"><input class="center" id="recipe_name" name="recipe_name" type="text" required>
+        <label class="center" for="recipe_name">Recipe Name</label></h1>
+        <!--Recipe Image-->
+        <div class="row">
+            <div class="col s6">
+                <div class="row">
+                    <div class="input-field col s12 l6 center">
+                        <input class="center" id="image_url" name="image_url" type="url">
+                        <label for="image_url">Recipe Image URL</label>
+                    </div>
+                    <div class="input-field col s12 l6 center">
+                        <input class="center" id="image_description" name="image_description" type="text">
+                        <label for="image_description">Recipe Image Description</label>
+                    </div>
+                </div>
+            </div>
+            <!--Recipe Classification and Origin-->
+            <div class="col s12 l6">
+                <div class="row">
+                    <div class="col s6 l4">
+                        <h5 class="right">Classification:</h5>
+                    </div>
+                    <div class="input-field col s6 l8">
+                        <select id="classify" name="classify">
+                            <option value="">Select a class as appropriate</option>
+                            <option value=""></option>
+                        {% for class in classification %}
+                            <option value="{{ class.class_name }}">{{ class.class_name.capitalize() }}</option>
+                        {% endfor %}
+                            <label for="classify">Recipe Classification</label>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6 l4">
+                        <h5 class="right">Region of Origin:</h5>
+                    </div>
+                    <div class="input-field col s6 l8">
+                        <select id="origin" name="origin">
+                            <option value="">Select a region of origin as appropriate</option>
+                            <option value=""></option>
+                        {% for region in origin %}
+                            <option value="{{ region.origin }}">{{ region.origin.capitalize() }}</option>
+                        {% endfor %}
+                            <label for="origin">Recipe Origin</label>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6 l4">
+                        <h5 class="right">Shared With:</h5>
+                    </div>
+                    <div name="sharing" id="sharing" class="input-field col s6 l8">
+                        <input class="center shared_with" id="shared_with1" name="shared_with1" type="text">
+                        <label for="shared_with1">Shared With</label>
+                        <button id="button1" type="button" class="btn-floating btn-small waves-effect waves-light red add_share"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                <!--Recipe Description-->
+                    <div class="input-field col s12 center">
+                        <h5>Description</h5>
+                        <input class="center" id="description" name="description" type="text">
+                        <label for="description">Recipe Description</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

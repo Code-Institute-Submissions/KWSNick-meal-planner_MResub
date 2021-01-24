@@ -1,5 +1,6 @@
  $(document).ready(function(){
     $('.sidenav').sidenav();
+     $('select').formSelect();
     // Script to check the entered passwords in registration are the same and alert the user if they are not. 
     $('#confirm_password').focusout(function passwordValidate(){
         let pwd1 = $('#password').val();
@@ -38,5 +39,14 @@
         } else {
             $('#register').remove();
         }
+    })
+    $('#sharing').on('click', 'button', function(){
+        button = $(this).attr('id');
+        function addShare(){
+            i = $('.add_share').length;
+            j = i + 1;
+            $(`#`+button).after(`<input class="center shared_with" id="shared_with`+[j]+`" name="shared_with`+[j]+`" type="text"><label for="shared_with`+[j]+`">Shared With</label><button id="button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red add_share"><i class="fas fa-plus"></i></button>`);
+        }
+        addShare();
     })
   });
