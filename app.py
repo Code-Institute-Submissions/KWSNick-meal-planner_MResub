@@ -45,6 +45,14 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/logout")
+def logout():
+    # Removes the wft_user from session cookies
+    session.pop("wft_user"),
+    flash("You have logged out. Enter credentails to login again."),
+    return redirect(url_for("login"))
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     # If the post method is invoked by the submit button
