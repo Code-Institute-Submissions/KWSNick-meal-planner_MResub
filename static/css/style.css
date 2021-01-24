@@ -44,5 +44,7 @@ h1, h2, h3, h4, h5, h6 {
     color: red;
 }
 #flash_message_box {
-    background-color: #c8a415;
+    background-color: #ffff81;
+    margin-top: 3vh;
+    text-align: center;
 }
