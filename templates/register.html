@@ -14,33 +14,33 @@
     </div>
     <div class="container">
         <div class="row">
-            <form id="registration_form" class="col s12">
+            <form id="registration_form" class="col s12" method="POST" action="{{ url_for('register') }}">
                 <div class="row">
                     <div class="input-field col s12 m6">
-                        <input id="first_name" type="text" pattern="[A-Za-z]{1,}" class="validate" required>
+                        <input id="first_name" name="first_name" type="text" pattern="[A-Za-z]{1,}" class="validate" required>
                         <label for="first_name"><i class="fas fa-user-tag"></i> First Name</label>
                     </div>
                     <div class="input-field col s12 m6">
-                        <input id="last_name" type="text" pattern="[A-Za-z]{1,}" class="validate" required>
+                        <input id="last_name" name="last_name" type="text" pattern="[A-Za-z]{1,}" class="validate" required>
                         <label for="last_name"><i class="fas fa-user-tag"></i> Last Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" type="text" minlength="5" maxlength="12" pattern="[a-zA-Z0-9][^\s]{5,12}" class="validate" required>
+                        <input id="username" name="username" type="text" minlength="5" maxlength="12" pattern="[a-zA-Z0-9][^\s]{5,12}" class="validate" required>
                         <label for="username"><i class="fas fa-user-cog"></i> Username</label>
                         <span class="form_tip">Enter a username between 5 and 12 characters consisting of lower and uppercase letters and numbers only, no spaces.</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" minlength="6" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}" class="validate" required>
+                        <input id="password" name="password" type="password" minlength="6" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}" class="validate" required>
                         <label for="password"><i class="fas fa-user-lock"></i> Password</label>
                         <span class="form_tip">Enter a password at least 6 characters long with at least one lowercase letter, one uppercase letter and one number.</span>
                     </div>
                 </div>
                 <div class="row">
-                    <div id="password_confirmation" class="input-field col s12">
+                    <div id="password_confirmation" name="password_confirmation" class="input-field col s12">
                         <input id="confirm_password" type="password" minlength="6" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}" class="validate" required>
                         <label for="confirm_password"><i class="fas fa-user-lock"></i> Confirm Password</label>
                         <span class="form_tip">Confirm your password.</span>

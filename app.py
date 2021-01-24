@@ -19,13 +19,40 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def login():
     return render_template("login.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    # If the post method is invoked by the submit button
+    if request.method == "POST":
+        # Check if the username is already taken
+        user_exists = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        # If it is taken create a flash message to inform the user
+        if user_exists:
+            flash("Username unavailable, enter another")
+            # return to register page
+            return redirect(url_for("register"))
+
+        # Create an object from the create account form
+        new_user = {
+            "username": request.form.get("username"),
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        # Insert the object as a doc in the database
+        mongo.db.users.insert_one(new_user)
+
+        # Place username into a session cookie for access to data
+        session["wft_user"] = request.form.get("username").lower()
+        # Inform the user they successfully created an account
+        flash("Account Created! You are now Logged in.")
+        # Redirect user to recipes page
+        return redirect(url_for("recipes", username=session["wft_user"]))
     return render_template("register.html")
 
 
