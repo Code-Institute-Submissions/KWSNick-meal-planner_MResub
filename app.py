@@ -19,8 +19,26 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def login():
+    # If the post method is invoked by the submit button
+    if request.method == "POST":
+        # Check if the username is already taken
+        user_exists = mongo.db.users.find_one(
+            {"username": request.form.get("username")})
+        # If it exists confirms the pwd and creates session user
+        if user_exists:
+            if check_password_hash(
+                    user_exists["password"], request.form.get("password")):
+                session["wft_user"] = request.form.get("username"),
+                flash("Logged in as {}".format(session["wft_user"][0]))
+                # Takes the logged in user to the recipes page
+                return redirect(url_for(
+                                "recipes", username=session["wft_user"][0]))
+            else:
+                flash("Incorrect credentials. Try again or create new account")
+                return redirect(url_for("login"))
+
     return render_template("login.html")
 
 
