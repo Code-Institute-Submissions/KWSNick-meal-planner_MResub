@@ -71,6 +71,33 @@
                 </div>
             </div>
         </div>
+        <!--Recipe Ingredients and Method-->
+        <div class="row">
+            <div id="ingredients_list" class="col s12 l4">
+                <h5 class="center">Ingredients</h5>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input class="center" id="ingredient_name1" name="ingredient_name1" type="text">
+                        <label for="ingredient_name1">Ingredient</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input class="center" id="ingredient_quantity1" name="ingredient_quantity1" type="number" step="0.01">
+                        <label for="ingredient_quantity1">Quantity</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <select class="center" id="ingredient_unit1" name="ingredient_unit1">
+                            <option value="">Unit</option>
+                            <option value=""></option>
+                            {% for unit in units %}
+                                <option value="{{ unit.unit }}">{{ unit.unit.capitalize() }}</option>
+                            {% endfor %}
+                            <label for="ingredient_unit1">Unit</label>
+                        </select>
+                    </div>
+                </div>
+                <button id="ing_button1" type="button" class="btn-floating btn-small waves-effect waves-light red add_ingredient add_ingredient"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
         <input type="submit" value="Submit">
     </form>
 {% endblock %}

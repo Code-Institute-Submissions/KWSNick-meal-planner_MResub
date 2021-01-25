@@ -121,6 +121,36 @@ def recipe_create():
             # increments the while loop
             i += 1
 
+        # Script to create a list of objects containing ingredients
+        ingredients = []
+        # Gets the total length of the form
+        form_length = len(request.form)
+        # Sets i to 1
+        i = 1
+        # While i is less than form length
+        while i <= form_length:
+            # Creates an empty object
+            ingredient = {}
+            # Sets the unique key for ingredient_name in a variable
+            ingredient_key = "ingredient_name" + str(i)
+            # Sets the unique key for ingredient_quantity in a variable
+            quantity_key = "ingredient_quantity" + str(i)
+            # Sets the value of the input for unique ingredient_name
+            value = request.form.get(ingredient_key)
+            # checks there is a value
+            if value is not None:
+                # Sets the value of ingredient_name in a variable
+                ingredient_name = request.form.get(ingredient_key)
+                # Sets the value of ingredient_quantity in a variable
+                ingredient_quantity = request.form.get(quantity_key)
+                # Puts new Key/Value pairs in ingredient object
+                ingredient["ingredient"] = ingredient_name
+                ingredient["quantity"] = ingredient_quantity
+                # Appends object to list
+                ingredients.append(ingredient)
+            # increments the while loop
+            i += 1
+
         # Creates the recipe object to send to MongoDB
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
@@ -129,7 +159,7 @@ def recipe_create():
             "image_url": request.form.get("image_url"),
             "image_description": request.form.get("image_description"),
             "description": request.form.get("description"),
-            "ingredients": "",
+            "ingredients": ingredients,
             "method": "",
             "owner": session["wft_user"][0],
             "shared_with": shared
@@ -144,8 +174,11 @@ def recipe_create():
     classification = mongo.db.classification.find().sort("class_name", 1)
     # Gets the list of origins from MongoDB to send to the create page
     origin = mongo.db.origin.find().sort("origin", 1)
+    # Gets the list of units from MongoDB to send to the create page
+    units = mongo.db.units.find().sort("unit", 1)
     return render_template(
-        "recipe_create.html", classification=classification, origin=origin)
+        "recipe_create.html",
+        classification=classification, origin=origin, units=units)
 
 
 if __name__ == "__main__":

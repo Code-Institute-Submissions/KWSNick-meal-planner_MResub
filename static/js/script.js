@@ -40,12 +40,43 @@
             $('#register').remove();
         }
     })
+    // Function that adds a new input row beneath clicked button for shared with section of form
     $('#sharing').on('click', 'button', function(){
         button = $(this).attr('id');
         function addShare(){
             i = $('.add_share').length;
             j = i + 1;
             $(`#`+button).after(`<input class="center shared_with" id="shared_with`+[j]+`" name="shared_with`+[j]+`" type="text"><label for="shared_with`+[j]+`">Shared With</label><button id="button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red add_share"><i class="fas fa-plus"></i></button>`);
+        }
+        addShare();
+    })
+    // Function that adds a new input row beneath clicked button for ingredients section of form
+    $('#ingredients_list').on('click', 'button', function(){
+        button = $(this).attr('id');
+        function addShare(){
+            i = $('.add_ingredient').length;
+            j = i + 1;
+            $(`#`+button).after(`<div class="row">
+                    <div class="input-field col s6">
+                        <input class="center" id="ingredient_name`+[j]+`" name="ingredient_name`+[j]+`" type="text">
+                        <label for="ingredient_name`+[j]+`">Ingredient</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input class="center" id="ingredient_quantity`+[j]+`" name="ingredient_quantity`+[j]+`" type="number">
+                        <label for="ingredient_quantity`+[j]+`">Quantity</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <select class="center" id="ingredient_unit`+[j]+`" name="ingredient_unit`+[j]+`">
+                            <option value="">Unit</option>
+                            <option value=""></option>
+                            {% for unit in units %}
+                                <option value="{{ unit.unit }}">{{ unit.unit.capitalize() }}</option>
+                            {% endfor %}
+                            <label for="ingredient_unit`+[j]+`">Unit</label>
+                        </select>
+                    </div>
+                </div>
+                <button id="ing_button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red add_ingredient add_ingredient"><i class="fas fa-plus"></i></button>`);
         }
         addShare();
     })
