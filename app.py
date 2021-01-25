@@ -100,7 +100,28 @@ def recipe_view(recipe_id):
 @app.route("/recipe_create", methods=["GET", "POST"])
 def recipe_create():
     if request.method == "POST":
+        # Script to create a list of shared with from multiple sources
         shared = []
+        # Adds owner to shared_with list
+        shared.append(session["wft_user"][0])
+        # Gets the total length of the form
+        form_length = len(request.form)
+        # Sets i to 1
+        i = 1
+        # While i is less than form length
+        while i <= form_length:
+            # sets a unique key based on i
+            shared_key = "shared_with" + str(i)
+            # gets the value of the input for the unique key
+            value = request.form.get(shared_key)
+            # checks there is a value
+            if value is not None:
+                # appends the value to the shared_with list
+                shared.append(request.form.get(shared_key))
+            # increments the while loop
+            i += 1
+
+        # Creates the recipe object to send to MongoDB
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
             "region_of_origin": request.form.get("origin"),
@@ -113,10 +134,15 @@ def recipe_create():
             "owner": session["wft_user"][0],
             "shared_with": shared
         }
+        # Sends the object ot MongoDB
         mongo.db.recipes.insert_one(recipe)
+        # Lets the user know the object has been sent
         flash("Created New Recipe")
+        # Takes the user back to the recipes page to see their recipes
         return redirect(url_for("recipes"))
+    # Gets the list of classifications from MongoDB to send to the create page
     classification = mongo.db.classification.find().sort("class_name", 1)
+    # Gets the list of origins from MongoDB to send to the create page
     origin = mongo.db.origin.find().sort("origin", 1)
     return render_template(
         "recipe_create.html", classification=classification, origin=origin)
