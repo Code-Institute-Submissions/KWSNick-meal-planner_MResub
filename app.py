@@ -42,7 +42,11 @@ def login():
         else:
             flash("Incorrect credentials. Try again or create new account")
             return redirect(url_for("login"))
-    return render_template("login.html")
+    try:
+        session["wft_user"]
+        return redirect(url_for("recipes"))
+    except Exception:
+        return render_template("login.html")
 
 
 @app.route("/logout")
