@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
     <!--Sets various fields for the new recipe-->
-    <form method="POST" action="{{ url_for('recipe_create') }}"> 
+    <form method="POST" action="{{ url_for('recipe_create') }}">
+        <div class="row">
+            <div class="col s12">
+                <div class="col s10">
+                    <h1>Add a new recipe</h1>
+                </div>
+                <div class="col s2 right">
+                    <button id="create_btn" class="col s12 waves-effect waves-light btn-large green lighten-1" type="submit">Create</button>
+                </div>
+            </div>
+        </div> 
+        
         <!--Recipe Name-->
         <h1 class="input-field center"><input class="center" id="recipe_name" name="recipe_name" type="text" required>
         <label class="center" for="recipe_name">Recipe Name</label></h1>
@@ -111,6 +122,5 @@
                 </div>
             </div>
         </div>
-        <input type="submit" value="Submit">
     </form>
 {% endblock %}

@@ -51,3 +51,6 @@ h1, h2, h3, h4, h5, h6 {
 .step-no {
     text-align: right;
 }
+#create_btn {
+    margin-top: 2.8rem;
+}
