@@ -104,4 +104,17 @@
         addShare();
         $(`#`+button).hide();
     })
+    // Function to check if the image url has changed, and if it has to load the image using ajax
+    $('#image_url').change(function(){
+        $.ajax({url: "", success: function(){
+            image = $('#image_url').val();
+            $('#image_preview').remove();
+            if (image == ""){
+                 $('#image_preview').remove();
+            }
+            else {
+                $('#image_url').parent().siblings().after(`<img id="image_preview" class="recipe_image" src="`+image+`" alt="recipe image preview">`);
+            }
+        }});
+    })
   });
