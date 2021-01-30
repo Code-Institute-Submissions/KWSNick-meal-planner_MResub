@@ -46,9 +46,10 @@
         function addShare(){
             i = $('.add_share').length;
             j = i + 1;
-            $(`#`+button).after(`<input class="center shared_with" id="shared_with`+[j]+`" name="shared_with`+[j]+`" type="text"><label for="shared_with`+[j]+`">Shared With</label><button id="button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red add_share"><i class="fas fa-plus"></i></button>`);
+            $(`#`+button).after(`<input class="center shared_with" id="shared_with`+[j]+`" name="shared_with`+[j]+`" type="text"><label for="shared_with`+[j]+`">Shared With</label><button id="button`+[j]+`" type="button" class="right btn-floating btn-small waves-effect waves-light red add_share"><i class="fas fa-plus"></i></button>`);
         }
         addShare();
+        $(`#`+button).hide();
     })
     // Function that adds a new input row beneath clicked button for ingredients section of form
     $('#ingredients_list').on('click', 'button', function(){
@@ -76,9 +77,31 @@
                         </select>
                     </div>
                 </div>
-                <button id="ing_button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red add_ingredient add_ingredient"><i class="fas fa-plus"></i></button>`);
+                <button id="ing_button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red add_ingredient"><i class="fas fa-plus"></i></button>`);
             $('select').formSelect();
             }
         addShare();
+        $(`#`+button).hide();
+    })
+    // Function that adds a new input row beneath clicked button for method section of form
+    $('#step_list').on('click', 'button', function(){
+        button = $(this).attr('id');
+        console.log(button);
+        function addShare(){
+            i = $('.add_step').length;
+            j = i + 1;
+            $(`#`+button).parent().after(`<div class="row">
+                    <div class="col s1">
+                        <p class="step-no">`+[j]+`.</p>
+                    </div>
+                    <div class="col s11 input-field">
+                        <input class="center" id="step`+[j]+`" name="step`+[j]+`" type="text">
+                        <label for="step`+[j]+`">Step</label>
+                    </div>
+                    <button id="step_button`+[j]+`" type="button" class="right btn-floating btn-small waves-effect waves-light red add_step"><i class="fas fa-plus"></i></button>
+                </div>`)
+            }
+        addShare();
+        $(`#`+button).hide();
     })
   });
