@@ -160,6 +160,25 @@ def recipe_create():
             # increments the while loop
             i += 1
 
+        # Script to create a list of method steps from multiple sources
+        steps = []
+        # Gets the total length of the form
+        form_length = len(request.form)
+        # Sets i to 1
+        i = 1
+        # While i is less than form length
+        while i <= form_length:
+            # sets a unique key based on i
+            step_key = "step" + str(i)
+            # gets the value of the input for the unique key
+            value = request.form.get(step_key)
+            # checks there is a value
+            if value is not None:
+                # appends the value to the steps list
+                steps.append(request.form.get(step_key))
+            # increments the while loop
+            i += 1
+
         # Creates the recipe object to send to MongoDB
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
@@ -169,7 +188,7 @@ def recipe_create():
             "image_description": request.form.get("image_description"),
             "description": request.form.get("description"),
             "ingredients": ingredients,
-            "method": "",
+            "method": steps,
             "owner": session["wft_user"][0],
             "shared_with": shared
         }
