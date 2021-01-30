@@ -120,8 +120,11 @@ def recipe_create():
             value = request.form.get(shared_key)
             # checks there is a value
             if value is not None:
-                # appends the value to the shared_with list
-                shared.append(request.form.get(shared_key))
+                # checks the input field is not blank
+                user_entry = request.form.get(shared_key)
+                if user_entry != "":
+                    # appends the value to the shared_with list
+                    shared.append(user_entry)
             # increments the while loop
             i += 1
 
@@ -151,12 +154,20 @@ def recipe_create():
                 ingredient_quantity = request.form.get(quantity_key)
                 # Sets the value of ingredient_unit in a variable
                 ingredient_unit = request.form.get(unit_key)
-                # Puts new Key/Value pairs in ingredient object
-                ingredient["ingredient"] = ingredient_name
-                ingredient["quantity"] = ingredient_quantity
-                ingredient["unit"] = ingredient_unit
-                # Appends object to list
-                ingredients.append(ingredient)
+                # checks the ingredient_name is not blank
+                if ingredient_name != "":
+                    # Puts name Key/Value pair in ingredient object
+                    ingredient["ingredient"] = ingredient_name
+                    # checks the ingredient_quantity is not blank
+                    if ingredient_quantity != "":
+                        # Puts quantity Key/Value pair in ingredient object
+                        ingredient["quantity"] = ingredient_quantity
+                    # checks the ingredient_unit is not blank
+                    if ingredient_unit != "":
+                        # Puts unit Key/Value pair in ingredient object
+                        ingredient["unit"] = ingredient_unit
+                    # Appends object to list
+                    ingredients.append(ingredient)
             # increments the while loop
             i += 1
 
@@ -174,8 +185,11 @@ def recipe_create():
             value = request.form.get(step_key)
             # checks there is a value
             if value is not None:
-                # appends the value to the steps list
-                steps.append(request.form.get(step_key))
+                # checks the input field is not blank
+                user_entry = request.form.get(step_key)
+                if user_entry != "":
+                    # appends the value to the steps list
+                    steps.append(request.form.get(step_key))
             # increments the while loop
             i += 1
 
