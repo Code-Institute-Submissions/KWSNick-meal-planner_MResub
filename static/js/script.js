@@ -69,15 +69,16 @@
                         <select class="center" id="ingredient_unit`+[j]+`" name="ingredient_unit`+[j]+`">
                             <option value="">Unit</option>
                             <option value=""></option>
-                            {% for unit in units %}
-                                <option value="{{ unit.unit }}">{{ unit.unit.capitalize() }}</option>
-                            {% endfor %}
+                            <option value="grams">Grams</option>
+                            <option value="ml">ml</option>
+                            <option value="quantity">Quantity</option>
                             <label for="ingredient_unit`+[j]+`">Unit</label>
                         </select>
                     </div>
                 </div>
                 <button id="ing_button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red add_ingredient add_ingredient"><i class="fas fa-plus"></i></button>`);
-        }
+            $('select').formSelect();
+            }
         addShare();
     })
   });

@@ -139,6 +139,8 @@ def recipe_create():
             ingredient_key = "ingredient_name" + str(i)
             # Sets the unique key for ingredient_quantity in a variable
             quantity_key = "ingredient_quantity" + str(i)
+            # Sets the unique key for ingredient_unit in a variable
+            unit_key = "ingredient_unit" + str(i)
             # Sets the value of the input for unique ingredient_name
             value = request.form.get(ingredient_key)
             # checks there is a value
@@ -147,9 +149,12 @@ def recipe_create():
                 ingredient_name = request.form.get(ingredient_key)
                 # Sets the value of ingredient_quantity in a variable
                 ingredient_quantity = request.form.get(quantity_key)
+                # Sets the value of ingredient_unit in a variable
+                ingredient_unit = request.form.get(unit_key)
                 # Puts new Key/Value pairs in ingredient object
                 ingredient["ingredient"] = ingredient_name
                 ingredient["quantity"] = ingredient_quantity
+                ingredient["unit"] = ingredient_unit
                 # Appends object to list
                 ingredients.append(ingredient)
             # increments the while loop
