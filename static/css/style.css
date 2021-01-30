@@ -13,7 +13,7 @@
     color: #00897b; /* Header Text */
 }
 
-body {
+body, input[type="text"], input[type="number"], textarea {
     font-family: 'Indie Flower', cursive;
     font-size: 1.5rem;
     font-weight: 700;
