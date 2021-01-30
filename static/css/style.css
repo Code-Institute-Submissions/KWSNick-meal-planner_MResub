@@ -35,7 +35,8 @@ h1, h2, h3, h4, h5, h6 {
     color: #00897b;
 }
 .recipe_image {
-    max-width: 100%;
+    width: 75%;
+    margin:0 12.5%;
 }
 .form_tip {
     font-size: 0.8rem;
