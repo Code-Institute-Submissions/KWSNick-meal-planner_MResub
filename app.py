@@ -193,13 +193,27 @@ def recipe_create():
             # increments the while loop
             i += 1
 
+        # If no image url, use placeholder
+        form_image_url = request.form.get("image_url")
+        if form_image_url != "":
+            image_url = request.form.get("image_url")
+        else:
+            image_url = "static/images/recipe_img_pholder.png"
+
+        # If no image alt text, use placeholder
+        form_image_desc = request.form.get("image_description")
+        if form_image_desc != "":
+            image_desc = request.form.get("image_description")
+        else:
+            image_desc = "What's for tea placeholder image"
+
         # Creates the recipe object to send to MongoDB
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
             "region_of_origin": request.form.get("origin"),
             "classification": request.form.get("classify"),
-            "image_url": request.form.get("image_url"),
-            "image_description": request.form.get("image_description"),
+            "image_url": image_url,
+            "image_description": image_desc,
             "description": request.form.get("description"),
             "ingredients": ingredients,
             "method": steps,

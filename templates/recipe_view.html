@@ -5,8 +5,8 @@
     <h1 class="center">{{ recipe.recipe_name.capitalize() }}</h1>
     <!--Recipe Image-->
     <div class="row">
-        <div class="col s12 l6 center">
-            <img class="recipe_image" src="{{ recipe.image_url }}" alt="{{ recipe.image_description }}">
+        <div id="image_div" class="col s12 l6 center">
+            <img id="recipe_image" class="recipe_image" src="{{ recipe.image_url }}" alt="{{ recipe.image_description }}">
         </div>
         <!--Recipe Classification and Origin-->
         <div class="col s12 l6">
