@@ -63,7 +63,7 @@
             j = i + 1;
             $(`#`+button).after(`<div class="row">
                     <div class="input-field col s6">
-                        <input class="center" id="ingredient_name`+[j]+`" name="ingredient_name`+[j]+`" type="text">
+                        <input class="center add_ingredient" id="ingredient_name`+[j]+`" name="ingredient_name`+[j]+`" type="text">
                         <label for="ingredient_name`+[j]+`">Ingredient</label>
                     </div>
                     <div class="input-field col s3">
@@ -81,7 +81,7 @@
                         </select>
                     </div>
                 </div>
-                <button id="ing_button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red add_ingredient"><i class="fas fa-plus"></i></button>`);
+                <button id="ing_button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>`);
             $('select').formSelect();
             }
         addShare();
@@ -94,16 +94,16 @@
         function addShare(){
             i = $('.add_step').length;
             j = i + 1;
-            $(`#`+button).parent().after(`<div class="row">
+            $(`#`+button).after(`<div class="row">
                     <div class="col s1">
                         <p class="step-no">`+[j]+`.</p>
                     </div>
                     <div class="col s11 input-field">
-                        <input class="center" id="step`+[j]+`" name="step`+[j]+`" type="text">
+                        <input class="center add_step" id="step`+[j]+`" name="step`+[j]+`" type="text">
                         <label for="step`+[j]+`">Step</label>
                     </div>
-                    <button id="step_button`+[j]+`" type="button" class="right btn-floating btn-small waves-effect waves-light red add_step"><i class="fas fa-plus"></i></button>
-                </div>`)
+                </div>
+                <button id="step_button`+[j]+`" type="button" class="right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>`)
             }
         addShare();
         $(`#`+button).hide();

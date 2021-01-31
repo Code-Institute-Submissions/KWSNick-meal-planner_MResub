@@ -44,7 +44,7 @@
                         {% for class in classification %}
                             <!--Ignores the currently chosen class to prevent option duplication-->
                             {% if class.class_name != recipe.classification %}
-                                <option value="{{ class.class_name }}">{{ class.class_name.capitalize() }}</option>
+                                <option value="{{ class.class_name }}" selected>{{ class.class_name.capitalize() }}</option>
                             {% endif %}
                         {% endfor %}
                             <label for="classify">Recipe Classification</label>
@@ -62,7 +62,7 @@
                         {% for region in origin %}
                             <!--Ignores the currently chosen origin to prevent option duplication-->
                             {% if region.origin != recipe.region_of_origin %}
-                                <option value="{{ region.origin }}">{{ region.origin.capitalize() }}</option>
+                                <option value="{{ region.origin }}" selected>{{ region.origin.capitalize() }}</option>
                             {% endif %}
                         {% endfor %}
                             <label for="origin">Recipe Origin</label>
@@ -78,8 +78,13 @@
                         {% set i = namespace(value=0) %}
                         {% for shared in recipe.shared_with %}
                             {% set i.value = i.value + 1 %}
-                            <input class="center shared_with add_share" id="shared_with{{ i.value }}" name="shared_with{{ i.value }}" type="text" value="{{ shared }}">
-                            <label for="shared_with{{ i.value }}">Shared With</label>
+                            {% if shared == session.wft_user[0] %}
+                                <input class="center shared_with add_share" id="shared_with{{ i.value }}" name="shared_with{{ i.value }}" type="text" value="{{ shared }}" readonly>
+                                <label for="shared_with{{ i.value }}">Shared With</label>
+                            {% else %}
+                                <input class="center shared_with add_share" id="shared_with{{ i.value }}" name="shared_with{{ i.value }}" type="text" value="{{ shared }}">
+                                <label for="shared_with{{ i.value }}">Shared With</label>
+                            {% endif %}
                         {% endfor %}
                         <button id="button{{ i.value }}" type="button" class="right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
                     </div>
@@ -88,7 +93,7 @@
                 <!--Recipe Description-->
                     <div class="input-field col s12 center">
                         <h5>Description</h5>
-                        <textarea class="materialize-textarea center" id="description" name="description"></textarea>
+                        <textarea class="materialize-textarea center" id="description" name="description">{{- recipe.description -}}</textarea>
                         <label for="description">Recipe Description</label>
                     </div>
                 </div>
@@ -99,40 +104,56 @@
             <div id="ingredients_list" class="col s12 l4">
                 <h5 class="center">Ingredients</h5>
                 <p class="center">Enter the quantities required for 1 person</p>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input class="center" id="ingredient_name1" name="ingredient_name1" type="text">
-                        <label for="ingredient_name1">Ingredient</label>
+                <!--Based on guidance provided on Stack Overflow posted by Patrick José Pereira April 6th 2018-->
+                {% set i = namespace(value=0) %}
+                {% for ingredient in recipe.ingredients %}
+                    {% set i.value = i.value + 1 %}
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input class="center add_ingredient" id="ingredient_name{{ i.value }}" name="ingredient_name{{ i.value }}" type="text" value="{{ ingredient.ingredient }}">
+                            <label for="ingredient_name{{ i.value }}">Ingredient</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <input class="center" id="ingredient_quantity{{ i.value }}" name="ingredient_quantity{{ i.value }}" type="number" step="0.01" value="{{ ingredient.quantity }}">
+                            <label for="ingredient_quantity{{ i.value }}">Quantity</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <select class="center" id="ingredient_unit{{ i.value }}" name="ingredient_unit{{ i.value }}">
+                                <option value="{{ ingredient.unit }}" selected>{{ ingredient.unit.capitalize() }}</option>
+                                <option value=""></option>
+                                <!--Ignores the currently chosen unit to prevent option duplication-->
+                                {% if ingredient.unit != "grams" %}
+                                    <option value="grams">Grams</option>
+                                {% endif %}
+                                {% if ingredient.unit != "ml" %}
+                                    <option value="ml">ml</option>
+                                {% endif %}
+                                {% if ingredient.unit != "quantity" %}
+                                    <option value="quantity">Quantity</option>
+                                {% endif %}
+                                <label for="ingredient_unit{{ i.value }}">Unit</label>
+                            </select>
+                        </div>
                     </div>
-                    <div class="input-field col s3">
-                        <input class="center" id="ingredient_quantity1" name="ingredient_quantity1" type="number" step="0.01">
-                        <label for="ingredient_quantity1">Quantity</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <select class="center" id="ingredient_unit1" name="ingredient_unit1">
-                            <option value="">Unit</option>
-                            <option value=""></option>
-                            <option value="grams">Grams</option>
-                            <option value="ml">ml</option>
-                            <option value="quantity">Quantity</option>
-                            <label for="ingredient_unit1">Unit</label>
-                        </select>
-                    </div>
-                </div>
-                <button id="ing_button1" type="button" class="btn-floating btn-small waves-effect waves-light red add_ingredient"><i class="fas fa-plus"></i></button>
+                {% endfor %}
+                <button id="ing_button{{ i.value }}" type="button" class="btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
             </div>
             <div id="step_list" class="col s12 l8">
                 <h5 class="center">Method</h5>
-                <div class="row">
-                    <div class="col s1">
-                        <p class="step-no">1.</p>
+                {% set i = namespace(value=0) %}
+                {% for step in recipe.method %}
+                    {% set i.value = i.value + 1 %}
+                    <div class="row">
+                        <div class="col s1">
+                            <p class="step-no">{{ i.value }}.</p>
+                        </div>
+                        <div class="col s11 input-field">
+                            <input class="center add_step" id="step{{ i.value }}" name="step{{ i.value }}" type="text" value="{{ step }}">
+                            <label for="step1">Step</label>
+                        </div>
                     </div>
-                    <div class="col s11 input-field">
-                        <input class="center" id="step1" name="step1" type="text">
-                        <label for="step1">Step</label>
-                    </div>
-                    <button id="step_button1" type="button" class="right btn-floating btn-small waves-effect waves-light red add_step"><i class="fas fa-plus"></i></button>
-                </div>
+                {% endfor %}
+                <button id="step_button{{ i.value }}" type="button" class="right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
             </div>
         </div>
     </form>

@@ -220,7 +220,7 @@ def recipe_create():
             "owner": session["wft_user"][0],
             "shared_with": shared
         }
-        # Sends the object ot MongoDB
+        # Sends the object to MongoDB
         mongo.db.recipes.insert_one(recipe)
         # Lets the user know the object has been sent
         flash("Created New Recipe")
@@ -249,6 +249,128 @@ def delete_recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    if request.method == "POST":
+        # Script to create a list of shared with from multiple sources
+        shared = []
+        # Gets the total length of the form
+        form_length = len(request.form)
+        # Sets i to 1
+        i = 1
+        # While i is less than form length
+        while i <= form_length:
+            # sets a unique key based on i
+            shared_key = "shared_with" + str(i)
+            # gets the value of the input for the unique key
+            value = request.form.get(shared_key)
+            # checks there is a value
+            if value is not None:
+                # checks the input field is not blank
+                user_entry = request.form.get(shared_key)
+                if user_entry != "":
+                    # appends the value to the shared_with list
+                    shared.append(user_entry)
+            # increments the while loop
+            i += 1
+
+        # Script to create a list of objects containing ingredients
+        ingredients = []
+        # Gets the total length of the form
+        form_length = len(request.form)
+        # Sets i to 1
+        i = 1
+        # While i is less than form length
+        while i <= form_length:
+            # Creates an empty object
+            ingredient = {}
+            # Sets the unique key for ingredient_name in a variable
+            ingredient_key = "ingredient_name" + str(i)
+            # Sets the unique key for ingredient_quantity in a variable
+            quantity_key = "ingredient_quantity" + str(i)
+            # Sets the unique key for ingredient_unit in a variable
+            unit_key = "ingredient_unit" + str(i)
+            # Sets the value of the input for unique ingredient_name
+            value = request.form.get(ingredient_key)
+            # checks there is a value
+            if value is not None:
+                # Sets the value of ingredient_name in a variable
+                ingredient_name = request.form.get(ingredient_key)
+                # Sets the value of ingredient_quantity in a variable
+                ingredient_quantity = request.form.get(quantity_key)
+                # Sets the value of ingredient_unit in a variable
+                ingredient_unit = request.form.get(unit_key)
+                # checks the ingredient_name is not blank
+                if ingredient_name != "":
+                    # Puts name Key/Value pair in ingredient object
+                    ingredient["ingredient"] = ingredient_name
+                    # checks the ingredient_quantity is not blank
+                    if ingredient_quantity != "":
+                        # Puts quantity Key/Value pair in ingredient object
+                        ingredient["quantity"] = ingredient_quantity
+                    # checks the ingredient_unit is not blank
+                    if ingredient_unit != "":
+                        # Puts unit Key/Value pair in ingredient object
+                        ingredient["unit"] = ingredient_unit
+                    # Appends object to list
+                    ingredients.append(ingredient)
+            # increments the while loop
+            i += 1
+
+        # Script to create a list of method steps from multiple sources
+        steps = []
+        # Gets the total length of the form
+        form_length = len(request.form)
+        # Sets i to 1
+        i = 1
+        # While i is less than form length
+        while i <= form_length:
+            # sets a unique key based on i
+            step_key = "step" + str(i)
+            # gets the value of the input for the unique key
+            value = request.form.get(step_key)
+            # checks there is a value
+            if value is not None:
+                # checks the input field is not blank
+                user_entry = request.form.get(step_key)
+                if user_entry != "":
+                    # appends the value to the steps list
+                    steps.append(request.form.get(step_key))
+            # increments the while loop
+            i += 1
+
+        # If no image url, use placeholder
+        form_image_url = request.form.get("image_url")
+        if form_image_url != "":
+            image_url = request.form.get("image_url")
+        else:
+            image_url = "static/images/recipe_img_pholder.png"
+
+        # If no image alt text, use placeholder
+        form_image_desc = request.form.get("image_description")
+        if form_image_desc != "":
+            image_desc = request.form.get("image_description")
+        else:
+            image_desc = "What's for tea placeholder image"
+
+        # Creates the recipe object to send to MongoDB
+        recipe = {
+            "recipe_name": request.form.get("recipe_name"),
+            "region_of_origin": request.form.get("origin"),
+            "classification": request.form.get("classify"),
+            "image_url": image_url,
+            "image_description": image_desc,
+            "description": request.form.get("description"),
+            "ingredients": ingredients,
+            "method": steps,
+            "owner": session["wft_user"][0],
+            "shared_with": shared
+        }
+        # Sends the object to MongoDB
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, recipe)
+        # Lets the user know the object has been sent
+        flash("Successfully Ammended Recipe")
+        # Takes the user back to the recipes page to see their recipes
+        return redirect(url_for("recipes"))
+
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
     # Gets the list of classifications from MongoDB to send to the edit page
