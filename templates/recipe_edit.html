@@ -4,11 +4,12 @@
     <form method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
         <div class="row">
             <div class="col s12">
-                <div class="center col s10">
+                <div class="center col s8">
                     <h1>Edit {{ recipe.recipe_name }}</h1>
                 </div>
-                <div class="col s2 right">
-                    <button id="edit_btn" class="col s12 waves-effect waves-light btn-large amber darken-1" type="submit">Save Edits</button>
+                <div class="col s4 right">
+                    <button id="edit_btn" class="col s5 offset-s1 waves-effect waves-light btn-large amber darken-1" type="submit">Save Edits</button>
+                    <a id="back_btn" href="#confirm_back" class="col s5 right waves-effect waves-light btn-large grey lighten-1 modal-trigger">Back</a>
                 </div>
             </div>
         </div> 
@@ -157,4 +158,15 @@
             </div>
         </div>
     </form>
+    <!-- Modal Confirm Back -->
+    <div id="confirm_back" class="modal">
+        <div class="modal-content">
+            <h4>Cancel Edits for {{ recipe.recipe_name }}</h4>
+            <p>Are you sure you want to cancel edits for {{ recipe.recipe_name }}?</p>
+            <div class="row">
+                <a id="delete_confirm_btn" class="col s4 offset-s1 waves-effect waves-light btn-large red lighten-1" href="{{ url_for('recipe_view', recipe_id=recipe._id) }}">Yes</a>
+                <a id="return_to_edit_btn" href="#!" class="col s4 offset-s2 modal-close waves-effect waves-light btn-large grey lighten-1">No</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

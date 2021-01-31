@@ -116,7 +116,7 @@
             $('#image_placeholder').remove();
             if (image == ""){
                  $('#image_preview').remove();
-                 $('#image_url').parent().siblings().after(`<img id="image_placeholder" class="recipe_image" src="static/images/recipe_img_pholder.png" alt="recipe image placeholder">`);
+                 $('#image_url').parent().siblings().after(`<img id="image_placeholder" class="recipe_image" src="../images/recipe_img_pholder.png" alt="recipe image placeholder">`);
             }
             else {
                 $('#image_url').parent().siblings().after(`<img id="image_preview" class="recipe_image" src="`+image+`" alt="recipe image preview">`);
