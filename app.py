@@ -198,7 +198,7 @@ def recipe_create():
         if form_image_url != "":
             image_url = request.form.get("image_url")
         else:
-            image_url = "static/images/recipe_img_pholder.png"
+            image_url = "../static/images/recipe_img_pholder.png"
 
         # If no image alt text, use placeholder
         form_image_desc = request.form.get("image_description")
@@ -342,7 +342,7 @@ def edit_recipe(recipe_id):
         if form_image_url != "":
             image_url = request.form.get("image_url")
         else:
-            image_url = "static/images/recipe_img_pholder.png"
+            image_url = "../static/images/recipe_img_pholder.png"
 
         # If no image alt text, use placeholder
         form_image_desc = request.form.get("image_description")

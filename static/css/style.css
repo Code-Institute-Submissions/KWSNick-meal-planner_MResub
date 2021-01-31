@@ -20,6 +20,9 @@ body, input[type="text"], input[type="number"], textarea, .btn-large {
     color: #558b2f;
     background-color: #ffffcf;
 }
+.form_tips{
+    font-size: 0.8rem;
+}
 nav, .page-footer {
     background-color: #ffd54f;
 }

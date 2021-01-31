@@ -4,15 +4,20 @@
     <form method="POST" action="{{ url_for('recipe_create') }}">
         <div class="row">
             <div class="col s12">
-                <div class="center col s10">
+                <div class="center col s8">
                     <h1>Add a new recipe</h1>
                 </div>
-                <div class="col s2 right">
-                    <button id="create_btn" class="col s12 waves-effect waves-light btn-large green lighten-1" type="submit">Create</button>
+                <div class="col s4 right">
+                    <button id="create_btn" class="col s5 offset-s1 waves-effect waves-light btn-large green lighten-1" type="submit">Create</button>
+                    <a id="back_btn" href="#confirm_back" class="col s5 right waves-effect waves-light btn-large grey lighten-1 modal-trigger">Back</a>
                 </div>
             </div>
         </div> 
-        
+        <div class="row">
+            <div class="col s12 center">
+                <p class="form_tips">Use the form below to create a new recipe! Click the add buttons to add new rows into the relevant sections. If you decide you want to remove an entry just delete the content of the form input and leave it blabnk, we'll take care of the rest!</p>
+            </div>
+        </div>
         <!--Recipe Name-->
         <h1 class="input-field center"><input class="center" id="recipe_name" name="recipe_name" type="text" required>
         <label class="center" for="recipe_name">Recipe Name</label></h1>
@@ -23,10 +28,12 @@
                     <div class="input-field col s12 l6 center">
                         <input class="center" id="image_url" name="image_url" type="url">
                         <label for="image_url">Recipe Image URL</label>
+                        <p class="form_tips">We recommend using a free stock photo website such as <a href="https://www.pexels.com/" target="_blank"> Pexels</a>. Right click an image, "Copy image address", then paste it in here!</p>
                     </div>
                     <div class="input-field col s12 l6 center">
                         <input class="center" id="image_description" name="image_description" type="text">
                         <label for="image_description">Recipe Image Description</label>
+                        <p class="form_tips">Provide a short description of the image you have chosen.</p>
                     </div>
                     <img id="image_placeholder" class="recipe_image" src="static/images/recipe_img_pholder.png" alt="recipe image placeholder">
                 </div>
@@ -87,7 +94,7 @@
         <div class="row">
             <div id="ingredients_list" class="col s12 l4">
                 <h5 class="center">Ingredients</h5>
-                <p class="center">Enter the quantities required for 1 person</p>
+                <p class="form_tips center">Enter the quantities required for 1 person</p>
                 <div class="row">
                     <div class="input-field col s6">
                         <input class="center add_ingredient" id="ingredient_name1" name="ingredient_name1" type="text">
@@ -125,4 +132,15 @@
             </div>
         </div>
     </form>
+    <!-- Modal Confirm Back -->
+    <div id="confirm_back" class="modal">
+        <div class="modal-content">
+            <h4>Abandon New Recipe?</h4>
+            <p>Are you sure you want to cancel this new recipe, no changes will be saved?</p>
+            <div class="row">
+                <a id="delete_confirm_btn" class="col s4 offset-s1 waves-effect waves-light btn-large red lighten-1" href="{{ url_for('recipes') }}">Yes</a>
+                <a id="return_to_edit_btn" href="#!" class="col s4 offset-s2 modal-close waves-effect waves-light btn-large grey lighten-1">No</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

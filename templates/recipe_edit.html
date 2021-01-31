@@ -13,7 +13,11 @@
                 </div>
             </div>
         </div> 
-        
+        <div class="row">
+            <div class="col s12 center">
+                <p class="form_tips">Use the form below to edit an existing recipe! Click the add buttons to add new rows into the relevant sections. If you decide you want to remove an entry just delete the content of the form input and leave it blabnk, we'll take care of the rest!</p>
+            </div>
+        </div>
         <!--Recipe Name-->
         <h1 class="input-field center"><input class="center" id="recipe_name" name="recipe_name" type="text" value="{{ recipe.recipe_name }}" required>
         <label class="center" for="recipe_name">Recipe Name</label></h1>
@@ -24,10 +28,12 @@
                     <div class="input-field col s12 l6 center">
                         <input class="center" id="image_url" name="image_url" type="url" value="{{ recipe.image_url }}">
                         <label for="image_url">Recipe Image URL</label>
+                        <p class="form_tips">We recommend using a free stock photo website such as <a href="https://www.pexels.com/" target="_blank"> Pexels</a>. Right click an image, "Copy image address", then paste it in here!</p>
                     </div>
                     <div class="input-field col s12 l6 center">
                         <input class="center" id="image_description" name="image_description" type="text" value="{{ recipe.image_description }}">
                         <label for="image_description">Recipe Image Description</label>
+                        <p class="form_tips">Provide a short description of the image you have chosen.</p>
                     </div>
                     <img id="image_preview" class="recipe_image" src="{{ recipe.image_url }}" alt="{{ recipe.image_description }}">
                 </div>
@@ -40,12 +46,12 @@
                     </div>
                     <div class="input-field col s6 l8">
                         <select id="classify" name="classify">
-                            <option value="{{ recipe.classification }}">{{ recipe.classification.capitalize() }}</option>
+                            <option value="{{ recipe.classification }}" selected>{{ recipe.classification.capitalize() }}</option>
                             <option value=""></option>
                         {% for class in classification %}
                             <!--Ignores the currently chosen class to prevent option duplication-->
                             {% if class.class_name != recipe.classification %}
-                                <option value="{{ class.class_name }}" selected>{{ class.class_name.capitalize() }}</option>
+                                <option value="{{ class.class_name }}">{{ class.class_name.capitalize() }}</option>
                             {% endif %}
                         {% endfor %}
                             <label for="classify">Recipe Classification</label>
@@ -58,12 +64,12 @@
                     </div>
                     <div class="input-field col s6 l8">
                         <select id="origin" name="origin">
-                            <option value="{{ recipe.region_of_origin }}">{{ recipe.region_of_origin.capitalize() }}</option>
+                            <option value="{{ recipe.region_of_origin }}" selected>{{ recipe.region_of_origin.capitalize() }}</option>
                             <option value=""></option>
                         {% for region in origin %}
                             <!--Ignores the currently chosen origin to prevent option duplication-->
                             {% if region.origin != recipe.region_of_origin %}
-                                <option value="{{ region.origin }}" selected>{{ region.origin.capitalize() }}</option>
+                                <option value="{{ region.origin }}">{{ region.origin.capitalize() }}</option>
                             {% endif %}
                         {% endfor %}
                             <label for="origin">Recipe Origin</label>
@@ -104,7 +110,7 @@
         <div class="row">
             <div id="ingredients_list" class="col s12 l4">
                 <h5 class="center">Ingredients</h5>
-                <p class="center">Enter the quantities required for 1 person</p>
+                <p class="form_tips center">Enter the quantities required for 1 person</p>
                 <!--Based on guidance provided on Stack Overflow posted by Patrick José Pereira April 6th 2018-->
                 {% set i = namespace(value=0) %}
                 {% for ingredient in recipe.ingredients %}
