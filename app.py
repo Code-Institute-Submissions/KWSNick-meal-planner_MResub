@@ -230,11 +230,32 @@ def recipe_create():
     classification = mongo.db.classification.find().sort("class_name", 1)
     # Gets the list of origins from MongoDB to send to the create page
     origin = mongo.db.origin.find().sort("origin", 1)
-    # Gets the list of units from MongoDB to send to the create page
-    units = mongo.db.units.find().sort("unit", 1)
     return render_template(
         "recipe_create.html",
-        classification=classification, origin=origin, units=units)
+        classification=classification, origin=origin)
+
+
+@app.route("/delete_recipe/<recipe_id>", methods=["GET", "POST"])
+def delete_recipe(recipe_id):
+    user = session["wft_user"][0]
+    print(user)
+    mongo.db.recipes.update(
+        {"_id": ObjectId(recipe_id)},
+        {"$pull": {"shared_with": user}})
+    return redirect(url_for("recipes"))
+
+
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    # Gets the list of classifications from MongoDB to send to the edit page
+    classification = mongo.db.classification.find().sort("class_name", 1)
+    # Gets the list of origins from MongoDB to send to the edit page
+    origin = mongo.db.origin.find().sort("origin", 1)
+    return render_template(
+        "recipe_edit.html",
+        recipe=recipe, classification=classification, origin=origin)
 
 
 if __name__ == "__main__":

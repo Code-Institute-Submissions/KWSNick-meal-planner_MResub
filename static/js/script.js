@@ -1,6 +1,10 @@
  $(document).ready(function(){
     $('.sidenav').sidenav();
-     $('select').formSelect();
+    $('select').formSelect();
+    $('.modal').modal({
+        preventScrolling: false,
+        endingTop: '20%',
+    });
     // Script to check the entered passwords in registration are the same and alert the user if they are not. 
     $('#confirm_password').focusout(function passwordValidate(){
         let pwd1 = $('#password').val();
