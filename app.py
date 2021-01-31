@@ -242,6 +242,8 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.update(
         {"_id": ObjectId(recipe_id)},
         {"$pull": {"shared_with": user}})
+    # Lets the user know the recipe has been removed
+    flash("Recipe Successfully Deleted")
     return redirect(url_for("recipes"))
 
 

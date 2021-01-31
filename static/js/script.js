@@ -50,7 +50,7 @@
         function addShare(){
             i = $('.add_share').length;
             j = i + 1;
-            $(`#`+button).after(`<input class="center shared_with" id="shared_with`+[j]+`" name="shared_with`+[j]+`" type="text"><label for="shared_with`+[j]+`">Shared With</label><button id="button`+[j]+`" type="button" class="right btn-floating btn-small waves-effect waves-light red add_share"><i class="fas fa-plus"></i></button>`);
+            $(`#`+button).after(`<input class="center shared_with add_share" id="shared_with`+[j]+`" name="shared_with`+[j]+`" type="text"><label for="shared_with`+[j]+`">Shared With</label><button id="button`+[j]+`" type="button" class="right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>`);
         }
         addShare();
         $(`#`+button).hide();
