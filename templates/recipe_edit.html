@@ -8,8 +8,8 @@
                     <h1>Edit {{ recipe.recipe_name }}</h1>
                 </div>
                 <div class="col s4 right">
-                    <button id="edit_btn" class="col s5 offset-s1 waves-effect waves-light btn-large amber darken-1" type="submit">Save Edits</button>
-                    <a id="back_btn" href="#confirm_back" class="col s5 right waves-effect waves-light btn-large grey lighten-1 modal-trigger">Back</a>
+                    <button id="edit_btn" class="col s12 m5 offset-m1 waves-effect waves-light btn-large amber darken-1" type="submit">Save Edits</button>
+                    <a id="back_btn" href="#confirm_back" class="col s12 m5 right waves-effect waves-light btn-large grey lighten-1 modal-trigger">Back</a>
                 </div>
             </div>
         </div> 
@@ -19,11 +19,15 @@
             </div>
         </div>
         <!--Recipe Name-->
-        <h1 class="input-field center"><input class="center" id="recipe_name" name="recipe_name" type="text" value="{{ recipe.recipe_name }}" required>
-        <label class="center" for="recipe_name">Recipe Name</label></h1>
+        <div class="row">
+            <div class="col s12 center">
+                <h1 class="input-field center"><input class="center" id="recipe_name" name="recipe_name" type="text" value="{{ recipe.recipe_name }}" required>
+                <label class="center" for="recipe_name">Recipe Name</label></h1>
+            </div>
+        </div>
         <!--Recipe Image-->
         <div class="row">
-            <div class="col s6">
+            <div class="col s12 l6">
                 <div class="row">
                     <div class="input-field col s12 l6 center">
                         <input class="center" id="image_url" name="image_url" type="url" value="{{ recipe.image_url }}">
@@ -41,10 +45,10 @@
             <!--Recipe Classification and Origin-->
             <div class="col s12 l6">
                 <div class="row">
-                    <div class="col s6 l4">
+                    <div class="col s6 m4">
                         <h5 class="right">Classification:</h5>
                     </div>
-                    <div class="input-field col s6 l8">
+                    <div class="input-field col s6 m8">
                         <select id="classify" name="classify">
                             <option value="{{ recipe.classification }}" selected>{{ recipe.classification.capitalize() }}</option>
                             <option value=""></option>
@@ -59,10 +63,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s6 l4">
+                    <div class="col s6 m4">
                         <h5 class="right">Region of Origin:</h5>
                     </div>
-                    <div class="input-field col s6 l8">
+                    <div class="input-field col s6 m8">
                         <select id="origin" name="origin">
                             <option value="{{ recipe.region_of_origin }}" selected>{{ recipe.region_of_origin.capitalize() }}</option>
                             <option value=""></option>
@@ -77,10 +81,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s6 l4">
+                    <div class="col s6 m4">
                         <h5 class="right">Shared With:</h5>
                     </div>
-                    <div name="sharing" id="sharing" class="input-field col s6 l8">
+                    <div name="sharing" id="sharing" class="input-field col s6 m8">
                         <!--Based on guidance provided on Stack Overflow posted by Patrick José Pereira April 6th 2018-->
                         {% set i = namespace(value=0) %}
                         {% for shared in recipe.shared_with %}
@@ -93,7 +97,7 @@
                                 <label for="shared_with{{ i.value }}">Shared With</label>
                             {% endif %}
                         {% endfor %}
-                        <button id="button{{ i.value }}" type="button" class="right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
+                        <button id="button{{ i.value }}" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
                 <div class="row">
@@ -143,7 +147,7 @@
                         </div>
                     </div>
                 {% endfor %}
-                <button id="ing_button{{ i.value }}" type="button" class="btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
+                <button id="ing_button{{ i.value }}" type="button" class="hoverable btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
             </div>
             <div id="step_list" class="col s12 l8">
                 <h5 class="center">Method</h5>
@@ -160,7 +164,7 @@
                         </div>
                     </div>
                 {% endfor %}
-                <button id="step_button{{ i.value }}" type="button" class="right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
+                <button id="step_button{{ i.value }}" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
             </div>
         </div>
     </form>

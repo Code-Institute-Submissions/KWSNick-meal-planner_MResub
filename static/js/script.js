@@ -27,7 +27,7 @@
                     if ($('#password').hasClass('valid')) {
                         if ($('#confirm_password').hasClass('valid')) {
                             $('#register').remove();
-                            $('#register_button').append('<button id="register"class="col s2 center offset-s5 waves-effect waves-light btn-large green lighten-1" type="submit">Register</button>');
+                            $('#register_button').append('<button id="register"class="col s4 m2 center offset-s4 offset-m5 waves-effect waves-light btn-large green lighten-1" type="submit">Register</button>');
                         } else {
                             $('#register').remove();
                         }
@@ -50,7 +50,7 @@
         function addShare(){
             i = $('.add_share').length;
             j = i + 1;
-            $(`#`+button).after(`<input class="center shared_with add_share" id="shared_with`+[j]+`" name="shared_with`+[j]+`" type="text"><label for="shared_with`+[j]+`">Shared With</label><button id="button`+[j]+`" type="button" class="right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>`);
+            $(`#`+button).after(`<input class="center shared_with add_share" id="shared_with`+[j]+`" name="shared_with`+[j]+`" type="text"><label for="shared_with`+[j]+`">Shared With</label><button id="button`+[j]+`" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>`);
         }
         addShare();
         $(`#`+button).hide();
@@ -58,7 +58,7 @@
     // Function that adds a new input row beneath clicked button for ingredients section of form
     $('#ingredients_list').on('click', 'button', function(){
         button = $(this).attr('id');
-        function addShare(){
+        function addIng(){
             i = $('.add_ingredient').length;
             j = i + 1;
             $(`#`+button).after(`<div class="row">
@@ -81,17 +81,17 @@
                         </select>
                     </div>
                 </div>
-                <button id="ing_button`+[j]+`" type="button" class="btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>`);
+                <button id="ing_button`+[j]+`" type="button" class="hoverable btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>`);
             $('select').formSelect();
             }
-        addShare();
+        addIng();
         $(`#`+button).hide();
     })
     // Function that adds a new input row beneath clicked button for method section of form
     $('#step_list').on('click', 'button', function(){
         button = $(this).attr('id');
         console.log(button);
-        function addShare(){
+        function addStep(){
             i = $('.add_step').length;
             j = i + 1;
             $(`#`+button).after(`<div class="row">
@@ -103,9 +103,9 @@
                         <label for="step`+[j]+`">Step</label>
                     </div>
                 </div>
-                <button id="step_button`+[j]+`" type="button" class="right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>`)
+                <button id="step_button`+[j]+`" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>`)
             }
-        addShare();
+        addStep();
         $(`#`+button).hide();
     })
     // Function to check if the image url has changed, and if it has to load the image using ajax

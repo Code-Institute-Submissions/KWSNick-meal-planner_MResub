@@ -8,9 +8,9 @@
         </div>
         <div class="col s4 right">
             {% if session["wft_user"][0] == recipe.owner %}
-                <a id="delete_confirm_btn" class="col s5 offset-s1 waves-effect waves-light btn-large amber darken-1" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
+                <a id="delete_confirm_btn" class="col s12 m5 offset-m1 waves-effect waves-light btn-large amber darken-1" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
             {% endif %}
-                <a id="delete_btn" class="col s5 right waves-effect waves-light btn-large red lighten-1 modal-trigger" href="#confirm_delete">Delete</a>
+                <a id="delete_btn" class="col s12 m5 right waves-effect waves-light btn-large red lighten-1 modal-trigger" href="#confirm_delete">Delete</a>
         </div>
     </div>
     <!--Recipe Image-->
@@ -68,7 +68,7 @@
     </div>
     <!--Recipe Ingredients and Method-->
     <div class="row">
-        <div class="col s12 l4">
+        <div class="col s12 m4">
             <h5 class="center">Ingredients</h5>
             <ul class="center">
             <!--Iterates through the ingredients array and writes to unordered list-->
@@ -82,7 +82,7 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="col s12 l8">
+        <div class="col s12 m8">
             <h5 class="center">Method</h5>
             <ol>
             <!--Iterates through each step in the method and writes to ordered list-->

@@ -8,8 +8,8 @@
                     <h1>Add a new recipe</h1>
                 </div>
                 <div class="col s4 right">
-                    <button id="create_btn" class="col s5 offset-s1 waves-effect waves-light btn-large green lighten-1" type="submit">Create</button>
-                    <a id="back_btn" href="#confirm_back" class="col s5 right waves-effect waves-light btn-large grey lighten-1 modal-trigger">Back</a>
+                    <button id="create_btn" class="col s12 m5 offset-m1 waves-effect waves-light btn-large green lighten-1" type="submit">Create</button>
+                    <a id="back_btn" href="#confirm_back" class="col s12 m5 right waves-effect waves-light btn-large grey lighten-1 modal-trigger">Back</a>
                 </div>
             </div>
         </div> 
@@ -19,11 +19,15 @@
             </div>
         </div>
         <!--Recipe Name-->
-        <h1 class="input-field center"><input class="center" id="recipe_name" name="recipe_name" type="text" required>
-        <label class="center" for="recipe_name">Recipe Name</label></h1>
+        <div class="row">
+            <div class="col s12 center">
+                <h1 class="input-field center"><input class="center" id="recipe_name" name="recipe_name" type="text" required>
+                <label class="center" for="recipe_name">Recipe Name</label></h1>
+            </div>
+        </div>
         <!--Recipe Image-->
         <div class="row">
-            <div class="col s6">
+            <div class="col s12 l6">
                 <div class="row">
                     <div class="input-field col s12 l6 center">
                         <input class="center" id="image_url" name="image_url" type="url">
@@ -41,10 +45,10 @@
             <!--Recipe Classification and Origin-->
             <div class="col s12 l6">
                 <div class="row">
-                    <div class="col s6 l4">
+                    <div class="col s6 m4">
                         <h5 class="right">Classification:</h5>
                     </div>
-                    <div class="input-field col s6 l8">
+                    <div class="input-field col s6 m8">
                         <select id="classify" name="classify">
                             <option value="">Select a class as appropriate</option>
                             <option value=""></option>
@@ -56,10 +60,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s6 l4">
+                    <div class="col s6 m4">
                         <h5 class="right">Region of Origin:</h5>
                     </div>
-                    <div class="input-field col s6 l8">
+                    <div class="input-field col s6 m8">
                         <select id="origin" name="origin">
                             <option value="">Select a region of origin as appropriate</option>
                             <option value=""></option>
@@ -71,19 +75,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s6 l4">
+                    <div class="col s6 m4">
                         <h5 class="right">Shared With:</h5>
                     </div>
-                    <div name="sharing" id="sharing" class="input-field col s6 l8">
+                    <div name="sharing" id="sharing" class="input-field col s6 m8">
                         <input class="center shared_with add_share" id="shared_with1" name="shared_with1" type="text">
                         <label for="shared_with1">Shared With</label>
-                        <button id="button1" type="button" class="right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
+                        <button id="button1" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
                 <div class="row">
                 <!--Recipe Description-->
+                    <h5 class="center">Description</h5>
                     <div class="input-field col s12 center">
-                        <h5>Description</h5>
                         <textarea class="materialize-textarea center" id="description" name="description"></textarea>
                         <label for="description">Recipe Description</label>
                     </div>
@@ -115,7 +119,7 @@
                         </select>
                     </div>
                 </div>
-                <button id="ing_button1" type="button" class="btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
+                <button id="ing_button1" type="button" class="hoverable btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
             </div>
             <div id="step_list" class="col s12 l8">
                 <h5 class="center">Method</h5>
@@ -128,7 +132,7 @@
                         <label for="step1">Step</label>
                     </div>
                 </div>
-                <button id="step_button1" type="button" class="right btn-floating btn-small waves-effect waves-light red add_step"><i class="fas fa-plus"></i></button>
+                <button id="step_button1" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red add_step"><i class="fas fa-plus"></i></button>
             </div>
         </div>
     </form>

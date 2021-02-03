@@ -15,16 +15,25 @@
 
 body, input[type="text"], input[type="number"], textarea, .btn-large {
     font-family: 'Indie Flower', cursive;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #558b2f;
     background-color: #ffffcf;
+}
+.logo {
+    height: 56px;
+}
+.sidenav li>a {
+    font-size: 2rem;
 }
 .form_tips{
     font-size: 0.8rem;
 }
 nav, .page-footer {
     background-color: #ffd54f;
+}
+.usernav {
+    margin-right: 1rem;
 }
 nav ul a {
     font-size: 1.75rem;
@@ -36,6 +45,17 @@ nav ul a {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Permanent Marker', cursive;
     color: #00897b;
+}
+h1 {
+    margin: 1rem 0 0.6rem 0;
+    font-size: 3.2rem;
+}
+h5 {
+    font-size: 1.4rem;
+}
+.card {
+    height: 475px;
+    overflow: hidden;
 }
 .recipe_image {
     width: 75%;
@@ -56,10 +76,38 @@ h1, h2, h3, h4, h5, h6 {
     text-align: right;
 }
 #create_btn, #delete_btn, #login_btn, #register, #delete_confirm_btn, #back_btn, #edit_btn, #return_to_edit_btn, #delete_confirm_btn, #return_to_edit, #save_edits_btn {
-    margin-top: 2.8rem;
+    margin-top: 1.3rem;
     color: #fff;
 }
 ol {
     text-align: center;
     list-style-position: inside;
+}
+
+li::marker {
+    font-size: 1.3rem;
+    color: #00897b;
+}
+
+@media (max-width: 600px) {
+    ol {
+        padding-inline-start: 0;
+    }
+}
+@media (min-width: 601px) {
+    .logo {
+        height: 64px;
+    }
+    h1 {
+        font-size: 4.2rem;
+    }
+    h5 {
+        font-size: 1.64rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .card {
+        height: 600px;
+    }
 }
