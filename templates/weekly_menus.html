@@ -23,7 +23,7 @@
                         <label for="ingredient_quantity1">Year</label>
                     </div>
                     <div class="input-field col s3">
-                        {% set month_id = {{ month }} %}
+                        {% set month_id = month %}
                         <select class="center" id="month_select" name="month_select" required>
                             <option value="{{ month }}" selected>This Month: {{ month_name }}</option>
                             <option value="1">January {% set month_id = 1 %}</option>
