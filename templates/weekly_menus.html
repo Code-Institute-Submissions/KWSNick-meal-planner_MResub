@@ -51,7 +51,7 @@
                                 <option value="no weeks" selected>Weeks</option>
                                 {% for week in cal %}
                                     {% if week[0] == 0 %}
-
+                                        {{ week }}
                                     {% else %}
                                     <option value="{{ i.value }}">
                                         {% for day in week %}
@@ -77,7 +77,8 @@
                                                 {{ day }}th, 
                                             {% endif %}
                                         {% endfor %}
-                                        {{ week }}</option>
+                                        </option>
+                                        {% endif %}
                                     {% set i.value = i.value + 1 %}
                                 {% endfor %}
                             </select>
