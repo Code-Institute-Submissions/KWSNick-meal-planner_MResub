@@ -49,14 +49,7 @@
                     {% endblock %}
                     
                 </form>
-            </div>       
-            {% set i = namespace(value=0) %}
-            {% for week in cal %}
-            <div>
-                {{ year }} {{ month_name }} <span>Week {{ i.value }}</span>
-                {{ week }}
             </div>
-                {% set i.value = i.value + 1 %}
             {% endfor %}
             
         </li>
