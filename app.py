@@ -53,7 +53,7 @@ def login():
 def logout():
     # Removes the wft_user from session cookies
     session.pop("wft_user"),
-    flash("You have logged out. Enter credentails to login again."),
+    flash("You have logged out. Enter credentials to login again."),
     return redirect(url_for("login"))
 
 
@@ -367,7 +367,7 @@ def edit_recipe(recipe_id):
         # Sends the object to MongoDB
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, recipe)
         # Lets the user know the object has been sent
-        flash("Successfully Ammended Recipe")
+        flash("Successfully Amended Recipe")
         # Takes the user back to the recipes page to see their recipes
         return redirect(url_for("recipes"))
 
