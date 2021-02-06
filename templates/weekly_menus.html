@@ -44,10 +44,16 @@
                     <div class="col s4">
                         <button id="get_weeks_btn" class="col s12 waves-effect waves-light btn-large amber darken-1" type="submit">Choose Week</button>
                     </div>
-                    {% block weekselector %}
-
-                    {% endblock %}
-                    
+                    <div class="input-field col s4">
+                        {% set i = namespace(value=0) %}
+                        <select class="center" id="week_select" name="week_select" required>
+                            {% for week in cal %}
+                            <option value="{{ i.value }}" selected>{{ week }}</option>
+                            {% set i.value = i.value + 1 %}
+                            {% endfor %}
+                        </select>
+                        <label for="month_select">Year</label>
+                    </div>
                 </form>
             </div>
         </li>
