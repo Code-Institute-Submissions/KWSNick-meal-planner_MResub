@@ -406,14 +406,14 @@ def weekly_menus():
         selected_year = request.form.get("year_select")
         selected_month = request.form.get("month_select")
         has_week = request.form.get("week_select")
-        if has_week == "":
+        if has_week == "no weeks":
             cal = c.monthdayscalendar(selected_year, selected_month)
             month_name = months[selected_month]
-            return render_template(
-                                "weekly_menus.html",
-                                cal=cal, year=selected_year,
-                                month=selected_month,
-                                month_name=month_name)
+            return redirect(
+                            "weekly_menus.html",
+                            cal=cal, year=selected_year,
+                            month=selected_month,
+                            month_name=month_name)
         else:
             weekly_plan = {
                 "year": request.form.get("year_select"),

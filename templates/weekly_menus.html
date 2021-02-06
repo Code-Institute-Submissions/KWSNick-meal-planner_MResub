@@ -48,7 +48,7 @@
                         <div class="input-field center col s6">
                             {% set i = namespace(value=0) %}
                             <select class="center" id="week_select" name="week_select" required>
-                                <option value="" selected></option>
+                                <option value="no weeks" selected>Weeks</option>
                                 {% for week in cal %}
                                 <option value="{{ i.value }}">{{ week }}</option>
                                 {% set i.value = i.value + 1 %}
