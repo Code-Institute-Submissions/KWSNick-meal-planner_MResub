@@ -19,10 +19,12 @@
             <div class="collapsible-body">
                 <form method="POST" action="{{ url_for('weekly_menus') }}">
                     <div class="input-field col s4">
+                        <!--Enters the current year as the default option-->
                         <input class="center" id="year_select" name="year_select" type="number" value="{{ year }}" required>
                         <label for="ingredient_quantity1">Year</label>
                     </div>
                     <div class="input-field col s4">
+                        <!--Sets the current month as the default option-->
                         {% set month_id = month %}
                         <select class="center" id="month_select" name="month_select" required>
                             <option value="{{ month }}" selected>This Month: {{ month_name }}</option>
@@ -42,6 +44,8 @@
                         <label for="month_select">Month</label>
                     </div>
                     <div class="col s4">
+                        <!--When this button is pressed the year and month is sent to the routing method and if the week_select has no valid week selected
+                        then it refreshes the page but has obtained weeks to select.-->
                         <button id="get_weeks_btn" class="col s12 waves-effect waves-light btn-large amber darken-1" type="submit">Choose Week</button>
                     </div>
                     <div class="row">
@@ -51,10 +55,11 @@
                                 <option value="no weeks" selected>Weeks</option>
                                 {% for week in cal %}
                                     {% if week[0] == 0 %}
-                                        {{ week }}
+                                        
                                     {% else %}
                                     <option value="{{ i.value }}">
-                                        {% for day in week %}
+                                        {% for day[0] in week %}
+                                            Week Commencing: 
                                             {% if day == 1 %}
                                                 {{ day }}st, 
                                             {% elif day == 2 %}
@@ -62,17 +67,7 @@
                                             {% elif day == 3 %}
                                                 {{ day }}rd, 
                                             {% elif day == 0 %}
-                                                {% set j = namespace(value=1) %}
-                                                {% if j == 1 %}
-                                                    {{ j }}st, 
-                                                {% elif j == 2 %}
-                                                    {{ j }}nd, 
-                                                {% elif j == 3 %}
-                                                    {{ j }}rd, 
-                                                {% else %}
-                                                    {{ j.value }}th, 
-                                                {% endif %}
-                                                {% set j.value = j.value + 1 %}
+                                                
                                             {% else %}
                                                 {{ day }}th, 
                                             {% endif %}
