@@ -409,7 +409,7 @@ def weekly_menus():
         if has_week == "no weeks":
             cal = c.monthdayscalendar(selected_year, selected_month)
             month_name = months[selected_month]
-            return redirect(
+            return render_template(
                             "weekly_menus.html",
                             cal=cal, year=selected_year,
                             month=selected_month,
