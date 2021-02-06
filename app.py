@@ -393,7 +393,7 @@ def edit_recipe(recipe_id):
         recipe=recipe, classification=classification, origin=origin)
 
 
-@app.route("/weekly_menus")
+@app.route("/weekly_menus", methods=["GET", "POST"])
 def weekly_menus():
     c = calendar.Calendar()
     months = calendar.month_name
