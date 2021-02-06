@@ -12,7 +12,6 @@
     color: #558b2f; /* Primary Text */
     color: #00897b; /* Header Text */
 }
-
 body, input[type="text"], input[type="number"], textarea, .btn-large {
     font-family: 'Indie Flower', cursive;
     font-size: 1.2rem;
@@ -86,16 +85,17 @@ h5 {
     margin-top: 0;
     background-color: #00897b;
 }
+#create_menu_header {
+    display: inline-block;
+}
 ol {
     text-align: center;
     list-style-position: inside;
 }
-
 li::marker {
     font-size: 1.3rem;
     color: #00897b;
 }
-
 @media (max-width: 600px) {
     ol {
         padding-inline-start: 0;

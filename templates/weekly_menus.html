@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col s12 center">
+        <h1>Weekly Menus</h1>
+    </div>
+</div>
+<div class="row">
+    <ul class="collapsible">
+        <li>
+            <div id="create_menu_btn" class="center-align"><button id="button1" type="button" class="hoverable btn-floating btn-small waves-effect waves-light red">
+                <i class="fas fa-plus"></i></button>
+                <span>
+                    <h5 id="create_menu_header">Create a new menu</h5>
+                </span>
+            </div>
+            {% set i = namespace(value=0) %}
+            {% for week in cal %}
+            <div>
+                {{ year }} {{ month_name }} <span>Week {{i}}</span>
+                {{ week }}
+            </div>
+                {% set i.value = i.value + 1 %}
+            {% endfor %}       
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+    </ul>
+</div>
+{% endblock %}

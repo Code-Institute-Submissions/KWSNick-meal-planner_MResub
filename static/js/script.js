@@ -1,6 +1,7 @@
  $(document).ready(function(){
     $('.sidenav').sidenav();
     $('select').formSelect();
+    $('.collapsible').collapsible();
     $('.modal').modal({
         preventScrolling: false,
         endingTop: '20%',

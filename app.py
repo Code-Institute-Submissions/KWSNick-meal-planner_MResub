@@ -1,4 +1,7 @@
 import os
+import datetime
+import calendar
+import random
 from flask import (
     Flask, flash, render_template,
     redirect, request, session,
@@ -388,6 +391,21 @@ def edit_recipe(recipe_id):
     return render_template(
         "recipe_edit.html",
         recipe=recipe, classification=classification, origin=origin)
+
+
+@app.route("/weekly_menus")
+def weekly_menus():
+    c = calendar.Calendar()
+    months = calendar.month_name
+    now = datetime.datetime.now()
+    year = now.year
+    month = now.month
+    month_name = months[month]
+    cal = c.monthdayscalendar(year, month)
+    print(months[month])
+    print(cal)
+    return render_template(
+                        "weekly_menus.html", cal=cal, year=year, month_name=month_name)
 
 
 if __name__ == "__main__":
