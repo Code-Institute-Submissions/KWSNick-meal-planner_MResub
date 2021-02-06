@@ -402,8 +402,22 @@ def weekly_menus():
     month = now.month
     month_name = months[month]
     cal = c.monthdayscalendar(year, month)
-    print(months[month])
-    print(cal)
+    if request.method == "POST":
+        selected_year = request.form.get("year_select")
+        selected_month = request.form.get("month_select")
+        has_week = request.form.get("week_select")
+        if has_week == False:
+            return render_template(
+                                "week_selector.html",
+                                selected_year=selected_year,
+                                selected_month=selected_month)
+        else:
+            weekly_plan = {
+                "year": request.form.get("year_select"),
+                "month": request.form.get("month_select"),
+                "days": request.form.get("week_select"),
+                "meals": "meals"
+            }
     return render_template(
                         "weekly_menus.html",
                         cal=cal, year=year,

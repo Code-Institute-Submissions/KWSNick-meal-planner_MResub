@@ -74,7 +74,7 @@ h5 {
 .step-no {
     text-align: right;
 }
-#create_btn, #delete_btn, #login_btn, #register, #delete_confirm_btn, #back_btn, #edit_btn, #return_to_edit_btn, #delete_confirm_btn, #return_to_edit, #save_edits_btn, #search_btn, #reset_search {
+#create_btn, #delete_btn, #login_btn, #register, #delete_confirm_btn, #back_btn, #edit_btn, #return_to_edit_btn, #delete_confirm_btn, #return_to_edit, #save_edits_btn, #search_btn, #reset_search, #get_weeks_btn {
     margin-top: 1.3rem;
     color: #fff;
 }
