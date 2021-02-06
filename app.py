@@ -405,7 +405,7 @@ def weekly_menus():
         selected_year = request.form.get("year_select")
         selected_month = request.form.get("month_select")
         has_week = request.form.get("week_select")
-        if has_week == False:
+        if has_week == "":
             cal = c.monthdayscalendar(selected_year, selected_month)
             return render_template(
                                 "weekly_menus.html",
