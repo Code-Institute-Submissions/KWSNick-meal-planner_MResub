@@ -88,6 +88,9 @@ h5 {
 #create_menu_header {
     display: inline-block;
 }
+.collapsible-body {
+    padding: 0;
+}
 ol {
     text-align: center;
     list-style-position: inside;
@@ -100,6 +103,9 @@ li::marker {
     ol {
         padding-inline-start: 0;
     }
+    .weekly_plan_card {
+        height: 350px;
+    }
 }
 @media (min-width: 601px) {
     .logo {
@@ -110,6 +116,9 @@ li::marker {
     }
     h5 {
         font-size: 1.64rem;
+    }
+    .weekly_plan_card {
+        height: 445px;
     }
 }
 
