@@ -61,8 +61,6 @@
                                             {{ day }}nd, 
                                         {% elif day == 3 %}
                                             {{ day }}rd, 
-                                        {% elif %}
-                                            {{ day }}th, 
                                         {% elif day == 0 %}
                                             {% set j = namespace(value=1) %}
                                             {% if j == 1 %}
@@ -71,10 +69,12 @@
                                                 {{ j }}nd, 
                                             {% elif j == 3 %}
                                                 {{ j }}rd, 
-                                            {% elif %}
+                                            {% else %}
                                                 {{ j }}th, 
                                             {% endif %}
                                             {% set j.value = j.value + 1 %}
+                                        {% else %}
+                                            {{ day }}th, 
                                         {% endif %}
                                     {% endfor %}
                                     {{ week }}</option>
