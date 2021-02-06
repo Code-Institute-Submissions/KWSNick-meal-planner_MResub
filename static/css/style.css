@@ -75,9 +75,16 @@ h5 {
 .step-no {
     text-align: right;
 }
-#create_btn, #delete_btn, #login_btn, #register, #delete_confirm_btn, #back_btn, #edit_btn, #return_to_edit_btn, #delete_confirm_btn, #return_to_edit, #save_edits_btn, #search-btn {
+#create_btn, #delete_btn, #login_btn, #register, #delete_confirm_btn, #back_btn, #edit_btn, #return_to_edit_btn, #delete_confirm_btn, #return_to_edit, #save_edits_btn, #search_btn, #reset_search {
     margin-top: 1.3rem;
     color: #fff;
+}
+#search_btn_div {
+    padding: 0;
+}
+#search_btn {
+    margin-top: 0;
+    background-color: #00897b;
 }
 ol {
     text-align: center;

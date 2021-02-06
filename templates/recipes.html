@@ -11,9 +11,10 @@
             <input type="text" name="query" id="query" minlength="3" class="validate" required>
             <label for="query"><i class="fas fa-search"></i> Find a recipe</label>
         </div>
-        <div class="col s4 m2">
-            <button id="search-btn" class="col s12 center waves-effect waves-light btn-large green lighten-1" type="submit">Find</button>
+        <div class="col s4 m2" id="search_btn_div">
+            <button id="search_btn" class="col s12 center waves-effect waves-light btn-large" type="submit">Find</button>
         </div>  
+        <a href="{{ url_for('recipes') }}" class="col s12 center waves-effect waves-light btn-large green lighten-1" id="reset_search">Show all recipes</a>
     </form>
 </div>
 <div class="row">
