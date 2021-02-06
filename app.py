@@ -405,7 +405,10 @@ def weekly_menus():
     print(months[month])
     print(cal)
     return render_template(
-                        "weekly_menus.html", cal=cal, year=year, month_name=month_name)
+                        "weekly_menus.html",
+                        cal=cal, year=year,
+                        month=month,
+                        month_name=month_name)
 
 
 if __name__ == "__main__":
