@@ -54,11 +54,11 @@
                             <select class="center" id="week_select" name="week_select" required>
                                 <option value="no weeks" selected>Weeks</option>
                                 {% for week in cal %}
-                                    {% if week[0] == 0 %}
+                                    {% if week.0 == 0 %}
                                         
                                     {% else %}
                                     <option value="{{ i.value }}">
-                                        {% for day[0] in week %}
+                                        {% for day.0 in week %}
                                             Week Commencing: 
                                             {% if day == 1 %}
                                                 {{ day }}st, 
