@@ -50,7 +50,34 @@
                             <select class="center" id="week_select" name="week_select" required>
                                 <option value="no weeks" selected>Weeks</option>
                                 {% for week in cal %}
-                                <option value="{{ i.value }}">{{ week }}</option>
+                                {% if week[0] == 0 %}
+
+                                {% else %}
+                                <option value="{{ i.value }}">
+                                    {% for day in week %}
+                                        {% if day == 1 %}
+                                            {{ day }}st, 
+                                        {% elif day == 2 %}
+                                            {{ day }}nd, 
+                                        {% elif day == 3 %}
+                                            {{ day }}rd, 
+                                        {% elif %}
+                                            {{ day }}th, 
+                                        {% elif day == 0 %}
+                                            {% set j = namespace(value=1) %}
+                                            {% if j == 1 %}
+                                                {{ j }}st, 
+                                            {% elif j == 2 %}
+                                                {{ j }}nd, 
+                                            {% elif j == 3 %}
+                                                {{ j }}rd, 
+                                            {% elif %}
+                                                {{ j }}th, 
+                                            {% endif %}
+                                            {% set j.value = j.value + 1 %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ week }}</option>
                                 {% set i.value = i.value + 1 %}
                                 {% endfor %}
                             </select>
