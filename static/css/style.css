@@ -53,7 +53,7 @@ h1 {
 h5 {
     font-size: 1.4rem;
 }
-.card {
+.card, #no_results {
     height: 475px;
     overflow: hidden;
 }
@@ -75,7 +75,7 @@ h5 {
 .step-no {
     text-align: right;
 }
-#create_btn, #delete_btn, #login_btn, #register, #delete_confirm_btn, #back_btn, #edit_btn, #return_to_edit_btn, #delete_confirm_btn, #return_to_edit, #save_edits_btn {
+#create_btn, #delete_btn, #login_btn, #register, #delete_confirm_btn, #back_btn, #edit_btn, #return_to_edit_btn, #delete_confirm_btn, #return_to_edit, #save_edits_btn, #search-btn {
     margin-top: 1.3rem;
     color: #fff;
 }
@@ -107,7 +107,7 @@ li::marker {
 }
 
 @media (min-width: 992px) {
-    .card {
+    .card, #no_results {
         height: 600px;
     }
 }
