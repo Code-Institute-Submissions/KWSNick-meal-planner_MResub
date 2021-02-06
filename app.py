@@ -403,8 +403,8 @@ def weekly_menus():
     month = now.month
     month_name = months[month]
     if request.method == "POST":
-        selected_year = request.form.get("year_select")
-        selected_month = request.form.get("month_select")
+        selected_year = int(request.form.get("year_select"))
+        selected_month = int(request.form.get("month_select"))
         has_week = request.form.get("week_select")
         if has_week == "no weeks":
             cal = c.monthdayscalendar(selected_year, selected_month)
