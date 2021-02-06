@@ -45,7 +45,7 @@
                     <input type="submit" value="Submit">
                 </form>
             </div>       
-            {% set i = 0 %}
+            {% set i = namespace(value=0) %}
             {% for week in cal %}
             <div>
                 {{ year }} {{ month_name }} <span>Week {{ i.value }}</span>
