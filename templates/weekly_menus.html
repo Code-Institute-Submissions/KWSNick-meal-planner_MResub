@@ -70,7 +70,7 @@
                                                 {% elif j == 3 %}
                                                     {{ j }}rd, 
                                                 {% else %}
-                                                    {{ j }}th, 
+                                                    {{ j.value }}th, 
                                                 {% endif %}
                                                 {% set j.value = j.value + 1 %}
                                             {% else %}
@@ -78,7 +78,7 @@
                                             {% endif %}
                                         {% endfor %}
                                         </option>
-                                        {% endif %}
+                                    {% endif %}
                                     {% set i.value = i.value + 1 %}
                                 {% endfor %}
                             </select>
