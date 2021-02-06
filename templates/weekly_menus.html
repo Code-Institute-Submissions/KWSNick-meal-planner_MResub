@@ -39,21 +39,23 @@
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                        <label for="month_select">Year</label>
+                        <label for="month_select">Month</label>
                     </div>
                     <div class="col s4">
                         <button id="get_weeks_btn" class="col s12 waves-effect waves-light btn-large amber darken-1" type="submit">Choose Week</button>
                     </div>
-                    <div class="input-field col s4">
-                        {% set i = namespace(value=0) %}
-                        <select class="center" id="week_select" name="week_select" required>
-                            <option value="" selected></option>
-                            {% for week in cal %}
-                            <option value="{{ i.value }}">{{ week }}</option>
-                            {% set i.value = i.value + 1 %}
-                            {% endfor %}
-                        </select>
-                        <label for="month_select">Year</label>
+                    <div class="row">
+                        <div class="input-field center col s6">
+                            {% set i = namespace(value=0) %}
+                            <select class="center" id="week_select" name="week_select" required>
+                                <option value="" selected></option>
+                                {% for week in cal %}
+                                <option value="{{ i.value }}">{{ week }}</option>
+                                {% set i.value = i.value + 1 %}
+                                {% endfor %}
+                            </select>
+                            <label for="week_select">Week</label>
+                        </div>
                     </div>
                 </form>
             </div>

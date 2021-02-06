@@ -396,6 +396,7 @@ def edit_recipe(recipe_id):
 @app.route("/weekly_menus", methods=["GET", "POST"])
 def weekly_menus():
     c = calendar.Calendar()
+    cal = ""
     months = calendar.month_name
     now = datetime.datetime.now()
     year = now.year
@@ -407,10 +408,11 @@ def weekly_menus():
         has_week = request.form.get("week_select")
         if has_week == "":
             cal = c.monthdayscalendar(selected_year, selected_month)
+            month_name = months[selected_month]
             return render_template(
                                 "weekly_menus.html",
-                                cal=cal, year=year,
-                                month=month,
+                                cal=cal, year=selected_year,
+                                month=selected_month,
                                 month_name=month_name)
         else:
             weekly_plan = {
