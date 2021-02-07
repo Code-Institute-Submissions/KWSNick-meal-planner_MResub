@@ -38,8 +38,15 @@ nav ul a {
     font-size: 1.75rem;
     font-weight: 900;
 }
-.page-footer {
+.page-footer, .page-footer a {
     font-size: 1.2rem;
+    color: rgba(255,255,255,0.8);
+}
+.page-footer a {
+    font-size: 0.8rem;
+}
+.main_content {
+    min-height: 85vh;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Permanent Marker', cursive;

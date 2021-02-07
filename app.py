@@ -255,6 +255,9 @@ def recipe_create():
 @app.route("/delete_recipe/<recipe_id>", methods=["GET", "POST"])
 def delete_recipe(recipe_id):
     user = session["wft_user"][0]
+    # Does not delete the recipe, but removes user from a list
+    # This list is used by the site to show recipes to the user
+    # If they are removed from the list they will not have access to the recipe
     mongo.db.recipes.update(
         {"_id": ObjectId(recipe_id)},
         {"$pull": {"shared_with": user}})
@@ -400,22 +403,35 @@ def edit_recipe(recipe_id):
 
 @app.route("/weekly_menus", methods=["GET", "POST"])
 def weekly_menus():
+    # Creates a calendar object
     c = calendar.Calendar()
     cal = ""
+    # Gets the names of all 12 months
     months = calendar.month_name
+    # Gets todays date and time
     now = datetime.datetime.now()
+    # Gets this year and assigns it to a variable
     year = now.year
+    # Gets this month integer and assigns it to a variable
     month = now.month
+    # Gets this months name based on this months integer
     month_name = months[month]
     if request.method == "POST":
+        # Gets the forms entered year
         selected_year = int(request.form.get("year_select"))
+        # Gets the forms entered month
         selected_month = int(request.form.get("month_select"))
+        # Checks if the week_select input is set to the default value
         has_week = request.form.get("week_select")
+        # If it is then return the whole weeks in the month as options
         if has_week == "no weeks":
             cal = c.monthdayscalendar(selected_year, selected_month)
             month_name = months[selected_month]
+            # Get all the plans for the user to display on the page
             plans = list(
+                    # Ordered in decending date order
                     mongo.db.weekly_plans.find().sort("week_commencing", -1))
+            # Get recipes
             recipes = list(mongo.db.recipes.find())
             return render_template(
                             "weekly_menus.html",
@@ -424,6 +440,7 @@ def weekly_menus():
                             month_name=month_name,
                             plans=plans,
                             recipes=recipes)
+        # If the week has been selected create a new plan
         else:
             cal = c.monthdayscalendar(selected_year, selected_month)
             week = int(request.form.get("week_select"))
@@ -431,11 +448,14 @@ def weekly_menus():
             meals = []
             year = str(request.form.get("year_select"))
             month = str(request.form.get("month_select"))
+            # If the month integer is a single digit add a 0 before it
             if len(month) == 1:
                 month = "0" + month
+            # If the day integer is a single digit add a 0 before it
             day = str(days[0])
             if len(day) == 1:
                 day = "0" + day
+            # Creates a data string with common number of digits for sorting
             date = year + month + day
             recipes = list(
                         mongo.db.recipes.find(
@@ -443,10 +463,12 @@ def weekly_menus():
                                     "_id"))
             for day in days:
                 # thanks to machine learning mastery
-                # for tips and advice
+                # for tips and advice on random and choice
                 # https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/
                 meal = choice(recipes)
+                # append each choice to a list
                 meals.append(meal)
+            # Weekly plan object created
             weekly_plan = {
                 "owner": session["wft_user"][0],
                 "week_commencing": date,

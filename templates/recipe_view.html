@@ -10,7 +10,11 @@
             {% if session["wft_user"][0] == recipe.owner %}
                 <a id="delete_confirm_btn" class="col s12 m5 offset-m1 waves-effect waves-light btn-large amber darken-1" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
             {% endif %}
+            {% for shared in recipe.shared_with %}
+                {% if session.wft_user[0] == shared %}
                 <a id="delete_btn" class="col s12 m5 right waves-effect waves-light btn-large red lighten-1 modal-trigger" href="#confirm_delete">Delete</a>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
     <!--Recipe Image-->
