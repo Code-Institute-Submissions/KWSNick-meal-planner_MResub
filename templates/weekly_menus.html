@@ -83,14 +83,37 @@
         <ul class="collapsible">
            <li>
             {% if plans|length == 0 %}
-                <div class="collapsible-header center"><h5 class="col s12 red-text text-darken-1">No Plans Found</h5></div>
+                <div class="collapsible-header">s<h5 class="col s12 red-text text-darken-1">No Plans Found</h5></div>
             {% endif %}
             </li>
             {% if plans|length > 0 %}
+            {% set k = namespace(value=0) %}
             {% for plan in plans %}
             {% if session.wft_user[0] == plan.owner %}
             <li>
-                <div class="collapsible-header center"><h5 class="col s12">Week Commencing {{ plan.days[0] }}/{{ plan.month }}/{{ plan.year }}</h5></div>
+                <div class="collapsible-header center">
+                    <div class="col s8 l10 center">
+                        <h5 class="col s12">Week Commencing {{ plan.days[0] }}/{{ plan.month }}/{{ plan.year }}</h5>
+                    </div>
+                    <div class="col s4 l2">
+                    {% if session["wft_user"][0] == plan.owner %}
+                        <a id="delete_btn{{ k.value }}" class="col s12 m5 right waves-effect waves-light btn-large red lighten-1 modal-trigger" href="#confirm_delete{{ k.value }}">Delete</a>
+                    {% endif %}
+                    </div>
+                </div>
+                <!-- Modal Confirm Delete -->
+                <div id="confirm_delete{{ k.value }}" class="modal">
+                    <div class="modal-content">
+                        <h4>Delete {{ plan.days[0] }}/{{ plan.month }}/{{ plan.year }} Menu</h4>
+                        <p>Are you sure you want to delete This Menu from your collection?</p>
+                        <div class="row">
+                            <a id="delete_confirm_btn{{ k.value }}" class="col s4 offset-s1 waves-effect waves-light btn-large red lighten-1"
+                                href="{{ url_for('delete_plan', plan_id=plan._id,) }}">Delete</a>
+                            <a id="back_btn{{ k.value }}" href="#!"
+                                class="col s4 offset-s2 modal-close waves-effect waves-light btn-large grey lighten-1">Back</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="collapsible-body row">
                 {% set j = namespace(value=0) %}
                 {% for meal in plan.meals %}
@@ -149,6 +172,7 @@
                         {% endif %}
                     {% endfor %}
                     {% set j.value = j.value + 1 %}
+                    {% set k.value = k.value + 1 %}
                 {% endfor %}
                 </div>
             </li>

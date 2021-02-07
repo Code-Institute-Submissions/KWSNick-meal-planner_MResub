@@ -249,7 +249,6 @@ def recipe_create():
 @app.route("/delete_recipe/<recipe_id>", methods=["GET", "POST"])
 def delete_recipe(recipe_id):
     user = session["wft_user"][0]
-    print(user)
     mongo.db.recipes.update(
         {"_id": ObjectId(recipe_id)},
         {"$pull": {"shared_with": user}})
@@ -465,6 +464,13 @@ def weekly_menus():
                         month_name=month_name,
                         plans=plans,
                         recipes=recipes)
+
+
+@app.route("/delete_plan/<plan_id>", methods=["GET", "POST"])
+def delete_plan(plan_id):
+    mongo.db.weekly_plans.remove({"_id": ObjectId(plan_id)})
+    flash("Menu Successfully Deleted")
+    return redirect(url_for("weekly_menus"))
 
 
 if __name__ == "__main__":
