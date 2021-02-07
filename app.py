@@ -83,7 +83,6 @@ def register():
         # Insert the object as a doc in the database
         mongo.db.users.insert_one(new_user)
         # Place username into a session cookie for access to data
-        session["wft_user"] = request.form.get("username")
         # Place the new user in sample recipes as shared with
         mongo.db.recipes.update(
                             {"owner": "WFT"},
@@ -93,9 +92,9 @@ def register():
                             upsert=False,
                             multi=True)
         # Inform the user they successfully created an account
-        flash("Account Created! You are now Logged in.")
-        # Redirect user to recipes page
-        return redirect(url_for("recipes", username=session["wft_user"]))
+        flash("Account Created! Please Log in.")
+        # Redirect user to login page
+        return redirect(url_for("login"))
     return render_template("register.html")
 
 
