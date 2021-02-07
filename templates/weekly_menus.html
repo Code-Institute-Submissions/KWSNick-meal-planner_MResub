@@ -82,11 +82,22 @@
     <div class="row">
         <ul class="collapsible">
            <li>
+            <!--If no plans are found for the user return message-->
+            {% if plans|length != 0 %}
+            {% for plan in plans %}
+            {% if session.wft_user[0] != plan.owner %}
+            {% endif %}
+            {% endfor %}
+                <div class="collapsible-header center"><h5 class="col s12 red-text text-darken-1">No Menus Found</h5></div>
+            {% endif %}
+            <!--If no plans are found at all-->
             {% if plans|length == 0 %}
-                <div class="collapsible-header">s<h5 class="col s12 red-text text-darken-1">No Plans Found</h5></div>
+                <div class="collapsible-header center"><h5 class="col s12 red-text text-darken-1">No Menus Found</h5></div>
             {% endif %}
             </li>
+            <!--If plans are found that the user is the owner of-->
             {% if plans|length > 0 %}
+            <!--K is used to set unique ids on elements-->
             {% set k = namespace(value=0) %}
             {% for plan in plans %}
             {% if session.wft_user[0] == plan.owner %}
@@ -96,6 +107,7 @@
                         <h5 class="col s12">Week Commencing {{ plan.days[0] }}/{{ plan.month }}/{{ plan.year }}</h5>
                     </div>
                     <div class="col s4 l2">
+                    <!--If the user is the plan owner then delete button is available-->
                     {% if session["wft_user"][0] == plan.owner %}
                         <a id="delete_btn{{ k.value }}" class="col s12 m5 right waves-effect waves-light btn-large red lighten-1 modal-trigger" href="#confirm_delete{{ k.value }}">Delete</a>
                     {% endif %}
@@ -115,6 +127,7 @@
                     </div>
                 </div>
                 <div class="collapsible-body row">
+                <!--J is used to get the correct day string-->
                 {% set j = namespace(value=0) %}
                 {% for meal in plan.meals %}
                     {% for recipe in recipes %}

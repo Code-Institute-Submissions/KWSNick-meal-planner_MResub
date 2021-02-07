@@ -1,4 +1,5 @@
  $(document).ready(function(){
+    // Materialize initialisation and options
     $('.sidenav').sidenav();
     $('select').formSelect();
     $('.collapsible').collapsible();

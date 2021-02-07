@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <!--Sets various fields for the new recipe-->
+    <!--Gets various fields for the existing recipe-->
     <form method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
         <div class="row">
             <div class="col s12">
@@ -85,7 +85,7 @@
                         <h5 class="right">Shared With:</h5>
                     </div>
                     <div name="sharing" id="sharing" class="input-field col s6 m8">
-                        <!--Based on guidance provided on Stack Overflow posted by Patrick José Pereira April 6th 2018-->
+                        <!--Based on guidance provided on Stack Overflow posted by Patrick José Pereira April 6th 2018 regarding setting variables-->
                         {% set i = namespace(value=0) %}
                         {% for shared in recipe.shared_with %}
                             {% set i.value = i.value + 1 %}

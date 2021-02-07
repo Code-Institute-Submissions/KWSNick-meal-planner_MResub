@@ -12,6 +12,7 @@
     color: #558b2f; /* Primary Text */
     color: #00897b; /* Header Text */
 }
+/* Main body styling */
 body, input[type="text"], input[type="number"], textarea, .btn-large {
     font-family: 'Indie Flower', cursive;
     font-size: 1.2rem;
@@ -19,14 +20,12 @@ body, input[type="text"], input[type="number"], textarea, .btn-large {
     color: #558b2f;
     background-color: #ffffcf;
 }
+/* Nav bar element styling */
 .logo {
     height: 56px;
 }
 .sidenav li>a {
     font-size: 2rem;
-}
-.form_tips{
-    font-size: 0.8rem;
 }
 nav, .page-footer {
     background-color: #ffd54f;
@@ -38,6 +37,7 @@ nav ul a {
     font-size: 1.75rem;
     font-weight: 900;
 }
+/* Footer element styling */
 .page-footer, .page-footer a {
     font-size: 1.2rem;
     color: rgba(255,255,255,0.8);
@@ -45,6 +45,7 @@ nav ul a {
 .page-footer a {
     font-size: 0.8rem;
 }
+/* Main body styling */
 .main_content {
     min-height: 85vh;
 }
@@ -67,9 +68,10 @@ h5 {
     width: 75%;
     margin:0 12.5%;
 }
-.form_tip {
+.form_tips{
     font-size: 0.8rem;
 }
+/* Form styling */
 .form_alert {
     color: red;
 }
@@ -81,6 +83,7 @@ h5 {
 .step-no {
     text-align: right;
 }
+/* Button Styling */
 .btn-large {
     margin-top: 1.3rem;
     color: #fff;
@@ -106,6 +109,7 @@ li::marker {
     font-size: 1.3rem;
     color: #00897b;
 }
+/* Specific Media Queries */
 @media (max-width: 600px) {
     ol {
         padding-inline-start: 0;
