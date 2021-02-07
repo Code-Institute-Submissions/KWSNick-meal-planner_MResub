@@ -37,14 +37,14 @@
                     </select>
                     <label for="month_select">Month</label>
                 </div>
-                <div class="col s4">
+                <div class="col s6 m4">
                     <!--When this button is pressed the year and month is sent to the routing method and if the week_select has no valid week selected
                                     then it refreshes the page but has obtained weeks to select.-->
                     <button id="get_weeks_btn" class="col s12 waves-effect waves-light btn-large amber darken-1"
                         type="submit">Get Weeks</button>
                 </div>
                 <div class="row">
-                    <div class="input-field center col s8">
+                    <div class="input-field center col s6 m8">
                         {% set i = namespace(value=0) %}
                         <select class="center" id="week_select" name="week_select" required>
                             <option value="no weeks" selected>Weeks</option>
@@ -54,7 +54,7 @@
                             <!--If the week begins in the month then the first item is used to show an option to the user.-->
                             {% else %}
                             <option value="{{ i.value }}">
-                                Week Commencing:
+                                W/C:
                                 {% if week.0 == 1 %}
                                 {{ week.0 }}st,
                                 {% elif week.0 == 2 %}
