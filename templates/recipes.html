@@ -49,7 +49,7 @@
         <!--Checks if the user is in the recipes shared_with list-->
         {% for shared in recipe.shared_with %}
             <!--If the user is in the shared_with list then the recipe is shown-->
-            {% if session.wft_user[0] == shared or shared == "sample" %}
+            {% if session.wft_user[0] == shared %}
             <!--Gets various fields from each recipe-->
             <div class="col s12 m6 l4 left">
                 <div class="card">
