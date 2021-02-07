@@ -82,24 +82,17 @@
     <div class="row">
         <ul class="collapsible">
            <li>
-            <!--If no plans are found for the user return message-->
-            {% if plans|length != 0 %}
-            {% for plan in plans %}
-            {% if session.wft_user[0] != plan.owner %}
-            {% endif %}
-            {% endfor %}
-                <div class="collapsible-header center"><h5 class="col s12 red-text text-darken-1">No Menus Found</h5></div>
-            {% endif %}
             <!--If no plans are found at all-->
             {% if plans|length == 0 %}
                 <div class="collapsible-header center"><h5 class="col s12 red-text text-darken-1">No Menus Found</h5></div>
             {% endif %}
             </li>
-            <!--If plans are found that the user is the owner of-->
+            <!--If plans are found-->
             {% if plans|length > 0 %}
             <!--K is used to set unique ids on elements-->
             {% set k = namespace(value=0) %}
             {% for plan in plans %}
+            <!--If plans are found that the user is the owner of-->
             {% if session.wft_user[0] == plan.owner %}
             <li>
                 <div class="collapsible-header center">
@@ -191,6 +184,10 @@
             </li>
             {% endif %}
             {% endfor %}
+            <!--If K has not incremented this indicates no menus found for the user, so show user error message-->
+            {% if k.value < 1 %}
+                <div class="collapsible-header center"><h5 class="col s12 red-text text-darken-1">No Menus Found</h5></div>
+            {% endif %}
             {% endif %}
         </ul>
     </div>
