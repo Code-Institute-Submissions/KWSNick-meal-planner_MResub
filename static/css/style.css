@@ -27,6 +27,9 @@ body, input[type="text"], input[type="number"], textarea, .btn-large {
 .sidenav li>a {
     font-size: 2rem;
 }
+nav {
+    padding: 0 20px;
+}
 nav, .page-footer {
     background-color: #ffd54f;
 }
