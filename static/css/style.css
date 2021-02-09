@@ -95,6 +95,9 @@ h5 {
     margin-top: 0;
     background-color: #00897b;
 }
+#reset_btn {
+    margin-top: 0;
+}
 #create_menu_header {
     display: inline-block;
 }
