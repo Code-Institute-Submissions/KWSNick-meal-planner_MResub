@@ -33,6 +33,9 @@ nav {
 nav, .page-footer {
     background-color: #ffd54f;
 }
+.page-footer {
+    padding-top: 0;
+}
 .usernav {
     margin-right: 1rem;
 }
