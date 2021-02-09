@@ -13,36 +13,16 @@
         </div>
         <div class="col s4 m2" id="search_btn_div">
             <button id="search_btn" class="col s5 center waves-effect waves-light btn-large" type="submit"><i class="fas fa-search"></i></button>
-            <a href="{{ url_for('recipes') }}" id="reset_btn" class="col s5 offset-s1 center waves-effect waves-light btn-large red lighten-1" id="reset_search"><i class="fas fa-redo-alt"></i></a>
+            <a href="{{ url_for('recipes') }}" id="reset_btn" class="col s5 offset-s1 center waves-effect waves-light btn-large red darken-1" id="reset_search"><i class="fas fa-redo-alt"></i></a>
         </div>  
         
     </form>
+    <div class="fixed-action-btn">
+        <a href="{{ (url_for('recipe_create')) }}" class="hoverable btn-floating btn-large waves-effect waves-light red"><i class="fas fa-plus"></i></a>
+    </div>
+    
 </div>
 <div class="row">
-    <div class="col s12 m6 l4 left">
-        <div class="card">
-            <div class="card-image">
-                <img
-                    src="../static/images/add_recipe.jpg">
-                <a href="{{ (url_for('recipe_create')) }}" class="hoverable btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="fas fa-plus"></i></a>
-            </div>
-            <div class="card-content">
-                <span class="card-title">
-                    <h5>Add New Recipe</h5>
-                </span>
-                <div class="row">
-                    {% if recipes|length == 0 %}
-                    <div class="col s12">
-                        <h6 class="center-align red-text text-darken-1">No Recipes Found</h6>
-                    </div>    
-                    {% endif %}
-                    <div class="col s12 center">
-                        <p>Add a recipe here.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 <!--Checks there are recipes in the recipes collection-->
 {% if recipes|length > 0 %}
     <!--Iterates through all recipes-->
