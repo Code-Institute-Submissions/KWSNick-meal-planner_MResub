@@ -19,8 +19,7 @@
     </form>
     <div class="fixed-action-btn">
         <a href="{{ (url_for('recipe_create')) }}" class="hoverable btn-floating btn-large waves-effect waves-light red"><i class="fas fa-plus"></i></a>
-    </div>
-    
+    </div>  
 </div>
 <div class="row">
 <!--Checks there are recipes in the recipes collection-->
@@ -33,10 +32,10 @@
             {% if session.wft_user[0] == shared %}
             <!--Gets various fields from each recipe-->
             <div class="col s12 m6 l4 left">
-                <div class="card">
+                <div class="card hoverable">
+                    <a href="{{ url_for('recipe_view', recipe_id=recipe._id) }}">
                     <div class="card-image">
                         <img src="{{ recipe.image_url }}" alt="{{ recipe.image_description }}">
-                        <a href="{{ url_for('recipe_view', recipe_id=recipe._id) }}" class="hoverable btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="fas fa-book-open"></i></a>
                     </div>
                     <div class="card-content">
                         <span class="card-title"><h5>{{ recipe.recipe_name.capitalize() }}</h5></span>
@@ -58,6 +57,7 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
             {% endif %}

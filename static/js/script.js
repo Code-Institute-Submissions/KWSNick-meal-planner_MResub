@@ -3,6 +3,9 @@
     $('.sidenav').sidenav();
     $('select').formSelect();
     $('.collapsible').collapsible();
+    $('.fixed-action-btn').floatingActionButton({
+        direction: 'left'
+    });
     $('.modal').modal({
         preventScrolling: false,
         endingTop: '20%',
