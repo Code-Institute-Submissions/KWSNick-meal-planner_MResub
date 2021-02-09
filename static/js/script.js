@@ -23,28 +23,12 @@
     })
     // Checks if all fields have valid class assigned and provides submit button if true. Otherwise removes the submit button.
     $('#registration_form div div input').focusout(function deployRegBtn(){
-        if ($('#first_name').hasClass('valid')) {
-            if ($('#last_name').hasClass('valid')) {
-                if ($('#username').hasClass('valid')) {
-                    if ($('#password').hasClass('valid')) {
-                        if ($('#confirm_password').hasClass('valid')) {
-                            $('#register').remove();
-                            $('#register_button').append('<button id="register"class="col s4 m2 center offset-s4 offset-m5 waves-effect waves-light btn-large green lighten-1" type="submit">Register</button>');
-                        } else {
-                            $('#register').remove();
-                        }
-                    } else {
-                        $('#register').remove();
-                    }
-                } else {
-                    $('#register').remove();
-                }
-            } else {
-                $('#register').remove();
-            }
+        if ($('#first_name').hasClass('valid') && $('#last_name').hasClass('valid') && $('#username').hasClass('valid') && $('#password').hasClass('valid') && $('#confirm_password').hasClass('valid')) {
+            $('#register').removeClass("disabled");
         } else {
-            $('#register').remove();
+           $('#register').addClass("disabled");
         }
+                   
     })
     // Function that adds a new input row beneath clicked button for shared with section of form
     $('#sharing').on('click', 'button', function(){
