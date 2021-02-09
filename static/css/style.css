@@ -52,9 +52,6 @@ nav ul a {
     font-size: 0.8rem;
 }
 /* Main body styling */
-.main_content {
-    /*min-height: 85vh;*/
-}
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Permanent Marker', cursive;
     color: #00897b;
@@ -69,6 +66,9 @@ h5 {
 .card, #no_results {
     height: 475px;
     overflow: hidden;
+}
+.form_side_margin {
+    margin: 0 4vw;
 }
 .recipe_image {
     width: 75%;

@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
     <!--Sets various fields for the new recipe-->
-    <form method="POST" action="{{ url_for('recipe_create') }}">
+    <form class="form_side_margin" method="POST" action="{{ url_for('recipe_create') }}">
         <div class="row">
             <div class="col s12">
                 <div class="center col s8">
                     <h1>Add a new recipe</h1>
                 </div>
                 <div class="col s4 right">
-                    <button id="create_btn" class="col s12 m5 offset-m1 waves-effect waves-light btn-large green lighten-1" type="submit">Create</button>
                     <a id="back_btn" href="#confirm_back" class="col s12 m5 right waves-effect waves-light btn-large grey lighten-1 modal-trigger">Back</a>
                 </div>
             </div>
@@ -45,6 +44,14 @@
             </div>
             <!--Recipe Classification and Origin-->
             <div class="col s12 l6">
+                <div class="row">
+                <!--Recipe Description-->
+                    <h5 class="center">Description</h5>
+                    <div class="input-field col s12 center">
+                        <textarea class="materialize-textarea center" id="description" name="description"></textarea>
+                        <label for="description">Recipe Description</label>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col s6 m4">
                         <h5 class="right">Classification:</h5>
@@ -83,14 +90,6 @@
                         <input class="center shared_with add_share" id="shared_with1" name="shared_with1" type="text">
                         <label for="shared_with1">Shared With</label>
                         <button id="button1" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
-                    </div>
-                </div>
-                <div class="row">
-                <!--Recipe Description-->
-                    <h5 class="center">Description</h5>
-                    <div class="input-field col s12 center">
-                        <textarea class="materialize-textarea center" id="description" name="description"></textarea>
-                        <label for="description">Recipe Description</label>
                     </div>
                 </div>
             </div>
@@ -135,6 +134,9 @@
                 </div>
                 <button id="step_button1" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red add_step"><i class="fas fa-plus"></i></button>
             </div>
+        </div>
+        <div class="row">
+            <button id="create_btn" class="col s10 m4 l2 offset-s1 offset-m4 offset-l5 waves-effect waves-light btn-large green lighten-1" type="submit">Create</button>
         </div>
     </form>
     <!-- Modal Confirm Back -->
