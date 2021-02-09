@@ -10,6 +10,9 @@
         preventScrolling: false,
         endingTop: '20%',
     });
+    // Calculate minimum height for the main content section to prevent the footer not being at the bottom of the screen
+    let minHeight = $(window).height() - ($('nav').height() + $('footer').height());
+    $('.main_content').css('min-height', minHeight);
     // Script to check the entered passwords in registration are the same and alert the user if they are not. 
     $('#confirm_password').focusout(function passwordValidate(){
         let pwd1 = $('#password').val();
