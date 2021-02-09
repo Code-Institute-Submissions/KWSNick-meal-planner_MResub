@@ -20,7 +20,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <form class="col s12" method="POST" action="{{ url_for('login') }}">
+            <form id="login_form" class="col s12" method="POST" action="{{ url_for('login') }}">
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="username" name="username" type="text" minlength="5" maxlength="12" class="validate" required>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button id="login_btn" class="col s4 m2 center offset-s4 offset-m5 waves-effect waves-light btn-large green lighten-1" type="submit">Login</button>
+                    <button id="login_btn" class="col s4 m2 center offset-s4 offset-m5 waves-effect waves-light btn-large green lighten-1 disabled" type="submit">Login</button>
                 </div>
             </form>
         </div>

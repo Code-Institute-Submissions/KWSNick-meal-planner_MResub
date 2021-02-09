@@ -21,14 +21,21 @@
             $('#password, #confirm_password').removeClass('invalid');
         }
     })
-    // Checks if all fields have valid class assigned and provides submit button if true. Otherwise removes the submit button.
+    // Checks if all registration fields have valid class assigned and provides submit button if true. Otherwise removes the submit button.
     $('#registration_form div div input').focusout(function deployRegBtn(){
         if ($('#first_name').hasClass('valid') && $('#last_name').hasClass('valid') && $('#username').hasClass('valid') && $('#password').hasClass('valid') && $('#confirm_password').hasClass('valid')) {
             $('#register').removeClass("disabled");
         } else {
            $('#register').addClass("disabled");
-        }
-                   
+        }           
+    })
+    // Checks if all login fields have valid class assigned and provides submit button if true. Otherwise removes the submit button.
+    $('#login_form div div input').focusout(function deployLoginBtn(){
+        if ($('#username').hasClass('valid') && $('#password').hasClass('valid')) {
+            $('#login_btn').removeClass("disabled");
+        } else {s
+           $('#login_btn').addClass("disabled");
+        }           
     })
     // Function that adds a new input row beneath clicked button for shared with section of form
     $('#sharing').on('click', 'button', function(){
