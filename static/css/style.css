@@ -67,6 +67,9 @@ h5 {
     height: 475px;
     overflow: hidden;
 }
+.card a {
+    color: #558b2f;
+}
 .form_side_margin {
     margin: 0 4vw;
 }

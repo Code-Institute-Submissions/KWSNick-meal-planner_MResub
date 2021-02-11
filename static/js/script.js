@@ -39,7 +39,7 @@
     $('#login_form div div input').focusout(function deployLoginBtn(){
         if ($('#username').hasClass('valid') && $('#password').hasClass('valid')) {
             $('#login_btn').removeClass("disabled");
-        } else {s
+        } else {
            $('#login_btn').addClass("disabled");
         }           
     })
