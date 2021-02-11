@@ -22,7 +22,7 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     # If the post method is invoked by the submit button
     if request.method == "POST":
@@ -112,13 +112,13 @@ def search():
     return render_template("recipes.html", recipes=recipes)
 
 
-@app.route("/recipe_view/<recipe_id>")
+@app.route("/<recipe_id>/view")
 def recipe_view(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("recipe_view.html", recipe=recipe)
 
 
-@app.route("/recipe_create", methods=["GET", "POST"])
+@app.route("/create", methods=["GET", "POST"])
 def recipe_create():
     if request.method == "POST":
         # Script to create a list of shared with from multiple sources
@@ -252,7 +252,7 @@ def recipe_create():
         classification=classification, origin=origin)
 
 
-@app.route("/delete_recipe/<recipe_id>", methods=["GET", "POST"])
+@app.route("/<recipe_id>/delete", methods=["GET", "POST"])
 def delete_recipe(recipe_id):
     user = session["wft_user"][0]
     # Does not delete the recipe, but removes user from a list
@@ -266,7 +266,7 @@ def delete_recipe(recipe_id):
     return redirect(url_for("recipes"))
 
 
-@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+@app.route("/<recipe_id>/edit", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
         # Script to create a list of shared with from multiple sources
@@ -401,7 +401,7 @@ def edit_recipe(recipe_id):
         recipe=recipe, classification=classification, origin=origin)
 
 
-@app.route("/weekly_menus", methods=["GET", "POST"])
+@app.route("/weeklymenus", methods=["GET", "POST"])
 def weekly_menus():
     # Creates a calendar object
     c = calendar.Calendar()
@@ -494,7 +494,7 @@ def weekly_menus():
                         recipes=recipes)
 
 
-@app.route("/delete_plan/<plan_id>", methods=["GET", "POST"])
+@app.route("/<plan_id>/delete", methods=["GET", "POST"])
 def delete_plan(plan_id):
     mongo.db.weekly_plans.remove({"_id": ObjectId(plan_id)})
     flash("Menu Successfully Deleted")
