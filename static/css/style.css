@@ -70,9 +70,6 @@ h5 {
 .card a {
     color: #558b2f;
 }
-.form_side_margin {
-    margin: 0 4vw;
-}
 .recipe_image {
     width: 75%;
     margin:0 12.5%;
@@ -139,6 +136,9 @@ li::marker {
     }
     h5 {
         font-size: 1.64rem;
+    }
+    .form_side_margin {
+        margin: 0 4vw;
     }
     .weekly_plan_card {
         height: 445px;
