@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <!--Gets various fields for the existing recipe-->
-    <form class="form_side_margin" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+    <form method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
         <div class="row">
             <div class="col s12">
                 <div class="center col s8">
