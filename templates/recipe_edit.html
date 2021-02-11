@@ -30,7 +30,10 @@
             <div class="col s12 l6">
                 <div class="row">
                     <div class="input-field col s12 l6 center">
-                        <input class="center" id="image_url" name="image_url" type="url" value="{{ recipe.image_url }}">
+                        <input class="center" id="image_url" name="image_url" type="url" value="
+                        {% if recipe.image_url != '../static/images/recipe_img_pholder.png' %}
+                            {{ recipe.image_url }}
+                        {% endif %}">
                         <label for="image_url">Recipe Image URL</label>
                         <p class="form_tips">We recommend using a free stock photo website such as <a href="https://www.pexels.com/" target="_blank"> Pexels</a>. Right click an image, "Copy image address", then paste it in here!</p>
                     </div>
