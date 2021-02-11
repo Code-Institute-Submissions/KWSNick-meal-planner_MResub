@@ -66,7 +66,7 @@
                         <label for="ingredient_name`+[j]+`">Ingredient</label>
                     </div>
                     <div class="input-field col s3">
-                        <input class="center" id="ingredient_quantity`+[j]+`" name="ingredient_quantity`+[j]+`" type="number">
+                        <input class="center" id="ingredient_quantity`+[j]+`" name="ingredient_quantity`+[j]+`" type="number" step="0.01">
                         <label for="ingredient_quantity`+[j]+`">Quantity</label>
                     </div>
                     <div class="input-field col s3">
