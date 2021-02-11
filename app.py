@@ -22,7 +22,7 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def login():
     # If the post method is invoked by the submit button
     if request.method == "POST":
@@ -112,7 +112,7 @@ def search():
     return render_template("recipes.html", recipes=recipes)
 
 
-@app.route("/<recipe_id>/view")
+@app.route("/view/<recipe_id>")
 def recipe_view(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("recipe_view.html", recipe=recipe)
@@ -252,7 +252,7 @@ def recipe_create():
         classification=classification, origin=origin)
 
 
-@app.route("/<recipe_id>/delete", methods=["GET", "POST"])
+@app.route("/delete/<recipe_id>", methods=["GET", "POST"])
 def delete_recipe(recipe_id):
     user = session["wft_user"][0]
     # Does not delete the recipe, but removes user from a list
@@ -266,7 +266,7 @@ def delete_recipe(recipe_id):
     return redirect(url_for("recipes"))
 
 
-@app.route("/<recipe_id>/edit", methods=["GET", "POST"])
+@app.route("/edit/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
         # Script to create a list of shared with from multiple sources
@@ -461,7 +461,6 @@ def weekly_menus():
                                 "owner": session["wft_user"][0],
                                 "week_commencing": date
                                 }, "week_commencing")
-            print(exists)
             if not exists:
                 recipes = list(
                             mongo.db.recipes.find(
@@ -504,7 +503,7 @@ def weekly_menus():
                         recipes=recipes)
 
 
-@app.route("/<plan_id>/delete", methods=["GET", "POST"])
+@app.route("/delete_plan/<plan_id>", methods=["GET", "POST"])
 def delete_plan(plan_id):
     mongo.db.weekly_plans.remove({"_id": ObjectId(plan_id)})
     flash("Menu Successfully Deleted")
