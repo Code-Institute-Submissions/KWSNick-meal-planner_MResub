@@ -388,7 +388,7 @@ def edit_recipe(recipe_id):
         # Lets the user know the object has been sent
         flash("Successfully Amended Recipe")
         # Takes the user back to the recipes page to see their recipes
-        return redirect(url_for("recipes"))
+        return redirect(url_for("recipe_view", recipe_id=recipe_id))
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
