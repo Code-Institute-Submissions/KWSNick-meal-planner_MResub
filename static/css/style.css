@@ -74,6 +74,10 @@ h5 {
     width: 75%;
     margin:0 12.5%;
 }
+#share_with_list {
+    max-height: 40px;
+    overflow: auto;
+}
 .form_tips{
     font-size: 0.8rem;
 }
