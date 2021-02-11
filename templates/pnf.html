@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col s12 center">
+        <h1>Page cannot be found</h1>
+    </div>
+    <div class="row">
+        <div class="col s12 center">
+            <p>Return to</p>
+        </div>
+        <div class="col s12">
+            {% if session.wft_user %}
+            <a href="{{ url_for('recipes') }}" id="recipes_btn" class="col s12 m4 offset-m1 center waves-effect waves-light btn-large green lighten-1">Recipes</a>
+            <a href="{{ url_for('weekly_menus') }}" id="menus_btn" class="col s12 m4 offset-m2 center waves-effect waves-light btn-large green lighten-1">Weekly Menus</a>
+            {% else %}
+            <a href="{{ url_for('login') }}" id="login_return_btn" class="col s12 m4 offset-m1 center waves-effect waves-light btn-large green lighten-1">Login</a>
+            <a href="{{ url_for('register') }}" id="register_return_btn" class="col s12 m4 offset-m2 center waves-effect waves-light btn-large green lighten-1">Register</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

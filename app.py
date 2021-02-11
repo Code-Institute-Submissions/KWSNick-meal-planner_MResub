@@ -510,6 +510,10 @@ def delete_plan(plan_id):
     return redirect(url_for("weekly_menus"))
 
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("pnf.html"), 404
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
