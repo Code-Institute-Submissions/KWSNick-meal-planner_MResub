@@ -457,32 +457,42 @@ def weekly_menus():
                 day = "0" + day
             # Creates a data string with common number of digits for sorting
             date = year + month + day
-            recipes = list(
-                        mongo.db.recipes.find(
-                                    {"shared_with": session["wft_user"][0]},
-                                    "_id"))
-            for day in days:
-                # thanks to machine learning mastery
-                # for tips and advice on random and choice
-                # https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/
-                meal = choice(recipes)
-                # append each choice to a list
-                meals.append(meal)
-            # Weekly plan object created
-            weekly_plan = {
-                "owner": session["wft_user"][0],
-                "week_commencing": date,
-                "year": year,
-                "month": month,
-                "days": days,
-                "meals": meals
-            }
-            # Sends the object to MongoDB
-            mongo.db.weekly_plans.insert_one(weekly_plan)
-            # Lets the user know the object has been sent
-            flash("Created New Menu")
-            # Takes the user back to the recipes page to see their recipes
-            return redirect(url_for("weekly_menus"))
+            exists = mongo.db.weekly_plans.find_one({
+                                "owner": session["wft_user"][0],
+                                "week_commencing": date
+                                }, "week_commencing")
+            print(exists)
+            if not exists:
+                recipes = list(
+                            mongo.db.recipes.find(
+                                        {"shared_with":
+                                            session["wft_user"][0]},
+                                        "_id"))
+                for day in days:
+                    # thanks to machine learning mastery
+                    # for tips and advice on random and choice
+                    # https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/
+                    meal = choice(recipes)
+                    # append each choice to a list
+                    meals.append(meal)
+                # Weekly plan object created
+                weekly_plan = {
+                    "owner": session["wft_user"][0],
+                    "week_commencing": date,
+                    "year": year,
+                    "month": month,
+                    "days": days,
+                    "meals": meals
+                }
+                # Sends the object to MongoDB
+                mongo.db.weekly_plans.insert_one(weekly_plan)
+                # Lets the user know the object has been sent
+                flash("Created New Menu")
+                # Takes the user back to the recipes page to see their recipes
+                return redirect(url_for("weekly_menus"))
+            else:
+                flash("Menu already exists. Choose another week.")
+                return redirect(url_for("weekly_menus"))
     plans = list(mongo.db.weekly_plans.find().sort("week_commencing", -1))
     recipes = list(mongo.db.recipes.find())
     return render_template(
