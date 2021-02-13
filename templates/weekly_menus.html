@@ -54,16 +54,18 @@
                             <!--If the week begins in the month then the first item is used to show an option to the user.-->
                             {% else %}
                             <option value="{{ i.value }}">
-                                W/C:
-                                {% if week.0 == 1 %}
-                                {{ week.0 }}st,
-                                {% elif week.0 == 2 %}
-                                {{ day }}nd,
-                                {% elif week.0 == 3 %}
-                                {{ week.0 }}rd,
-                                {% else %}
-                                {{ week.0 }}th,
-                                {% endif %}
+                                <span>W/C:</span>
+                                <span>
+                                {%- if week.0 == 1 -%}
+                                {{- week.0 -}}st
+                                {%- elif week.0 == 2 -%}
+                                {{- day -}}nd
+                                {%- elif week.0 == 3 -%}
+                                {{- week.0 -}}rd
+                                {%- else -%}
+                                {{- week.0 -}}th
+                                {%- endif -%}
+                                </span>
                             </option>
                             {% endif %}
                             {% set i.value = i.value + 1 %}
