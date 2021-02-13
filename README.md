@@ -376,7 +376,7 @@ be utilised in preference to others to ensure full compatibility and functionali
 ### Content
 
 Site content is original and developed by the author to offer services/functionality free-of-charge with the exception of linked URLs used for recipes 
-which are sourced from the open source library provided by [Plexels](https://www.pexels.com/). No liability is assumed for any user experiences or 
+which are sourced from the open source library provided by [Pexels](https://www.pexels.com/). No liability is assumed for any user experiences or 
 results obtained from the provided content of the website and users utilise this site, its functionality and its content at their own risk. 
 
 The content, functionality and output was correct to the best of the authors knowledge at the time of issue (see testing for further details). 
@@ -434,15 +434,3 @@ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PRO
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
 STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
-
-
-### Acknowledgements
-Images sourced from https://www.pexels.com/ (Open Source)
-
-Based on guidance provided on Stack Overflow posted by Patrick José Pereira April 6th 2018 regarding setting variables
-
- thanks to machine learning mastery
-for tips and advice on random and choice
-https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/
