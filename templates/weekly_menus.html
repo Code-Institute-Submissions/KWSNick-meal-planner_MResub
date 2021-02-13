@@ -96,13 +96,13 @@
             {% if session.wft_user[0] == plan.owner %}
             <li>
                 <div class="collapsible-header center">
-                    <div class="col s8 l10 center">
+                    <div class="col s8 m10 center">
                         <h5 class="col s12">Week Commencing {{ plan.days[0] }}/{{ plan.month }}/{{ plan.year }}</h5>
                     </div>
-                    <div class="col s4 l2">
+                    <div class="col s4 m2">
                     <!--If the user is the plan owner then delete button is available-->
                     {% if session["wft_user"][0] == plan.owner %}
-                        <a id="delete_btn{{ k.value }}" class="col s6 m5 right waves-effect waves-light btn-large red lighten-1 modal-trigger" href="#confirm_delete{{ k.value }}"><i class="fas fa-trash-alt"></i> <span class="hide-on-med-and-down">Delete</span></a>
+                        <a id="delete_btn{{ k.value }}" class="col s6 l12 right waves-effect waves-light btn-large red lighten-1 modal-trigger" href="#confirm_delete{{ k.value }}"><i class="fas fa-trash-alt hide-on-large-only"></i> <span class="hide-on-med-and-down">Delete</span></a>
                     {% endif %}
                     </div>
                 </div>
