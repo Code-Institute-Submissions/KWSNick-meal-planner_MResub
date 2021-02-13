@@ -514,6 +514,7 @@ def delete_plan(plan_id):
 def page_not_found(error):
     return render_template("pnf.html"), 404
 
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
