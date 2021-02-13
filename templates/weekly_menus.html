@@ -41,7 +41,7 @@
                     <!--When this button is pressed the year and month is sent to the routing method and if the week_select has no valid week selected
                                     then it refreshes the page but has obtained weeks to select.-->
                     <button id="get_weeks_btn" class="col s12 waves-effect waves-light btn-large amber darken-1"
-                        type="submit">Get Weeks</button>
+                        type="submit"><i class="fas fa-calendar-week"></i> Get Weeks</button>
                 </div>
                 <div class="row">
                     <div class="input-field center col s6 m8">
@@ -72,7 +72,7 @@
                         <label for="week_select">Week</label>
                     </div>
                     <div class="col s12 m4 center">
-                        <button id="create_btn" class="col s12 waves-effect waves-light btn-large green lighten-1" type="submit">Create</button>
+                        <button id="create_btn" class="col s12 waves-effect waves-light btn-large green lighten-1" type="submit"><i class="fas fa-plus-circle"></i> Create</button>
                     </div>
                 </div>
             </form>
@@ -102,7 +102,7 @@
                     <div class="col s4 l2">
                     <!--If the user is the plan owner then delete button is available-->
                     {% if session["wft_user"][0] == plan.owner %}
-                        <a id="delete_btn{{ k.value }}" class="col s12 m5 right waves-effect waves-light btn-large red lighten-1 modal-trigger" href="#confirm_delete{{ k.value }}">Delete</a>
+                        <a id="delete_btn{{ k.value }}" class="col s6 m5 right waves-effect waves-light btn-large red lighten-1 modal-trigger" href="#confirm_delete{{ k.value }}"><i class="fas fa-trash-alt"></i> <span class="hide-on-med-and-down">Delete</span></a>
                     {% endif %}
                     </div>
                 </div>
