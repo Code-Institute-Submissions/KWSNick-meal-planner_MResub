@@ -2,11 +2,11 @@
 {% block content %}
 <div class="row">
     <div class="col s12 center">
-        <h1>Page cannot be found</h1>
+        <h1>{{ header }}</h1>
     </div>
     <div class="row">
         <div class="col s12 center">
-            <p>Return to</p>
+            <p>{{ message }}</p>
         </div>
         <div class="col s12">
             {% if session.wft_user %}

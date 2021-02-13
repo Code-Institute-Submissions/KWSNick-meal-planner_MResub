@@ -111,6 +111,9 @@ h5 {
 #create_menu_header {
     display: inline-block;
 }
+#steps_tip {
+    margin: 0 2vw;
+}
 .collapsible-body {
     padding: 0;
 }

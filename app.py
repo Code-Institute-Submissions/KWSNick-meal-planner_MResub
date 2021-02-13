@@ -512,10 +512,33 @@ def delete_plan(plan_id):
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template("pnf.html"), 404
+    header = "Page cannot be found"
+    message = "Return to"
+    return render_template("error.html", header=header, message=message), 404
+
+
+@app.errorhandler(500)
+def page_not_found(error):
+    header = "Server cannot be reached"
+    message = "Retry"
+    return render_template("error.html", header=header, message=message), 500
+
+
+@app.errorhandler(403)
+def page_not_found(error):
+    header = "Forbidden access"
+    message = "Return to"
+    return render_template("error.html", header=header, message=message), 403
+
+
+@app.errorhandler(410)
+def page_not_found(error):
+    header = "Gone"
+    message = "Return to"
+    return render_template("error.html", header=header, message=message), 410
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
-            debug=True)
+            debug=False)

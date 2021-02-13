@@ -109,6 +109,7 @@
                             {% endif %}
                         {% endfor %}
                         <button id="button{{ i.value }}" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
+                        <p class="form_tips">Enter usernames for users you would like to share this recipe with, or delete the name to remove them. Click the add button to add a new username.</p>
                     </div>
                 </div>
             </div>
@@ -151,6 +152,7 @@
                     </div>
                 {% endfor %}
                 <button id="ing_button{{ i.value }}" type="button" class="hoverable btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
+                <p class="form_tips">Click the add button to add a new ingredient. Delete the contents of an ingredient to remove it.</p>
             </div>
             <div id="step_list" class="col s12 l8">
                 <h5 class="center">Method</h5>
@@ -168,6 +170,7 @@
                     </div>
                 {% endfor %}
                 <button id="step_button{{ i.value }}" type="button" class="hoverable right btn-floating btn-small waves-effect waves-light red"><i class="fas fa-plus"></i></button>
+                <p id="steps_tip" class="form_tips right">Click the add button to add a new step. Delete the contents of an step to skip this step.</p>
             </div>
         </div>
         <div class="row">
