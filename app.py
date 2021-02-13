@@ -115,7 +115,10 @@ def search():
 @app.route("/view/<recipe_id>")
 def recipe_view(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("recipe_view.html", recipe=recipe)
+    # Defensive script to prevent access to recipes the user is not shared with
+    for shared in recipe['shared_with']:
+        if shared == session["wft_user"][0]:
+            return render_template("recipe_view.html", recipe=recipe)
 
 
 @app.route("/create", methods=["GET", "POST"])
@@ -518,24 +521,17 @@ def page_not_found(error):
 
 
 @app.errorhandler(500)
-def page_not_found(error):
-    header = "Server cannot be reached"
-    message = "Retry"
+def server_not_found(error):
+    header = "Cannot reach or access server resource"
+    message = "Return to"
     return render_template("error.html", header=header, message=message), 500
 
 
 @app.errorhandler(403)
-def page_not_found(error):
+def page_forbidden(error):
     header = "Forbidden access"
     message = "Return to"
     return render_template("error.html", header=header, message=message), 403
-
-
-@app.errorhandler(410)
-def page_not_found(error):
-    header = "Gone"
-    message = "Return to"
-    return render_template("error.html", header=header, message=message), 410
 
 
 if __name__ == "__main__":
