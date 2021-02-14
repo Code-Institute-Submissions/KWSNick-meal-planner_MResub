@@ -328,6 +328,8 @@ Apple Safari|	N/A	Could not be tested.|Microsoft Windows no longer supported.| |
 
 A common issue with weeks selection input not displaying the string at small breakpoint has been identified. No fixed is currently applied but the issue is flagged for future development.
 
+An issue was identified where if the units dropdown was left on "Unit" or the blank field the recipes could not be edited. 
+
 ### Responsiveness
 
 The site was launched in [Am I Responsive.is](http://ami.responsivedesign.is/) to verify that the layout was responsive across various device sizes. 
