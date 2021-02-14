@@ -328,7 +328,7 @@ Apple Safari|	N/A	Could not be tested.|Microsoft Windows no longer supported.| |
 
 A common issue with weeks selection input not displaying the string at small breakpoint has been identified. No fixed is currently applied but the issue is flagged for future development.
 
-An issue was identified where if the units dropdown was left on "Unit" or the blank field the recipes could not be edited. 
+An issue was identified where if the units dropdown was left on "Unit" or the blank field the recipes could not be edited. This was recitifed by placing a space in the value of these fields to ensure they assign a value and create a field for each object. 
 
 ### Responsiveness
 
