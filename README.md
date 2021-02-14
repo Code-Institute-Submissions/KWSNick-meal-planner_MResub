@@ -45,14 +45,14 @@ This product is primarily B2C focused with the intent of providing a tool to con
 - Break routines
 - Change their habits
 - Socialise over common interests
-These could be driven by influences such as for a new years resolution, social factors or for health reasons. 
+These could be driven by influences such as for a new year's resolution, social factors or for health reasons. 
 
 #### Future commercial partners
 The tertiary user would be at a B2B level, where there is scope to promote recipes or ingredients on site, or consumer users could be directed 
 to links to online retail platforms to encourage the purchase of ingredients from these partner retailers. This user is currently uncatered for as 
 their interest in the platform requires a large consumer user base to be established. 
 
-The site may also appeal to other commerical partners such as trend analyists researching eating habits or most common ingredients, and also with its 
+The site may also appeal to other commercial partners such as trend analysts researching eating habits or most common ingredients, and also with its 
 collection of recipes which could be utilised to generate cookbooks. 
 
 #### User goals
@@ -131,10 +131,10 @@ The database consists of 5 collections stored in MongoDB. The core collections a
 and directly between one another as the weekly plans documents store recipe document ids to reference them. Most fields are stored as strings with the exception
 of several lists such as shared with, and the ingredients which are an array of objects which contain their own fields.
 
-The other collections provide supporting infomation to be inserted into the recipe documents as required. 
+The other collections provide supporting information to be inserted into the recipe documents as required. 
 <img src="static/images/databaseStructure.jpg">
 
-Currently these collections are only managable via the mongoDB backend, however in future releases this functionality will be brought into the frontend via 
+Currently these collections are only manageable via the MongoDB backend, however in future releases this functionality will be brought into the frontend via 
 administration accounts. 
 
 #### Site Pages
@@ -179,7 +179,7 @@ upon their initial visit.
 The site relies on muted, pastel colours which invoke a homely feel. Creams, yellows, greens and blues are used for background and text 
 colours.
 
-Buttons and calls to action utilise expected colour conventions, Green for create, amber forsave and add functions, orange for edit and update functions 
+Buttons and calls to action utilise expected colour conventions, Green for create, amber for save and add functions, orange for edit and update functions 
 and red for delete functions. 
 
 Icons are able to quickly describe the function, heading or label they are associated with.
@@ -314,14 +314,14 @@ The use of this product was inline with Google API's terms of service [Google Fo
 
 ## 4. Testing
 
-### Browser Compatability
+### Browser Compatibility
 
 |Browser| Version| Comments| Fixes Applied|
 |-------|--------|---------|--------------|
 Google Chrome|  88.0.4324.150 | Fully Functional | |
 Mozilla Firefox| 85.0 |   Fully Functional | |
 Microsoft Edge| 88.0.705.68 |  Fully Functional | |
-Microsoft Internet Explorer| 11.630.19041.804 | Javascript/JQuery functions hampered e.g. login/register buttons will not enable when form correctly completed. Tooltip does not show over create recipe call to action. Cannot copy image link from external source. Drop down options missing from forms. Javascript functions to add new rows do not work. Default image address does not auto load into image_url input. Modals do not load. Accordion does not work. | None. Legacy platform not reccomended for use with this site due to Javascript JQuery incompatability.
+Microsoft Internet Explorer| 11.630.19041.804 | Javascript/JQuery functions hampered e.g. login/register buttons will not enable when form correctly completed. Tooltip does not show over create recipe call to action. Cannot copy image link from external source. Drop down options missing from forms. Javascript functions to add new rows do not work. Default image address does not auto load into image_url input. Modals do not load. Accordion does not work. | None. Legacy platform not recommended for use with this site due to Javascript JQuery incompatibility.
 Samsung Internet| 13.2.2.4 | Fully Functional | |
 Opera| Fully Functional | |
 Apple Safari|	N/A	Could not be tested.|Microsoft Windows no longer supported.| |
@@ -364,12 +364,154 @@ The URL for the GitHub Project is: https://github.com/KWSNick/meal-planner
 
 The site requires config vars which are stored securely within Heroku. A Procfile also exists to instruct Heroku how to run the site. 
 
-The site has a list of dependancies which are listed in requirements.txt in the root of the site. These must be installed on the server prior to launching the site. These have already been installed on the Heroku app space. 
+The site has a list of dependencies which are listed in requirements.txt in the root of the site. These must be installed on the server prior to launching the site. These have already been installed on the Heroku app space. 
 
-The site is designed to work on any modern browser, but was developed witihin Google Chrome version 88.0.4324.150 and it is recommended this platform 
+The site is designed to work on any modern browser, but was developed within Google Chrome version 88.0.4324.150 and it is recommended this platform 
 be utilised in preference to others to ensure full compatibility and functionality. See browser compatibility section within testing for further details.
 
 ## 6. User Guide
+
+### Register
+On first visit to the site you will need to create an account. Navigate to the create account page via the navbar or sidebar menu on mobile devices. 
+Alternatively use the link at the bottom of the login page. 
+
+<img src="static/images/register.jpg">
+
+Complete the form on the create account page. Only use letters for your first and last name, a username between 5 and 12 characters long consisting 
+of at least one upper and one lower case letter and one number. No special characters or spaces allowed.
+
+Your password should be at least 6 characters long with at least one lower, one upper case letter and a number. You must enter the same password twice 
+to complete the form.
+
+Once all form entries are valid click out of the forms inputs to activate the register button, which checks that all inputs are valid first.
+
+<img src="static/images/registerform.jpg">
+
+### login
+Once you have successfully completed registration you will be taken back to the login page and you are prompted to login. 
+
+Enter your username and password, and click out of the input fields to activate the login button, which checks that all fields 
+are valid. 
+
+If you forget your login details use the contact administrator button below to write an email to the admin team to reset your 
+account details. 
+
+<img src="static/images/login.jpg">
+
+### Recipes Page
+When successfully logged in you will be taken to your recipes page. Here you will see all recipes that you have either created 
+or are shared with you. What's for Tea automatically shares a selection of recipes to get you started. If your friends are already 
+active on the account you can ask them to share their recipes with you. 
+
+#### Create a Recipe
+To create a new recipe click the "create recipe" button in the bottom right hand corner of the page. 
+
+<img src="static/images/createrecipe.jpg">
+
+This launches the Add a New Recipe page. Complete the form to the best of your knowledge. It's ok to leave fields blank if not required.
+
+To add an image to the recipe you need to find a suitable image online, right click it and copy its link or address and paste it into the url input.
+We recommend using Pexels which is a free open source stock photo site, although you are free to use whichever source you wish including your own 
+online galleries. Add a suitable image description to act as alternative text if the image cannot be loaded. A placeholder image is provided 
+if a suitable image cannot be supplied by yourself. 
+
+Choose an appropriate class if required, and a region of origin for the recipe if appropriate or select the blank options. 
+
+<img src="static/images/addrecipe1.jpg">
+
+Enter a short description of the meal in the Description field. 
+
+To share this recipe with another user enter their username, which is case sensitive, into the input. For multiple users click the plus button to add a 
+additional users in individual inputs. To remove a user just delete the text from the input and leave it blank.  
+
+Add ingredients in the ingredients section by entering a name, the quantity for one person and the units from the dropdown options. To add new ingredients 
+click the add button below. To remove an ingredient just leave the inputs empty. 
+
+Add method steps by entering a description of the step and clicking the add button to insert a new input. If you decide to remove a step just empty the input 
+and it will be skipped when saved, with the step numbering correctly being assigned to the next filled row. 
+
+<img src="static/images/addrecipe2.jpg">
+
+Click "Create" at either the top or bottom of the form when you are done. You will be returned to your recipes page. 
+
+#### View a Recipe. 
+
+Scroll to or search for the recipe you wish to view. Click the card it is presented in to view the recipe. 
+
+<img src="static/images/searchresult.jpg">
+
+If you created the recipe you are the owner, and owners are able to edit the recipe, and see who the recipe is shared with in a scrollable list. 
+
+Recipes which are only shared with the user can only be viewed and deleted from the users recipes. A user who is not the recipe owner cannot see 
+the shared with list for data protection purposes. 
+
+<img src="static/images/recipeview.jpg">
+
+#### Delete a Recipe
+To delete a recipe from your recipes view the recipe and click delete, and confirm deletion. 
+
+Deleting a recipe only deletes the user from the shared with list. The recipe remains on the server and all users the recipe is currently shared with 
+can still view the recipe. Once the recipe has been deleted the user is returned to their recipes page. 
+
+<img src="static/images/confirmdelete.jpg">
+
+#### Edit a Recipe
+To edit a recipe you must be the recipes owner. If so you will have access to the edit button in the view recipe page. Click it to launch the edit recipe 
+page. It is similar to the Add a New Recipe page except that the fields are pre populated with the recipes existing content.
+
+Alter any of the input field contents as require, or add new inputs to lists such as shared with, ingredients and method. To remove fields just empty the 
+input contents and leave blank. Empty inputs are skipped. 
+
+<img src="static/images/recipeedit.jpg">
+
+Click save at the top or bottom of the page when complete and you will return to the recipe view with the new amendments. 
+
+<img src="static/images/recipeeditsuccess.jpg">
+
+To cancel any changes click the back button at the top of the recipe edit page and confirm you want to discard changes. 
+
+<img src="static/images/editback.jpg">
+
+#### Search for a Recipe
+To search for a recipe enter a keyword or words in the search box on the recipes page and click the magnifying glass. To reset the results to all of your 
+recipes hit the red reset button. The search will only return recipes you own or are shared with you. 
+
+<img src="static/images/search.jpg">
+
+### Weekly menus
+To access your weekly menus navigate to the page via the navbar or sidebar on mobile devices. If you have no weekly menus the page will display a warning. 
+
+Recipes are displayed in descending data order. 
+
+<img src="static/images/menuwarning.jpg">
+
+#### Create a new menu
+To create a menu use the embedded form at the top of the weekly menus page. Select a year and a month, which defaults to this year and month, and click "Get Weeks" 
+to populate the weeks dropdown box. When options are available in the weeks dropdown, select the week commencing you desire to create a menu for and click the create button.
+
+A new accordion row will be created which when clicked expands to shown recipe cards for seven randomly selected recipes from your recipe collection. 
+
+<img src="static/images/menus.jpg">
+
+Each recipe card can be clicked to take you to the recipe view page for that recipe. 
+
+<img src="static/images/menusopen.jpg">
+
+Only one menu can exist for each week, a warning will display is a duplicate week is attempted. You must delete the existing week before generating a 
+new menu for that week. 
+
+<img src="static/images/menuerror.jpg">
+
+#### Delete a menu
+To delete a menu click the delete button on the accordion header and confirm the delete in the subsequent modal. 
+You will be returned to the weekly menus page. 
+
+<img src="static/images/menudelete.jpg">
+
+### Logout
+To securely logout from the site click the logout button in the navbar or mobile sidebar. This will return you to the login page. 
+
+<img src="static/images/logout.jpg">
 
 ## 7. Credits
 
@@ -394,7 +536,7 @@ The logo was created by the author in logomakr online tool and is accredited as 
 ### Acknowledgements
 Stock photo images sourced from https://www.pexels.com/ which is an open source resource.
 
-Jinja2 varaibles within the HTML were written based on guidance provided on Stack Overflow posted by Patrick José Pereira April 6th 2018 regarding setting variables for iteration purposes. 
+Jinja2 variables within the HTML were written based on guidance provided on Stack Overflow posted by Patrick José Pereira April 6th 2018 regarding setting variables for iteration purposes. 
 
 Thanks to machine learning mastery for tips and advice on python random and choice modules. https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/
 
@@ -406,7 +548,7 @@ Thanks as always to my Code Institute Mentor Akshat Garg for the review time and
 
 ## 8. Contributing
 
-This project is a closed example for educational and abilty demonstration purposes. Contribution is not permitted at this time.
+This project is a closed example for educational and ability demonstration purposes. Contribution is not permitted at this time.
 
 ## 9. Support
 
