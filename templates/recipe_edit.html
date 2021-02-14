@@ -135,7 +135,7 @@
                         <div class="input-field col s3">
                             <select class="center" id="ingredient_unit{{ i.value }}" name="ingredient_unit{{ i.value }}">
                                 <option value="{{ ingredient.unit }}" selected>{{ ingredient.unit.capitalize() }}</option>
-                                <option value=" "></option>
+                                <option value=" ">Unit</option>
                                 <!--Ignores the currently chosen unit to prevent option duplication-->
                                 {% if ingredient.unit != "grams" %}
                                     <option value="grams">Grams</option>
