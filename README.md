@@ -24,12 +24,13 @@ considerations. Surface design was considered to identify suitable look and feel
 A review meeting was held following the initial UXD process which refined some areas including suitable API technologies and the scope of the project.
 
 ### Strategy
-The app was created to allow users to store and share their home recipes and auto generate a weekly meal planner which randomises meal choices based 
+The app was created to allow users to store and share their home recipes and meal ideas; and to auto generate a weekly meal planner which randomises meal choices based 
 on the users own list of input and shared recipes. 
 
-The site allows users to input recipe descriptions, link to a representative image on the web, enter ingredients and a cooking method. The user can 
+The site allows users to input meal headings and recipe descriptions as a minimum, providing flexibility and ease of use for more casual users focused on meal randomisation over recipe specificity; 
+but for more thorough and active users the ability to provide a link to a representative image on the web, enter ingredients and a cooking method are optional features for the user.
 
-Users can easily share recipes with other users if they know the other users username.
+Users can easily share recipes with other users if they know the other users username but cannot search through all users or other users recipes to ensure a level of account security is maintained.
 
 The following stakeholders and their goals were identified:
 
@@ -118,12 +119,43 @@ An opportunity importance vs feasibility assessment was carried out to inform on
 
 #### User Stories
 
-| User                                                   | Story                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| -------------------------------------------------------| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| New year’s resolution made to vary weekly meals        | The platform was easy to upload my recipes to and maintain/modify them if required. I found the weekly menu generator quick and simple with minimal interaction required from me.                                                                                                                                          |
-| Consumer looking for meal inspiration                  | The platform currently allows my friends to share recipes they have uploaded with me, however I wish I could search for recipes that are open to any user.                                                                                                                                                                 |
-| Consumer group looking to share meal recipes and ideas | The platform easily and intuitively facilitates the creation and sharing of recipes and I find I rely on this platform to store my recipes and share them with my friends. I'd like to use this platform to comment on recipes and be more socially interactive with posts, and also mare easily find my friends accounts. |
-| Online grocery retailer                                | We have recognised the growing uptake in the platform and wish to explore how we might partner with it to promote our business and grow our revenue.                                                                                                                                                                       |
+##### An experienced cook looking to break routine and utilise their entire recipe repetoire.
+- Upload all my recipes into one space specific to me.
+- Generate a list of randomly selected and ordered meals from my specific recipes for individual weeks.
+- Add thorough recipes which include accurate ingredients and method steps.
+
+##### A group of friends who all enjoy cooking and sharing recipes and ideas.
+- Upload recipes and share them with people I know.
+- Ensure I maintain control over any recipes I upload so others can't change them.
+
+##### An inexperienced cook looking to improve their cooking habits by learning from their friends.
+- Have access to recipes that my friends have shared with me.
+- Have access to general recipes available on the site.
+
+##### All consumers
+- Register an account if I don't already have one.
+- Login securely. 
+- Be able to logout for security reasons (such as a shared device). 
+- See all the recipes I have created or are shared with me in one space. 
+- Search for specific recipes in my collection based on keywords. 
+- I want to be able to change my recipes if I refine the method or ingredients over time. 
+- I want to remove recipes from my curated recipes if I am no longer interested in that meal. 
+- Sometimes I only want to put meal ideas down, and don't yet know all the ingredients or method steps. 
+- I don't want to delete recipes from others collections if I remove it from my own. 
+- I do want control over who can see the recipes I create. 
+- I don't want others to be able to edit recipes I create. 
+- Want to be directed back to "safety" if an error occurs or I perform an unexpected input. 
+
+##### The business
+- Wants to collate a master archive of user recipes with potential future purpose such as trend analysis. 
+- Wants to attract business partner customers with a high traffic site based on user "footfall". 
+- Prevent malicious use or abuse of the site. 
+- Protect user identity and encourage user trust. 
+
+##### An online grocery retailer
+- Wants to seek new entry points for new customers. 
+- Promote thier business.
+- Grow their market share. 
 
 ### Structure
 #### Database Collections
@@ -357,7 +389,7 @@ Examples of Google Chromes' results can be found in [wireframes.pdf](static/docs
 ### CRUD functions
 In Google Chrome all written Create, Read, Update and Delete functionality across the database was tested with no faults detected:
 - User can be created.
-- User can login based on user lookup v(creates session user).
+- User can login based on user lookup (creates session user).
 - Site-owned recipes assigned new user in shared with.
 - Can create new recipe.
 - Can edit all fields of recipe. 
@@ -370,9 +402,61 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 - Cannot create more than one menu for that week for logged in user. 
 - Can logout (destroys session user)
 
+#### User Stories - Testing
+
+##### An experienced cook looking to break routine and utilise their entire recipe repetoire.
+| User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
+|-------------------------------------------------------------------|--------------------|
+| Upload all my recipes into one space specific to me.| A user can create as many recipes as they wish using the create recipe call to action on the main recipes page. The main recipes page will show a user all recipes that they have created or have been shared with them, which includes site default recipes.|
+| Generate a list of randomly selected and ordered meals from my specific recipes for individual weeks | The Weekly Plans page allows a user to select a date for week commencing and automatically choose recipes that they have created or that have been shared with them. |
+| Add thorough recipes which include accurate ingredients and method steps. | In the create recipe form there is functionality to add ingredients including quantities and units, and also detail method steps. |
+
+##### A group of friends who all enjoy cooking and sharing recipes and ideas.
+| User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
+|-------------------------------------------------------------------|--------------------|
+| Upload recipes and share them with people I know. | The owners of a recipe can add to a list of names anyones user name that they already know. This recipe will appear on the shared with users collection upon successful entry of a username to this list. |
+| Ensure I maintain control over any recipes I upload so others can't change them. | Only owners are able to access the edit button associated with a recipe. Those who have only been added to the shared with cannot access this button. A security flaw was identified at this stage, as users could 'hack' the url to edit a recipe by changing view to edit in the url regardless of the username, however this was rectfied in app file with the inclusion of an if statement to check the users name against the recipe owners prior to rendering the template. If the user is not the owner the site will return a 500 message and the error.html page will be triggered. |
+
+##### An inexperienced cook looking to improve their cooking habits by learning from their friends.
+| User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
+|-------------------------------------------------------------------|--------------------|
+| Have access to recipes that my friends have shared with me.| An owner can edit a set of adjustable fields to enter the correct username string which is case sensitive. Users cannot be searched for to ensure account privacy. |
+| Have access to general recipes available on the site. | When a new account is created the username is immediately added to all the recipes owned by WTF, which is the site (and not a user which can be created as the name is less than the mimimum username field length.) |
+
+##### All consumers
+| User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
+|-------------------------------------------------------------------|--------------------|
+| Register an account if I don't already have one. | An account registration form is provided. It only allows unique usernames. Usernames are case sensitive. |
+| Login securely. | Passwords are stored encrypted within the database. The password form field is masked. | 
+| Be able to logout for security reasons (such as a shared device). | Users can logout from the navbar, which deletes the session cookie and the user variable and returns them to the login page with a flask flash message. |
+| See all the recipes I have created or are shared with me in one space. | The main recipes page uses the "shared with" array to lookup recipes and present them in cards to the user. All recipes they have created or that another user has shared with them will be shown here. |
+| Search for specific recipes in my collection based on keywords. | A search bar is provided on the recipes page allowing the user to find recipes based on keywords presented on the cards including name, class and origin. |
+| I want to be able to change my recipes if I refine the method or ingredients over time. | A recipe owner has access to the edit button when viewing a recipe. Additonally recipes cannot be hacked as the edit route checks the username against the recipe owner when invoked. |
+| I want to remove recipes from my curated recipes if I am no longer interested in that meal. | A delete button is available to all users when viewing a recipe they have created or is shared with them. This button only delete their username from the shared with list. A warning is presented in a modal prior to the function being invoked. |
+| Sometimes I only want to put meal ideas down, and don't yet know all the ingredients or method steps. | The only required fields in the recipe create form are the name and the description, all other fields are optional by design. |
+| I don't want to delete recipes from others collections if I remove it from my own. | The delete button only removes the users username from the shared with list. The recipe remains on the system. This is the case even if the user is the owner. Essentially the recipe becomes archived and uneditable, but still viewable. |
+| I do want control over who can see the recipes I create. | Only the recipe owner can edit a recipe, and only in create and edit can users be added to the shared with list. A user cannot add themselves to another recipes shared with list. |
+| I don't want others to be able to edit recipes I create. | Only recipe owners have access to the edit button when viewing a recipe. Additonally recipes cannot be hacked as the edit route checks the logged in username against the recipe owner when invoked. |
+| Want to be directed back to "safety" if an error occurs or I perform an unexpected input. | A series of error handlers exist to catch server errors such as 500, 404 and 403. This directs the user to an error page which contains specific links back to other site pages, dependant on user logged in status. | 
+
+##### The business
+| User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
+|-------------------------------------------------------------------|--------------------|
+| Wants to collate a master archive of user recipes with potential future purpose such as trend analysis. | Recipes can never be deleted from the database by any user. Only their username is deleted from the shared with list. |
+| Wants to attract business partner customers with a high traffic site based on user "footfall". | Speculative, but the ease and flexibility of parts or all of this site should encourage user up-take and build the userbase. The users collection will support this. |
+| Prevent malicious use or abuse of the site. | Checks for username exist in various places on the site including registration, login and recipe editing. |
+| Protect user identity and encourage user trust. | Users cannot see other users usernames or search for them. If a users username is included in a shared with list but they are not the owner then the shared with list is hidden from that user. | 
+
+##### An online grocery retailer
+| User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
+|-------------------------------------------------------------------|--------------------|
+| Wants to seek new entry points for new customers. | Speculative but the site will build a userbase interested in an activity strongly linked to the grocery market. |
+| Promote thier business. | Future potential for advertising space or links to their store through the site. Potential to add sponsored recipes. |
+| Grow their market share. | Attracting new customers from this site would achieve this if there is a benefit to those users, such as ease of shopping by prepopulating a shopping basket with items required from a weekly menu. |
+
 ## 5. Deployment
 
-The Site is stored on GitHub pages and hosted on Heroku.
+The Site is stored on GitHub pages and hosted on Heroku. These are linked by connecting the github repository to the Heroku app workspace.
 
 It consists of 1 Master branch and no other branches.
 
@@ -427,15 +511,17 @@ additionally some standard Python packages are used including:
 - bson
 
 ### Environment Variables
-The site also depends upon a range of environment variables (also known as "config vars" in Heroku) to correctly function. 
+The site also depends upon a range of environment variables (also known as "config vars" in Heroku) to correctly function. Within a development
+environment such as Gitpod the code will utilise a env.py file, which is ommited from the git intentionally due to security reasons. A new file with 
+the following environment variables for the os will need to be created if a new instance of this project is generated. 
 
 - default IP address with the alias "IP"
 - default port number with the alias "PORT"
-- A secret key for certain flask functions including flash messages with the alias "SECRET_KEY"
+- A secret key for certain flask functions including flash messages with the alias "SECRET_KEY" which can be generated from [randomkeygen](https://randomkeygen.com/)
 - A URI to connect to the MongoDb database with the alias "MONGO_URI"
 - The name of the database within MongoDb that the site will interact with using the alias "DB_NAME"
 
-A Procfile also exists to instruct Heroku how to run the site.  
+A Procfile also exists to instruct Heroku how to run the site using web: python and directing Heroku to run the app.py file. 
 
 ### Database
 The site uses ATLAS MongoDb database service and it is recommended that this be utilised if alternative builds are developed. 

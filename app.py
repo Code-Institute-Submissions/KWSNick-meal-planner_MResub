@@ -399,9 +399,13 @@ def edit_recipe(recipe_id):
     classification = mongo.db.classification.find().sort("class_name", 1)
     # Gets the list of origins from MongoDB to send to the edit page
     origin = mongo.db.origin.find().sort("origin", 1)
-    return render_template(
-        "recipe_edit.html",
-        recipe=recipe, classification=classification, origin=origin)
+    user = session["wft_user"][0]
+    recipe_owner = recipe['owner']
+    print(recipe_owner)
+    if user == recipe_owner:
+        return render_template(
+            "recipe_edit.html",
+            recipe=recipe, classification=classification, origin=origin)
 
 
 @app.route("/weeklymenus", methods=["GET", "POST"])
