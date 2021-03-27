@@ -372,21 +372,112 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 
 ## 5. Deployment
 
-### Requirements.txt
-
-### Environment Variables
-
-The Site is stored on GitHub pages hosted on Heroku.
+The Site is stored on GitHub pages and hosted on Heroku.
 
 It consists of 1 Master branch and no other branches.
 
-The URL for the site is: https://meal-planner-wft.herokuapp.com/
+### Hosted Location
+
+The URL for the hosted site is: https://meal-planner-wft.herokuapp.com/
+
+### Purpose
+
+The hosted site exists to allow users to utilise all its built in functionality to interact with the MongoDb database which sits behind
+the site primarily; with the intent for the user to assess the competence of the creator in developing a data-centric site using a micro-framework and
+a non-relational database. 
+
+The site allows user to curate their own recipes and meal ideas, store and edit them, and also share them with others in a secure manner. Recipes can be removed
+from the creators recipe book and also from the recipe books of those who have had recipes shared with them, but are never truely deleted to ensure that if recipes
+are shared they are not lost by those who still desire access to them. Steps are taken to ensure only creators can edit a recipe they own and created. 
+
+Finally the site provides a means of randomly selecting a range of 7 recipes for the user to assign to specific weeks with the intent of providing the user a means
+of randomising their weekly meal plans automatically. 
+
+### GitHub Pages
 
 The URL for the GitHub Project is: https://github.com/KWSNick/meal-planner
 
-The site requires config vars which are stored securely within Heroku. A Procfile also exists to instruct Heroku how to run the site. 
+You may need to log into GitHub in order to access the github pages. 
 
-The site has a list of dependencies which are listed in requirements.txt in the root of the site. These must be installed on the server prior to launching the site. These have already been installed on the Heroku app space. 
+#### Fork the GitHub Repository
+To create a copy of the original "master" repository log into GitHub with your own account, navigate to this repository using the URL above and click the 
+"fork" button at the top of the repository. This should provide you with a local copy in your repositories. 
+
+Forking allows you to view and edit a copy of the repository without affecting the "master". 
+
+### Python Package Requirements
+The site utilises server-side python script and relies on a number of pre-built packages to function. 
+On its host environment these packages will be installed in advance, however should you wish to duplicate the site the following will be required:
+- click==7.1.2
+- dnspython==2.1.0
+- Flask==1.1.2
+- Flask-PyMongo==2.3.0
+- itsdangerous==1.1.0
+- pymongo==3.11.2
+- Werkzeug==1.0.1
+- Jinja2==2.11.2
+
+The majority of these packages are installed as standard when FLASK is installed using pip. 
+
+additionally some standard Python packages are used including:
+- os
+- datetime
+- calendar
+- random (choice)
+- bson
+
+### Environment Variables
+The site also depends upon a range of environment variables (also known as "config vars" in Heroku) to correctly function. 
+
+- default IP address with the alias "IP"
+- default port number with the alias "PORT"
+- A secret key for certain flask functions including flash messages with the alias "SECRET_KEY"
+- A URI to connect to the MongoDb database with the alias "MONGO_URI"
+- The name of the database within MongoDb that the site will interact with using the alias "DB_NAME"
+
+A Procfile also exists to instruct Heroku how to run the site.  
+
+### Database
+The site uses ATLAS MongoDb database service and it is recommended that this be utilised if alternative builds are developed. 
+To mimic the database structure used for this site you will need to create a non-relational database consisting of 5 collections as outlined in 
+section 1. UX Design --> Structure subsection of this README. The collections within this database and their fields are: 
+
+1. users
+    - username (string)
+    - first_name (string)
+    - last_name (string)
+    - password (string)
+2. recipes
+    - recipe_name (string)
+    - region_of_origin (string)
+    - classification (string)
+    - image_url (string)
+    - image_description (string)
+    - description (string)
+    - ingredients (array)
+        - object
+            - ingredient (string)
+            - quantity (string)
+            - unit (string)
+    - method (array)
+        - step (string)
+    - owner (string)
+    - shared_with (array)
+        - user (string)
+3. classification
+    - class_name (string)
+4. origin
+    - origin (string)
+5. weekly_plans
+    - owner (string)
+    - week_commencing (string)
+    - year (string)
+    - month (string)
+    - days (array)
+        - day (int)
+    - meals (array)
+        - object
+            - _id (ObjectId)
 
 The site is designed to work on any modern browser, but was developed within Google Chrome version 88.0.4324.150 and it is recommended this platform 
 be utilised in preference to others to ensure full compatibility and functionality. See browser compatibility section within testing for further details.
@@ -582,4 +673,19 @@ This site is licensed under the 2-Clause BSD License
 
 Copyright 2021 Nicholas Bowley
 
-Redistribution and use in source
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that 
+the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
+disclaimer.
+
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the 
+following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
