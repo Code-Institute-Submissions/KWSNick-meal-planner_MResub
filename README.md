@@ -325,6 +325,7 @@ The HTML and CSS syntax for the project was checked using the W3C Validation ser
 | style.css                       | The CSS validation initially flagged an incorrect (but functional) styling of padding-inline-start applied to ordered list elements at the small breakpoint. This was swapped to padding-left which corrected the validation. A warning was presented regarding the imported Google fonts file at the top of the style.css file indicating that this imported file is not checked by the validation tool. In this instance the imported file is provided by a 3rd party and attributed in this document. | <img src="static/images/w3ccsssuccess.jpg"> |
 | Deployed login page             | Semantic markup issues due to absence of messages containing headings, and articles without headings were rectified. A space within the mailto link was also removed.| <img src="static/images/w3cloginsuccess.jpg"> |
 | Deployed recipes page           | Syntax issues regarding header elements within paragraphs for recipe cards. Paragraph tags removed. | <img src="static/images/w3crecipessuccess.jpg"> |
+| Deployed recipe create page     | Label syntax issues resolved as they were placed within the inputs they related to. All hidden to prevent overwriting. Name attribute removed from div element. | <img src="static/images/w3ccreatesuccess.jpg"> |
 
 ### Browser Compatibility
 
