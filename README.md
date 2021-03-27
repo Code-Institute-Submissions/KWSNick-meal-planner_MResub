@@ -372,7 +372,7 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 
 ## 5. Deployment
 
-### Requirements
+### Requirements.txt
 
 ### Environment Variables
 
@@ -582,4 +582,4 @@ This site is licensed under the 2-Clause BSD License
 
 Copyright 2021 Nicholas Bowley
 
-Redistribution and use in source and
+Redistribution and use in source
