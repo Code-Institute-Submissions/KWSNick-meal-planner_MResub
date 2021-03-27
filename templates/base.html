@@ -47,7 +47,7 @@
         </ul>
     </header>
 
-    <section class="container">
+    <div class="container">
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -59,7 +59,7 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    </section>
+    </div>
     <div class="main_content">
     {% block content %}
 
