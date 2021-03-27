@@ -10,6 +10,14 @@
         <div class="center-align">
             <h4 id="create_menu_header">Create a new menu</h4>
         </div>
+        <div class="col center-align">
+            <p>
+                To create a menu use the form below. Select a year and a month and click "Get Weeks" which populates the weeks dropdown box. 
+            </p>
+            <p>
+                When options are available in the weeks dropdown, select the week commencing you desire to create a menu for and click the create button.
+            </p> 
+        </div>
         <div>
             <form method="POST" action="{{ url_for('weekly_menus') }}">
                 <div class="input-field col s6 m4">
@@ -76,6 +84,12 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div class="col center-align">
+            <p>
+                Click the dated rows below to expand them and reveal the seven randomly selected recipes from your recipe collection for that week. 
+                Click the recipes to see more information about that recipe.
+            </p>
         </div>
     </div>
 </div>
