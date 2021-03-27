@@ -330,6 +330,7 @@ The HTML and CSS syntax for the project was checked using the W3C Validation ser
 | Deployed recipe view page       | No W3C validation issues detected | <img src="static/images/w3crecipeviewsuccess.jpg"> |
 | Deployed recipe edit page       | Issues with labels as per create page were rectified, as were issues with blank fields if a classification, origin or unit were not selected. | <img src="static/images/w3crecipeeditsuccess.jpg"> | 
 | Deployed weekly menus page      | Syntax issues regarding header elements within paragraphs and spans for recipe cards. Paragraph and span tags removed. Issue with required month select field not containing a size attribute. Issue with required weeks select field first option containing a value and no size attribute. Stray spans present in weeks dropdown options were removed. |  <img src="static/images/w3cweeklymenusuccess.jpg"> |
+| Deployed errors page            | No W3C validation issues detected | <img src="static/images/w3cerrorssuccess.jpg"> |
 
 ### Browser Compatibility
 
