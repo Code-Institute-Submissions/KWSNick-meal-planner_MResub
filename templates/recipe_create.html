@@ -60,7 +60,6 @@
                     <div class="input-field col s6 m8">
                         <select id="classify" name="classify">
                             <option value="">Select a class as appropriate</option>
-                            <option value=""></option>
                         {% for class in classification %}
                             <option value="{{ class.class_name }}">{{ class.class_name.capitalize() }}</option>
                         {% endfor %}
@@ -75,7 +74,6 @@
                     <div class="input-field col s6 m8">
                         <select id="origin" name="origin">
                             <option value="">Select an origin as appropriate</option>
-                            <option value=""></option>
                         {% for region in origin %}
                             <option value="{{ region.origin }}">{{ region.origin.capitalize() }}</option>
                         {% endfor %}

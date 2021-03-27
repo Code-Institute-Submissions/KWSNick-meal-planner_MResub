@@ -38,17 +38,15 @@
                         <img src="{{ recipe.image_url }}" alt="{{ recipe.image_description }}">
                     </div>
                     <div class="card-content">
-                        <span class="card-title"><h5>{{ recipe.recipe_name.capitalize() }}</h5></span>
+                        <h5 class="card-title">{{ recipe.recipe_name.capitalize() }}</h5>
                         <div class="row">
                             <div class="col s6 center">
-                                <p><strong>
-                                        <h6>Class:</h6>{{ recipe.classification.capitalize() }}
-                                    </strong></p>
+                                <h6>Class:</h6>
+                                <strong>{{ recipe.classification.capitalize() }}</strong>
                             </div>
                             <div class="col s6 center">
-                                <p><strong>
-                                        <h6>Origin:</h6>{{ recipe.region_of_origin.capitalize() }}
-                                    </strong></p>
+                                <h6>Origin:</h6>
+                                <strong>{{ recipe.region_of_origin.capitalize() }}</strong>
                             </div>
                         </div>
                         <div class="row">

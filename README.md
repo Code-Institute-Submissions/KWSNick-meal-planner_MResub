@@ -320,11 +320,11 @@ The HTML and CSS syntax for the project was checked using the W3C Validation ser
 [W3C CSS Validation](https://jigsaw.w3.org/css-validator/#validate_by_input)
 [W3C Markup Validation](https://validator.w3.org/#validate_by_input)
 
-The CSS validation initially flagged an incorrect (but functional) styling of padding-inline-start applied to ordered list elements at the small breakpoint.
-This was swapped to padding-left which corrected the validation. A warning was presented regarding the imported Google fonts file at the top of the style.css file
-indicating that this imported file is not checked by the validation tool. In this instance the imported file is provided by a 3rd party and attributed in this document.
-
-<img src="static/images/w3ccsssuccess.jpg">
+| Validated File or Deployed Page | Outcome Comments | Result Image |
+|---------------------------------|------------------|--------------|
+| style.css                       | The CSS validation initially flagged an incorrect (but functional) styling of padding-inline-start applied to ordered list elements at the small breakpoint. This was swapped to padding-left which corrected the validation. A warning was presented regarding the imported Google fonts file at the top of the style.css file indicating that this imported file is not checked by the validation tool. In this instance the imported file is provided by a 3rd party and attributed in this document. | <img src="static/images/w3ccsssuccess.jpg"> |
+| Deployed login page             | Semantic markup issues due to absence of messages containing headings, and articles without headings were rectified. A space within the mailto link was also removed.| <img src="static/images/w3cloginsuccess.jpg"> |
+| Deployed recipes page           | Syntax issues regarding header elements within paragraphs for recipe cards. Paragraph tags removed. | <img src="static/images/w3crecipessuccess.jpg"> |
 
 ### Browser Compatibility
 
