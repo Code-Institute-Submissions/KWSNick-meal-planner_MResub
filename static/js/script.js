@@ -73,7 +73,7 @@
                     <div class="input-field col s3">
                         <label for="ingredient_unit`+[j]+`" class="hide">Unit</label>
                         <select class="center" id="ingredient_unit`+[j]+`" name="ingredient_unit`+[j]+`">
-                            <option value="">Unit</option>
+                            <option value="None">Unit</option>
                             <option value="grams">Grams</option>
                             <option value="ml">ml</option>
                             <option value="quantity">Quantity</option>   

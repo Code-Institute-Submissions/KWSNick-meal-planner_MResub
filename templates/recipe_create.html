@@ -60,7 +60,7 @@
                     <div class="input-field col s6 m8">
                         <label for="classify" class="hide">Recipe Classification</label>
                         <select id="classify" name="classify">
-                            <option value="">Select a class as appropriate</option>
+                            <option value="N/A">Select a class as appropriate</option>
                         {% for class in classification %}
                             <option value="{{ class.class_name }}">{{ class.class_name.capitalize() }}</option>
                         {% endfor %}
@@ -74,7 +74,7 @@
                     <div class="input-field col s6 m8">
                         <label for="origin" class="hide">Recipe Origin</label>
                         <select id="origin" name="origin">
-                            <option value="">Select an origin as appropriate</option>
+                            <option value="N/A">Select an origin as appropriate</option>
                         {% for region in origin %}
                             <option value="{{ region.origin }}">{{ region.origin.capitalize() }}</option>
                         {% endfor %}
@@ -111,7 +111,7 @@
                     <div class="input-field col s3">
                         <label for="ingredient_unit1" class="hide">Unit</label>
                         <select class="center" id="ingredient_unit1" name="ingredient_unit1">
-                            <option value=" ">Unit</option>
+                            <option value="None">Unit</option>
                             <option value="grams">Grams</option>
                             <option value="ml">ml</option>
                             <option value="quantity">Quantity</option>

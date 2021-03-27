@@ -60,16 +60,15 @@
                         <h5 class="right">Class:</h5>
                     </div>
                     <div class="input-field col s6 m8">
+                        <label for="classify" class="hide">Recipe Classification</label>
                         <select id="classify" name="classify">
                             <option value="{{ recipe.classification }}" selected>{{ recipe.classification.capitalize() }}</option>
-                            <option value=""></option>
                         {% for class in classification %}
                             <!--Ignores the currently chosen class to prevent option duplication-->
                             {% if class.class_name != recipe.classification %}
                                 <option value="{{ class.class_name }}">{{ class.class_name.capitalize() }}</option>
                             {% endif %}
                         {% endfor %}
-                            <label for="classify">Recipe Classification</label>
                         </select>
                     </div>
                 </div>
@@ -78,16 +77,15 @@
                         <h5 class="right">Origin:</h5>
                     </div>
                     <div class="input-field col s6 m8">
+                        <label for="origin" class="hide">Recipe Origin</label>
                         <select id="origin" name="origin">
                             <option value="{{ recipe.region_of_origin }}" selected>{{ recipe.region_of_origin.capitalize() }}</option>
-                            <option value=""></option>
                         {% for region in origin %}
                             <!--Ignores the currently chosen origin to prevent option duplication-->
                             {% if region.origin != recipe.region_of_origin %}
                                 <option value="{{ region.origin }}">{{ region.origin.capitalize() }}</option>
                             {% endif %}
                         {% endfor %}
-                            <label for="origin">Recipe Origin</label>
                         </select>
                     </div>
                 </div>
@@ -95,7 +93,7 @@
                     <div class="col s6 m4">
                         <h5 class="right">Shared With:</h5>
                     </div>
-                    <div name="sharing" id="sharing" class="input-field col s6 m8">
+                    <div id="sharing" class="input-field col s6 m8">
                         <!--Based on guidance provided on Stack Overflow posted by Patrick José Pereira April 6th 2018 regarding setting variables-->
                         {% set i = namespace(value=0) %}
                         {% for shared in recipe.shared_with %}
@@ -133,10 +131,13 @@
                             <label for="ingredient_quantity{{ i.value }}">Quantity</label>
                         </div>
                         <div class="input-field col s3">
+                            <label for="ingredient_unit{{ i.value }}" class="hide">Unit</label>
                             <select class="center" id="ingredient_unit{{ i.value }}" name="ingredient_unit{{ i.value }}">
                                 <option value="{{ ingredient.unit }}" selected>{{ ingredient.unit.capitalize() }}</option>
-                                <option value=" ">Unit</option>
                                 <!--Ignores the currently chosen unit to prevent option duplication-->
+                                {% if ingredient.unit != "None" %}
+                                    <option value="None">Unit</option>
+                                {% endif %}
                                 {% if ingredient.unit != "grams" %}
                                     <option value="grams">Grams</option>
                                 {% endif %}
@@ -146,7 +147,6 @@
                                 {% if ingredient.unit != "quantity" %}
                                     <option value="quantity">Quantity</option>
                                 {% endif %}
-                                <label for="ingredient_unit{{ i.value }}">Unit</label>
                             </select>
                         </div>
                     </div>

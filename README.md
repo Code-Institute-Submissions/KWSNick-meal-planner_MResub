@@ -326,6 +326,7 @@ The HTML and CSS syntax for the project was checked using the W3C Validation ser
 | Deployed login page             | Semantic markup issues due to absence of messages containing headings, and articles without headings were rectified. A space within the mailto link was also removed.| <img src="static/images/w3cloginsuccess.jpg"> |
 | Deployed recipes page           | Syntax issues regarding header elements within paragraphs for recipe cards. Paragraph tags removed. | <img src="static/images/w3crecipessuccess.jpg"> |
 | Deployed recipe create page     | Label syntax issues resolved as they were placed within the inputs they related to. All hidden to prevent overwriting. Name attribute removed from div element. | <img src="static/images/w3ccreatesuccess.jpg"> |
+| Deployed recipe view page       | No W3C validation issues detected | <img src="static/images/w3crecipeviewsuccess.jpg"> |
 
 ### Browser Compatibility
 
