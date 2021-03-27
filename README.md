@@ -324,9 +324,11 @@ The HTML and CSS syntax for the project was checked using the W3C Validation ser
 |---------------------------------|------------------|--------------|
 | style.css                       | The CSS validation initially flagged an incorrect (but functional) styling of padding-inline-start applied to ordered list elements at the small breakpoint. This was swapped to padding-left which corrected the validation. A warning was presented regarding the imported Google fonts file at the top of the style.css file indicating that this imported file is not checked by the validation tool. In this instance the imported file is provided by a 3rd party and attributed in this document. | <img src="static/images/w3ccsssuccess.jpg"> |
 | Deployed login page             | Semantic markup issues due to absence of messages containing headings, and articles without headings were rectified. A space within the mailto link was also removed.| <img src="static/images/w3cloginsuccess.jpg"> |
-| Deployed recipes page           | Syntax issues regarding header elements within paragraphs for recipe cards. Paragraph tags removed. | <img src="static/images/w3crecipessuccess.jpg"> |
+| Deployed recipes page           | Syntax issues regarding header elements within paragraphs and spans for recipe cards. Paragraph and span tags removed. | <img src="static/images/w3crecipessuccess.jpg"> |
 | Deployed recipe create page     | Label syntax issues resolved as they were placed within the inputs they related to. All hidden to prevent overwriting. Name attribute removed from div element. | <img src="static/images/w3ccreatesuccess.jpg"> |
 | Deployed recipe view page       | No W3C validation issues detected | <img src="static/images/w3crecipeviewsuccess.jpg"> |
+| Deployed recipe edit page       | Issues with labels as per create page were rectified, as were issues with blank fields if a classification, origin or unit were not selected. | <img src="static/images/w3crecipeeditsuccess.jpg"> | 
+| Deployed weekly menus page      | Syntax issues regarding header elements within paragraphs and spans for recipe cards. Paragraph and span tags removed. Issue with required month select field not containing a size attribute. Issue with required weeks select field first option containing a value and no size attribute. Stray spans present in weeks dropdown options were removed. |  <img src="static/images/w3cweeklymenusuccess.jpg"> |
 
 ### Browser Compatibility
 

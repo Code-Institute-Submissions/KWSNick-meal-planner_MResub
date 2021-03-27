@@ -15,12 +15,12 @@
                 <div class="input-field col s6 m4">
                     <!--Enters the current year as the default option-->
                     <input class="center" id="year_select" name="year_select" type="number" value="{{ year }}" required>
-                    <label for="ingredient_quantity1">Year</label>
+                    <label for="year_select">Year</label>
                 </div>
                 <div class="input-field col s6 m4">
                     <!--Sets the current month as the default option-->
                     {% set month_id = month %}
-                    <select class="center" id="month_select" name="month_select" required>
+                    <select class="center" id="month_select" name="month_select" size="12" required>
                         <option value="{{ month }}" selected>{{ month_name }}</option>
                         <option value="1">January {% set month_id = 1 %}</option>
                         <option value="2">February</option>
@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="input-field center col s6 m8">
                         {% set i = namespace(value=0) %}
-                        <select class="center" id="week_select" name="week_select" required>
+                        <select class="center" id="week_select" name="week_select" size="7" required>
                             <option value="no weeks" selected>Weeks</option>
                             <!--If the week begins in another month the week is ignored.-->
                             {% for week in cal %}
@@ -54,18 +54,16 @@
                             <!--If the week begins in the month then the first item is used to show an option to the user.-->
                             {% else %}
                             <option value="{{ i.value }}">
-                                <span>W/C:</span>
-                                <span>
+                                W/C:-
                                 {%- if week.0 == 1 -%}
                                 {{- week.0 -}}st
-                                {%- elif week.0 == 2 -%}
-                                {{- day -}}nd
-                                {%- elif week.0 == 3 -%}
+                                {% elif week.0 == 2 -%}
+                                {{- week.0 -}}nd
+                                {% elif week.0 == 3 -%}
                                 {{- week.0 -}}rd
-                                {%- else -%}
+                                {% else -%}
                                 {{- week.0 -}}th
                                 {%- endif -%}
-                                </span>
                             </option>
                             {% endif %}
                             {% set i.value = i.value + 1 %}
@@ -152,19 +150,15 @@
                                             <img src="{{ recipe.image_url }}" alt="{{ recipe.image_description }}">
                                         </div>
                                         <div class="card-content">
-                                            <span class="card-title">
-                                                <h5>{{ recipe.recipe_name.capitalize() }}</h5>
-                                            </span>
+                                            <h5 class="card-title">{{ recipe.recipe_name.capitalize() }}</h5>
                                             <div class="row">
                                                 <div class="col s12 center">
-                                                    <p><strong>
-                                                            <h6>Class:</h6>{{ recipe.classification.capitalize() }}
-                                                        </strong></p>
+                                                    <h6>Class:</h6>
+                                                    <strong>{{ recipe.classification.capitalize() }}</strong>
                                                 </div>
                                                 <div class="col s12 center">
-                                                    <p><strong>
-                                                            <h6>Origin:</h6>{{ recipe.region_of_origin.capitalize() }}
-                                                        </strong></p>
+                                                    <h6>Origin:</h6>
+                                                    <strong>{{ recipe.region_of_origin.capitalize() }}</strong>
                                                 </div>
                                             </div>
                                             <div class="row">
