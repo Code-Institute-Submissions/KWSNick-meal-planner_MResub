@@ -119,7 +119,7 @@ An opportunity importance vs feasibility assessment was carried out to inform on
 
 #### User Stories
 
-##### An experienced cook looking to break routine and utilise their entire recipe repetoire.
+##### An experienced cook looking to break routine and utilise their entire recipe repertoire.
 - Upload all my recipes into one space specific to me.
 - Generate a list of randomly selected and ordered meals from my specific recipes for individual weeks.
 - Add thorough recipes which include accurate ingredients and method steps.
@@ -154,7 +154,7 @@ An opportunity importance vs feasibility assessment was carried out to inform on
 
 ##### An online grocery retailer
 - Wants to seek new entry points for new customers. 
-- Promote thier business.
+- Promote their business.
 - Grow their market share. 
 
 ### Structure
@@ -218,7 +218,7 @@ Icons are able to quickly describe the function, heading or label they are assoc
 
 Cursive script is used convey a sense of informality and different cursive fonts are used for the headers and main text. Indie Flower was selected for 
 the main body text as it provided the desired fun and relaxed hand written style whilst maintaining legibility. Permanent Marker was selected for the 
-headers as it provided the desired fun and relaxed hand written style that might be found in an analog home cookbook whilst maintaining legibility. 
+headers as it provided the desired fun and relaxed hand written style that might be found in an analogue home cookbook whilst maintaining legibility. 
 
 ## 2. Features
 
@@ -410,7 +410,7 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 
 ### User Stories - Testing
 
-#### An experienced cook looking to break routine and utilise their entire recipe repetoire.
+#### An experienced cook looking to break routine and utilise their entire recipe repertoire.
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Upload all my recipes into one space specific to me.| A user can create as many recipes as they wish using the create recipe call to action on the main recipes page. The main recipes page will show a user all recipes that they have created or have been shared with them, which includes site default recipes.|
@@ -420,14 +420,14 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 #### A group of friends who all enjoy cooking and sharing recipes and ideas.
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
-| Upload recipes and share them with people I know. | The owners of a recipe can add to a list of names anyones user name that they already know. This recipe will appear on the shared with users collection upon successful entry of a username to this list. |
-| Ensure I maintain control over any recipes I upload so others can't change them. | Only owners are able to access the edit button associated with a recipe. Those who have only been added to the shared with cannot access this button. A security flaw was identified at this stage, as users could 'hack' the url to edit a recipe by changing view to edit in the url regardless of the username, however this was rectfied in app file with the inclusion of an if statement to check the users name against the recipe owners prior to rendering the template. If the user is not the owner the site will return a 500 message and the error.html page will be triggered. |
+| Upload recipes and share them with people I know. | The owners of a recipe can add to a list of names anyone's user name that they already know. This recipe will appear on the shared with users collection upon successful entry of a username to this list. |
+| Ensure I maintain control over any recipes I upload so others can't change them. | Only owners are able to access the edit button associated with a recipe. Those who have only been added to the shared with cannot access this button. A security flaw was identified at this stage, as users could 'hack' the url to edit a recipe by changing view to edit in the url regardless of the username, however this was rectified in app file with the inclusion of an if statement to check the users name against the recipe owners prior to rendering the template. If the user is not the owner the site will return a 500 message and the error.html page will be triggered. |
 
 #### An inexperienced cook looking to improve their cooking habits by learning from their friends.
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Have access to recipes that my friends have shared with me.| An owner can edit a set of adjustable fields to enter the correct username string which is case sensitive. Users cannot be searched for to ensure account privacy. |
-| Have access to general recipes available on the site. | When a new account is created the username is immediately added to all the recipes owned by WTF, which is the site (and not a user which can be created as the name is less than the mimimum username field length.) |
+| Have access to general recipes available on the site. | When a new account is created the username is immediately added to all the recipes owned by WTF, which is the site (and not a user which can be created as the name is less than the minimum username field length.) |
 
 #### All consumers
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
@@ -437,12 +437,12 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 | Be able to logout for security reasons (such as a shared device). | Users can logout from the navbar, which deletes the session cookie and the user variable and returns them to the login page with a flask flash message. |
 | See all the recipes I have created or are shared with me in one space. | The main recipes page uses the "shared with" array to lookup recipes and present them in cards to the user. All recipes they have created or that another user has shared with them will be shown here. |
 | Search for specific recipes in my collection based on keywords. | A search bar is provided on the recipes page allowing the user to find recipes based on keywords presented on the cards including name, class and origin. |
-| I want to be able to change my recipes if I refine the method or ingredients over time. | A recipe owner has access to the edit button when viewing a recipe. Additonally recipes cannot be hacked as the edit route checks the username against the recipe owner when invoked. |
+| I want to be able to change my recipes if I refine the method or ingredients over time. | A recipe owner has access to the edit button when viewing a recipe. Additionally recipes cannot be hacked as the edit route checks the username against the recipe owner when invoked. |
 | I want to remove recipes from my curated recipes if I am no longer interested in that meal. | A delete button is available to all users when viewing a recipe they have created or is shared with them. This button only delete their username from the shared with list. A warning is presented in a modal prior to the function being invoked. |
 | Sometimes I only want to put meal ideas down, and don't yet know all the ingredients or method steps. | The only required fields in the recipe create form are the name and the description, all other fields are optional by design. |
-| I don't want to delete recipes from others collections if I remove it from my own. | The delete button only removes the users username from the shared with list. The recipe remains on the system. This is the case even if the user is the owner. Essentially the recipe becomes archived and uneditable, but still viewable. |
+| I don't want to delete recipes from others collections if I remove it from my own. | The delete button only removes the users username from the shared with list. The recipe remains on the system. This is the case even if the user is the owner. Essentially the recipe becomes archived and un-editable, but still viewable. |
 | I do want control over who can see the recipes I create. | Only the recipe owner can edit a recipe, and only in create and edit can users be added to the shared with list. A user cannot add themselves to another recipes shared with list. |
-| I don't want others to be able to edit recipes I create. | Only recipe owners have access to the edit button when viewing a recipe. Additonally recipes cannot be hacked as the edit route checks the logged in username against the recipe owner when invoked. |
+| I don't want others to be able to edit recipes I create. | Only recipe owners have access to the edit button when viewing a recipe. Additionally recipes cannot be hacked as the edit route checks the logged in username against the recipe owner when invoked. |
 | Want to be directed back to "safety" if an error occurs or I perform an unexpected input. | A series of error handlers exist to catch server errors such as 500, 404 and 403. This directs the user to an error page which contains specific links back to other site pages, dependant on user logged in status. | 
 
 #### The business
@@ -457,7 +457,7 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Wants to seek new entry points for new customers. | Speculative but the site will build a userbase interested in an activity strongly linked to the grocery market. |
-| Promote thier business. | Future potential for advertising space or links to their store through the site. Potential to add sponsored recipes. |
+| Promote their business. | Future potential for advertising space or links to their store through the site. Potential to add sponsored recipes. |
 | Grow their market share. | Attracting new customers from this site would achieve this if there is a benefit to those users, such as ease of shopping by prepopulating a shopping basket with items required from a weekly menu. |
 
 ## 5. Deployment
@@ -477,7 +477,7 @@ the site primarily; with the intent for the user to assess the competence of the
 a non-relational database. 
 
 The site allows user to curate their own recipes and meal ideas, store and edit them, and also share them with others in a secure manner. Recipes can be removed
-from the creators recipe book and also from the recipe books of those who have had recipes shared with them, but are never truely deleted to ensure that if recipes
+from the creators recipe book and also from the recipe books of those who have had recipes shared with them, but are never truly deleted to ensure that if recipes
 are shared they are not lost by those who still desire access to them. Steps are taken to ensure only creators can edit a recipe they own and created. 
 
 Finally the site provides a means of randomly selecting a range of 7 recipes for the user to assign to specific weeks with the intent of providing the user a means
@@ -516,7 +516,7 @@ On its host environment these packages will be installed in advance, however sho
 The majority of these packages are installed as standard when FLASK is installed using pip. Freeze the requirements into a requirements.txt file if 
 a new instance of the project is create using the terminal command pip3 freeze > requirements.txt
 
-additionally some standard Python packages are used including:
+Additionally some standard Python packages are used including:
 - os
 - datetime
 - calendar
@@ -525,7 +525,7 @@ additionally some standard Python packages are used including:
 
 ### Environment Variables
 The site also depends upon a range of environment variables (also known as "config vars" in Heroku) to correctly function. Within a development
-environment such as Gitpod the code will utilise a env.py file, which is ommited from the git intentionally due to security reasons. A new file with 
+environment such as Gitpod the code will utilise a env.py file, which is omitted from the git intentionally due to security reasons. A new file with 
 the following environment variables for the os will need to be created if a new instance of this project is generated. 
 
 - default IP address with the alias "IP"
