@@ -12,6 +12,7 @@
     color: #558b2f; /* Primary Text */
     color: #00897b; /* Header Text */
 }
+
 /* Main body styling */
 body, input[type="text"], input[type="number"], textarea, .btn-large {
     font-family: 'Indie Flower', cursive;
@@ -20,138 +21,177 @@ body, input[type="text"], input[type="number"], textarea, .btn-large {
     color: #558b2f;
     background-color: #ffffcf;
 }
+
 /* Nav bar element styling */
 .logo {
     height: 56px;
 }
+
 .sidenav li>a {
     font-size: 2rem;
 }
+
 nav {
     padding: 0 20px;
 }
+
 nav, .page-footer {
     background-color: #ffd54f;
 }
+
 .page-footer {
     padding-top: 0;
 }
+
 .usernav {
     margin-right: 1rem;
 }
+
 nav ul a {
     font-size: 1.75rem;
     font-weight: 900;
 }
+
 /* Footer element styling */
 .page-footer, .page-footer a {
     font-size: 1.2rem;
     color: rgba(255,255,255,0.8);
 }
+
 .page-footer a {
     font-size: 0.8rem;
 }
+
 /* Main body styling */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Permanent Marker', cursive;
     color: #00897b;
 }
+
 h1 {
     margin: 1rem 0 0.6rem 0;
     font-size: 3.2rem;
 }
+
 h5 {
     font-size: 1.4rem;
 }
+
 .card, #no_results {
     height: 475px;
     overflow: hidden;
 }
+
 .card a {
     color: #558b2f;
 }
+
 .recipe_image {
     width: 75%;
     margin:0 12.5%;
 }
+
 #share_with_list {
     max-height: 40px;
     overflow: auto;
 }
+
 .form_tips{
     font-size: 0.8rem;
 }
+
 /* Form styling */
 .form_alert {
     color: red;
 }
+
 #flash_message_box {
     background-color: #ffff81;
     margin-top: 3vh;
     text-align: center;
 }
+
 .step-no {
     text-align: right;
 }
+
 /* Button Styling */
 .btn-large {
     margin-top: 1.3rem;
     color: #fff;
 }
+
 #search_btn_div {
     padding: 0;
 }
+
 #search_btn {
     margin-top: 0;
     background-color: #00897b;
 }
+
 #reset_btn {
     margin-top: 0;
 }
+
 #create_menu_header {
     display: inline-block;
 }
+
 #steps_tip {
     margin: 0 2vw;
 }
+
 .collapsible-body {
     padding: 0;
 }
+
 ol {
     text-align: center;
     list-style-position: inside;
 }
+
 li::marker {
     font-size: 1.3rem;
     color: #00897b;
 }
+
 /* Specific Media Queries */
+/* Small breakpoint */
 @media (max-width: 600px) {
     ol {
-        padding-inline-start: 0;
+        padding-left: 0;
     }
+
     .weekly_plan_card {
         height: 350px;
     }
 }
+
+/* Medium breakpoint */
 @media (min-width: 601px) {
     .logo {
         height: 64px;
     }
+
     h1 {
         font-size: 4.2rem;
     }
+
     h5 {
         font-size: 1.64rem;
     }
+
     .main_content {
         margin: 0 4vw;
     }
+
     .weekly_plan_card {
         height: 445px;
     }
 }
 
+/* Large breakpoint */
 @media (min-width: 992px) {
     .card, #no_results {
         height: 600px;

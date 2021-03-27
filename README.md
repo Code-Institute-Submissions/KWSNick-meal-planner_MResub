@@ -323,7 +323,7 @@ Mozilla Firefox| 85.0 |   Fully Functional | |
 Microsoft Edge| 88.0.705.68 |  Fully Functional | |
 Microsoft Internet Explorer| 11.630.19041.804 | Javascript/JQuery functions hampered e.g. login/register buttons will not enable when form correctly completed. Tooltip does not show over create recipe call to action. Cannot copy image link from external source. Drop down options missing from forms. Javascript functions to add new rows do not work. Default image address does not auto load into image_url input. Modals do not load. Accordion does not work. | None. Legacy platform not recommended for use with this site due to Javascript JQuery incompatibility.
 Samsung Internet| 13.2.2.4 | Fully Functional | |
-Opera| Fully Functional | |
+Opera| 74.0.3911.218 | Fully Functional | |
 Apple Safari|	N/A	Could not be tested.|Microsoft Windows no longer supported.| |
 
 A common issue with weeks selection input not displaying the string at small breakpoint has been identified. No fixed is currently applied but the issue is flagged for future development.
