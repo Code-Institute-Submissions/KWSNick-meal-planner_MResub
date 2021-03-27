@@ -364,6 +364,12 @@ The HTML and CSS syntax for the project was checked using the W3C Validation ser
 | Deployed weekly menus page      | Syntax issues regarding header elements within paragraphs and spans for recipe cards. Paragraph and span tags removed. Issue with required month select field not containing a size attribute. Issue with required weeks select field first option containing a value and no size attribute. Stray spans present in weeks dropdown options were removed. |  <img src="static/images/w3cweeklymenusuccess.jpg"> |
 | Deployed errors page            | No W3C validation issues detected | <img src="static/images/w3cerrorssuccess.jpg"> |
 
+### Chrome Lighthouse
+The deployed site was run through Chrome's lighthouse auditing tool, scoring each standard parameter within the top bracket (90-100).
+Various potential improvements were identified within the external resources such as materialize, which are not controlled by the developer.
+
+<img src="static/images/chromelighthouse.jpg">
+
 ### Browser Compatibility
 
 |Browser| Version| Comments| Fixes Applied|
@@ -402,28 +408,28 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 - Cannot create more than one menu for that week for logged in user. 
 - Can logout (destroys session user)
 
-#### User Stories - Testing
+### User Stories - Testing
 
-##### An experienced cook looking to break routine and utilise their entire recipe repetoire.
+#### An experienced cook looking to break routine and utilise their entire recipe repetoire.
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Upload all my recipes into one space specific to me.| A user can create as many recipes as they wish using the create recipe call to action on the main recipes page. The main recipes page will show a user all recipes that they have created or have been shared with them, which includes site default recipes.|
 | Generate a list of randomly selected and ordered meals from my specific recipes for individual weeks | The Weekly Plans page allows a user to select a date for week commencing and automatically choose recipes that they have created or that have been shared with them. |
 | Add thorough recipes which include accurate ingredients and method steps. | In the create recipe form there is functionality to add ingredients including quantities and units, and also detail method steps. |
 
-##### A group of friends who all enjoy cooking and sharing recipes and ideas.
+#### A group of friends who all enjoy cooking and sharing recipes and ideas.
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Upload recipes and share them with people I know. | The owners of a recipe can add to a list of names anyones user name that they already know. This recipe will appear on the shared with users collection upon successful entry of a username to this list. |
 | Ensure I maintain control over any recipes I upload so others can't change them. | Only owners are able to access the edit button associated with a recipe. Those who have only been added to the shared with cannot access this button. A security flaw was identified at this stage, as users could 'hack' the url to edit a recipe by changing view to edit in the url regardless of the username, however this was rectfied in app file with the inclusion of an if statement to check the users name against the recipe owners prior to rendering the template. If the user is not the owner the site will return a 500 message and the error.html page will be triggered. |
 
-##### An inexperienced cook looking to improve their cooking habits by learning from their friends.
+#### An inexperienced cook looking to improve their cooking habits by learning from their friends.
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Have access to recipes that my friends have shared with me.| An owner can edit a set of adjustable fields to enter the correct username string which is case sensitive. Users cannot be searched for to ensure account privacy. |
 | Have access to general recipes available on the site. | When a new account is created the username is immediately added to all the recipes owned by WTF, which is the site (and not a user which can be created as the name is less than the mimimum username field length.) |
 
-##### All consumers
+#### All consumers
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Register an account if I don't already have one. | An account registration form is provided. It only allows unique usernames. Usernames are case sensitive. |
@@ -439,7 +445,7 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 | I don't want others to be able to edit recipes I create. | Only recipe owners have access to the edit button when viewing a recipe. Additonally recipes cannot be hacked as the edit route checks the logged in username against the recipe owner when invoked. |
 | Want to be directed back to "safety" if an error occurs or I perform an unexpected input. | A series of error handlers exist to catch server errors such as 500, 404 and 403. This directs the user to an error page which contains specific links back to other site pages, dependant on user logged in status. | 
 
-##### The business
+#### The business
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Wants to collate a master archive of user recipes with potential future purpose such as trend analysis. | Recipes can never be deleted from the database by any user. Only their username is deleted from the shared with list. |
@@ -447,7 +453,7 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 | Prevent malicious use or abuse of the site. | Checks for username exist in various places on the site including registration, login and recipe editing. |
 | Protect user identity and encourage user trust. | Users cannot see other users usernames or search for them. If a users username is included in a shared with list but they are not the owner then the shared with list is hidden from that user. | 
 
-##### An online grocery retailer
+#### An online grocery retailer
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Wants to seek new entry points for new customers. | Speculative but the site will build a userbase interested in an activity strongly linked to the grocery market. |
@@ -489,6 +495,12 @@ To create a copy of the original "master" repository log into GitHub with your o
 
 Forking allows you to view and edit a copy of the repository without affecting the "master". 
 
+### Clone the GitHub Repository
+Log in to your GitHub account and navigate to this repository using the URL above. near the top of the repository click on Code dropdown button and
+choose HTTPS link, copying it using the provided copy button. 
+
+In your IDE open GIT Bash, change the directory to wherever you wish to save your work, then type git clone and paste in the URL copied earlier. 
+
 ### Python Package Requirements
 The site utilises server-side python script and relies on a number of pre-built packages to function. 
 On its host environment these packages will be installed in advance, however should you wish to duplicate the site the following will be required:
@@ -501,7 +513,8 @@ On its host environment these packages will be installed in advance, however sho
 - Werkzeug==1.0.1
 - Jinja2==2.11.2
 
-The majority of these packages are installed as standard when FLASK is installed using pip. 
+The majority of these packages are installed as standard when FLASK is installed using pip. Freeze the requirements into a requirements.txt file if 
+a new instance of the project is create using the terminal command pip3 freeze > requirements.txt
 
 additionally some standard Python packages are used including:
 - os
@@ -521,7 +534,19 @@ the following environment variables for the os will need to be created if a new 
 - A URI to connect to the MongoDb database with the alias "MONGO_URI"
 - The name of the database within MongoDb that the site will interact with using the alias "DB_NAME"
 
-A Procfile also exists to instruct Heroku how to run the site using web: python and directing Heroku to run the app.py file. 
+| Variable | Value |
+|----------|-------|
+| IP | 0.0.0.0 |
+| PORT | 5000 |
+| SECRET_KEY | <your_secret_key> |
+| MONGO_URI | mongodb+srv://MealPlannerROOT:spagMBESbol7125@myfirstcluster.lcznk.mongodb.net/meal_planner?retryWrites=true&w=majority |
+| DB_NAME | meal_planner |
+
+A Procfile also exists to instruct Heroku how to run the site using web: python app.py. This code should be contained in line 1 of the procfile.
+
+Once all the pre-requisites are created and installed add, commit and push the project back to your forked github project and link it to an app created in
+Heroku by using the Heroku web interface and navigating to Deploy, then selecting GitHub as the deployment method and searching for and connecting to the 
+correct github repository. Ensure you enable Automatic deploys below this for future git pushes. 
 
 ### Database
 The site uses ATLAS MongoDb database service and it is recommended that this be utilised if alternative builds are developed. 
