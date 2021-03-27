@@ -314,6 +314,18 @@ The use of this product was inline with Google API's terms of service [Google Fo
 
 ## 4. Testing
 
+### W3C Validation
+
+The HTML and CSS syntax for the project was checked using the W3C Validation services provided here:
+[W3C CSS Validation](https://jigsaw.w3.org/css-validator/#validate_by_input)
+[W3C Markup Validation](https://validator.w3.org/#validate_by_input)
+
+The CSS validation initially flagged an incorrect (but functional) styling of padding-inline-start applied to ordered list elements at the small breakpoint.
+This was swapped to padding-left which corrected the validation. A warning was presented regarding the imported Google fonts file at the top of the style.css file
+indicating that this imported file is not checked by the validation tool. In this instance the imported file is provided by a 3rd party and attributed in this document.
+
+<img src="static/images/w3ccsssuccess.jpg">
+
 ### Browser Compatibility
 
 |Browser| Version| Comments| Fixes Applied|
