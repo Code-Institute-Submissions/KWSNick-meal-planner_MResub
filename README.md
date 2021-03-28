@@ -421,13 +421,13 @@ In Google Chrome all written Create, Read, Update and Delete functionality acros
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Upload recipes and share them with people I know. | The owners of a recipe can add to a list of names anyone's user name that they already know. This recipe will appear on the shared with users collection upon successful entry of a username to this list. |
-| Ensure I maintain control over any recipes I upload so others can't change them. | Only owners are able to access the edit button associated with a recipe. Those who have only been added to the shared with cannot access this button. A security flaw was identified at this stage, as users could 'hack' the url to edit a recipe by changing view to edit in the url regardless of the username, however this was rectified in app file with the inclusion of an if statement to check the users name against the recipe owners prior to rendering the template. If the user is not the owner the site will return a 500 message and the error.html page will be triggered. |
+| Ensure I maintain control over any recipes I upload so others can't change them. | Only owners are able to access the edit button associated with a recipe. Those added to the shared with list cannot access this button. A security flaw was identified as users could 'hack' the url to edit a recipe by changing view to edit in the url regardless of the username, however this was rectified with the inclusion of an if statement to check the users name against the recipe owners prior to rendering the template. If the user is not the owner the site will return a 500 message and the error.html page will be triggered. |
 
 #### An inexperienced cook looking to improve their cooking habits by learning from their friends.
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
 |-------------------------------------------------------------------|--------------------|
 | Have access to recipes that my friends have shared with me.| An owner can edit a set of adjustable fields to enter the correct username string which is case sensitive. Users cannot be searched for to ensure account privacy. |
-| Have access to general recipes available on the site. | When a new account is created the username is immediately added to all the recipes owned by WTF, which is the site (and not a user which can be created as the name is less than the minimum username field length.) |
+| Have access to general recipes available on the site. | When a new account is created the username is immediately added to all the recipes owned by WTF, which is the site (and not a user which can be created as the name is less than the minimum username field length). |
 
 #### All consumers
 | User Story (From section 1. UX Design --> Scope --> User Stories) | Site functionality |
@@ -473,7 +473,7 @@ The URL for the hosted site is: https://meal-planner-wft.herokuapp.com/
 ### Purpose
 
 The hosted site exists to allow users to utilise all its built in functionality to interact with the MongoDb database which sits behind
-the site primarily; with the intent for the user to assess the competence of the creator in developing a data-centric site using a micro-framework and
+the site; primarily with the intent for the user to assess the competence of the creator in developing a data-centric site using a micro-framework and
 a non-relational database. 
 
 The site allows user to curate their own recipes and meal ideas, store and edit them, and also share them with others in a secure manner. Recipes can be removed
@@ -490,7 +490,7 @@ The URL for the GitHub Project is: https://github.com/KWSNick/meal-planner
 You may need to log into GitHub in order to access the github pages. 
 
 #### Fork the GitHub Repository
-To create a copy of the original "master" repository log into GitHub with your own account, navigate to this repository using the URL above and click the 
+To create a copy of the original "master" repository within your repositories log into GitHub with your own account, navigate to this repository using the URL above and click the 
 "fork" button at the top of the repository. This should provide you with a local copy in your repositories. 
 
 Forking allows you to view and edit a copy of the repository without affecting the "master". 
@@ -544,7 +544,7 @@ the following environment variables for the os will need to be created if a new 
 
 A Procfile also exists to instruct Heroku how to run the site using web: python app.py. This code should be contained in line 1 of the procfile.
 
-Once all the pre-requisites are created and installed add, commit and push the project back to your forked github project and link it to an app created in
+Once all the pre-requisites are created and installed add, commit and push the project back to your forked/cloned github project and link it to an app created in
 Heroku by using the Heroku web interface and navigating to Deploy, then selecting GitHub as the deployment method and searching for and connecting to the 
 correct github repository. Ensure you enable Automatic deploys below this for future git pushes. 
 
